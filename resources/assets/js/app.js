@@ -15,6 +15,7 @@ require('./bootstrap');
 
 Vue.component('navigation', require('./components/Navigation.vue'));
 Vue.component('welcome', require('./components/Welcome.vue'));
+Vue.component('log-in', function (resolve) {require(['./components/auth/LogIn.vue'], resolve);});
 
 const app = new Vue({
     el: '#app'

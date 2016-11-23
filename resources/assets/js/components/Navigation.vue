@@ -6,7 +6,7 @@
             </a>
             <a class="active item">Home</a>
             <a class="right item">
-                <a class="ui navigation button">Log In</a>
+                <a class="ui navigation button" @click="showLogin()">Log In</a>
                 <a class="ui navigation button">Sign Up</a>
             </a>
         </div>
@@ -20,3 +20,18 @@
         margin: -.5em 0 -.5em .5em !important;
     }
 </style>
+<script>
+    export default {
+        data: function () {
+            return {
+            };
+        },
+        computed: {
+        },
+        methods: {
+            showLogin: function () {
+                $('#login-modal').modal('show');
+            }
+        }
+    }
+</script>

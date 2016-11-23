@@ -23,6 +23,7 @@
 <div class="flex-center position-ref full-height" id="app">
     <div>
         <navigation></navigation>
+        <log-in></log-in>
         <div class="ui container">
             @yield('content')
         </div>
