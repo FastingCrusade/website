@@ -13,7 +13,8 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('navigation', require('./components/Navigation.vue'));
+Vue.component('welcome', require('./components/Welcome.vue'));
 
 const app = new Vue({
     el: '#app'
