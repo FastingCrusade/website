@@ -2,7 +2,8 @@
     <div class="ui centered modal" id="login-modal">
         <i class="close icon"></i>
         <div class="content">
-            <div class="ui equal width centered login form">
+            <form class="ui equal width centered login form">
+                <input type="hidden" name="_token" :value="csrfToken">
                 <div class="field">
                     <input type="email" placeholder="Your email..." name="email">
                 </div>
@@ -12,7 +13,7 @@
                 <div class="field">
                     <button class="ui button" type="submit">Log In</button>
                 </div>
-            </div>
+            </form>
             <div class="ui horizontal divider">
                 OR
             </div>
@@ -31,3 +32,11 @@
         text-align: center;
     }
 </style>
+<script>
+    export default {
+        props: ['csrfToken'],
+        data: function () {
+
+        }
+    }
+</script>

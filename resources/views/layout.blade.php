@@ -23,8 +23,8 @@
 <div class="flex-center position-ref full-height" id="app">
     <div>
         <navigation></navigation>
-        <log-in></log-in>
-        <sign-up></sign-up>
+        <log-in csrf-token="{{ csrf_token() }}"></log-in>
+        <sign-up csrf-token="{{ csrf_token() }}"></sign-up>
         <div class="ui container">
             @yield('content')
         </div>

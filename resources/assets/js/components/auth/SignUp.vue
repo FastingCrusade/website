@@ -3,6 +3,7 @@
         <i class="close icon"></i>
         <div class="content">
             <form class="ui equal width centered login form" action="register" method="POST">
+                <input type="hidden" name="_token" :value="csrfToken">
                 <div class="field">
                     <input type="email" placeholder="Your email..." name="email">
                 </div>
@@ -23,3 +24,8 @@
         </div>
     </div>
 </template>
+<script>
+    export default {
+        props: ['csrfToken']
+    }
+</script>
