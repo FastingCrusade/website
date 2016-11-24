@@ -2,7 +2,7 @@
     <div class="ui centered modal" id="signup-modal">
         <i class="close icon"></i>
         <div class="content">
-            <div class="ui equal width centered login form">
+            <form class="ui equal width centered login form" action="register" method="POST">
                 <div class="field">
                     <input type="email" placeholder="Your email..." name="email">
                 </div>
@@ -12,7 +12,7 @@
                 <div class="field">
                     <button class="ui button" type="submit">Create Account</button>
                 </div>
-            </div>
+            </form>
             <div class="ui horizontal divider">
                 OR
             </div>
