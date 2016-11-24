@@ -24,6 +24,7 @@
     <div>
         <navigation></navigation>
         <log-in></log-in>
+        <sign-up></sign-up>
         <div class="ui container">
             @yield('content')
         </div>

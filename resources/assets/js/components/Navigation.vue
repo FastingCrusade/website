@@ -7,7 +7,7 @@
             <a class="active item">Home</a>
             <a class="right item">
                 <a class="ui navigation button" @click="showLogin()">Log In</a>
-                <a class="ui navigation button">Sign Up</a>
+                <a class="ui navigation button" @click="showSignUp()">Sign Up</a>
             </a>
         </div>
     </div>
@@ -31,6 +31,9 @@
         methods: {
             showLogin: function () {
                 $('#login-modal').modal('show');
+            },
+            showSignUp: function () {
+                $('#signup-modal').modal('show');
             }
         }
     }
