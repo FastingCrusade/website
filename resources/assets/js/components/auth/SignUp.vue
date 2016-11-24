@@ -1,5 +1,6 @@
 <template>
     <div class="ui centered modal" id="signup-modal">
+        <i class="close icon"></i>
         <div class="content">
             <div class="ui equal width centered login form">
                 <div class="field">
