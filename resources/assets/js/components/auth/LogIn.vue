@@ -36,7 +36,7 @@
     export default {
         props: ['csrfToken'],
         data: function () {
-
+            return {};
         }
     }
 </script>
