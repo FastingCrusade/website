@@ -13,6 +13,7 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     /** @var User $user */
@@ -25,6 +26,10 @@ Route::get('/', function () {
     ]);
 });
 
-Auth::routes();
+//Auth::routes();
+Route::post('register', 'Auth\RegisterController@register');
 
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Utility routes
 Route::post('/deploy', 'Server@deploy');
