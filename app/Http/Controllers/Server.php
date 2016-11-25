@@ -46,7 +46,7 @@ class Server
         if ($this->verifyPayload()) {
             if ($this->checkRef()) {
                 if (Artisan::call('app:deploy') === 0) {
-                    event(App::make('App\Events\Deployment', [time(), $this->id]));
+                    event(App::make('App\Events\Deployment', [$this->id]));
                     $response = response()->make('OK', 200);
                 } else {
                     $response = response()->make('Deployment failed.', 500);
