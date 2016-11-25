@@ -8,7 +8,7 @@
                     <input type="email" placeholder="Your email..." name="email">
                 </div>
                 <div class="field">
-                    <input type="password" placeholder="Your password.." name="email">
+                    <input type="password" placeholder="Your password.." name="password">
                 </div>
                 <div class="field">
                     <button class="ui button" type="submit">Log In</button>
