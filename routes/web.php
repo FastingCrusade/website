@@ -11,8 +11,12 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'user' => Auth::user(),
+    ]);
 });
 
 Auth::routes();
