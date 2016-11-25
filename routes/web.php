@@ -27,7 +27,7 @@ Route::get('/', function () {
 
     return view('home', [
         'user'  => $name,
-        'admin' => $user->is_admin,
+        'admin' => $user ? $user->is_admin : false,
     ]);
 });
 
