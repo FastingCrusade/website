@@ -18,7 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     /** @var User $user */
     $user = Auth::user();
-    $name = $user->fullName() ?: $user->email;
+
+    if ($user) {
+        $name = $user->fullName() ?: $user->email;
+    } else {
+        $name = null;
+    }
 
     return view('home', [
         'user'  => $name,
