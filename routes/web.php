@@ -11,11 +11,17 @@
 |
 */
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
+    /** @var User $user */
+    $user = Auth::user();
+    $name = $user->fullName() ?: $user->email;
+
     return view('home', [
-        'user' => Auth::user(),
+        'user'  => $name,
+        'admin' => $user->is_admin,
     ]);
 });
 

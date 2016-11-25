@@ -9,6 +9,10 @@
                 <a class="ui navigation button" @click="showLogin()">Log In</a>
                 <a class="ui navigation button" @click="showSignUp()">Sign Up</a>
             </a>
+            <a v-if="user" class="right item">
+                <i :class="userIcon"></i>
+                {{ user }}
+            </a>
         </div>
     </div>
 </template>
@@ -22,12 +26,21 @@
 </style>
 <script>
     export default {
-        props: ['user'],
+        props: ['user', 'admin'],
         data: function () {
             return {
             };
         },
         computed: {
+            userIcon: function () {
+                var icon = 'user icon';
+
+                if (this.admin) {
+                    icon = 'spy icon';
+                }
+
+                return icon;
+            }
         },
         methods: {
             showLogin: function () {

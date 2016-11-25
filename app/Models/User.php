@@ -15,7 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -23,7 +25,18 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
+    protected $visible = [
+        'id',
+        'name',
     ];
+
+    /**
+     * Retrieves the full name of the User.
+     *
+     * @return string
+     */
+    public function fullName()
+    {
+        return collect([$this->first_name, $this->last_name])->implode(' ');
+    }
 }
