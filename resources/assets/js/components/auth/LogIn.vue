@@ -2,7 +2,7 @@
     <div class="ui centered modal" id="login-modal">
         <i class="close icon"></i>
         <div class="content">
-            <form class="ui equal width centered login form">
+            <form class="ui equal width centered login form" method="POST" action="/login">
                 <input type="hidden" name="_token" :value="csrfToken">
                 <div class="field">
                     <input type="email" placeholder="Your email..." name="email">
