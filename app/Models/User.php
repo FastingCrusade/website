@@ -37,6 +37,12 @@ class User extends Authenticatable
      */
     public function fullName()
     {
-        return collect([$this->first_name, $this->last_name])->implode(' ');
+        $name = '';
+
+        if ($this->first_name || $this->last_name) {
+            $name = collect([$this->first_name, $this->last_name])->implode(' ');
+        }
+
+        return $name;
     }
 }
