@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -44,5 +47,35 @@ class User extends Authenticatable
         }
 
         return $name;
+    }
+
+    /**
+     * Relationship to Organizations.
+     *
+     * @return BelongsToMany
+     */
+    public function organizations()
+    {
+        return $this->belongsToMany('App\Models\Organization');
+    }
+
+    /**
+     * Relationship to Comments.
+     *
+     * @return HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    /**
+     * Relationship to Fasts.
+     *
+     * @return HasMany
+     */
+    public function fasts()
+    {
+        return $this->hasMany('App\Models\Fasts');
     }
 }
