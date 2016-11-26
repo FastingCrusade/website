@@ -17,7 +17,6 @@
 
     @section('top-scripts')
         <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="semantic/dist/semantic.min.js"></script>
     @show
 </head>
 <body>
@@ -26,12 +25,13 @@
         <navigation user="{{ $user }}" admin="{{ $admin }}">@include('navigation')</navigation>
         <log-in csrf-token="{{ csrf_token() }}"></log-in>
         <sign-up csrf-token="{{ csrf_token() }}"></sign-up>
-        <div class="ui container">
+        <div class="ui container" id="main-content">
             @yield('content')
         </div>
     </div>
 </div>
 @section('bottom-scripts')
+    <script src="semantic/dist/semantic.min.js"></script>
     <script src="js/app.js"></script>
 @show
 </body>

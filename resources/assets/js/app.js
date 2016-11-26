@@ -21,3 +21,9 @@ Vue.component('sign-up', function (resolve) {require(['./components/auth/SignUp.
 const app = new Vue({
     el: '#app'
 });
+
+$(function () {
+    var $dropdowns = $('.ui.dropdown');
+    console.log('Found ' + $dropdowns.length + ' dropdowns.');
+    $dropdowns.dropdown();
+});

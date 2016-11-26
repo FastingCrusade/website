@@ -9,10 +9,14 @@
                 <a class="ui navigation button" @click="showLogin()">Log In</a>
                 <a class="ui navigation button" @click="showSignUp()">Sign Up</a>
             </a>
-            <a v-if="user" class="right item">
+            <div v-if="user" class="ui right dropdown item">
                 <i :class="userIcon"></i>
                 {{ user }}
-            </a>
+                <div class="menu">
+                    <div class="item">Account Management</div>
+                    <div class="item">Log Out<span class="description"><i class="sign out icon"></i></span></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
