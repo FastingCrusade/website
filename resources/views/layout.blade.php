@@ -12,6 +12,7 @@
 
     @section('styles')
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
     @show
 
     @section('top-scripts')
@@ -22,7 +23,7 @@
 <body>
 <div class="flex-center position-ref full-height" id="app">
     <div>
-        <navigation user="{{ $user }}" admin="{{ $admin }}"></navigation>
+        <navigation user="{{ $user }}" admin="{{ $admin }}">@include('navigation')</navigation>
         <log-in csrf-token="{{ csrf_token() }}"></log-in>
         <sign-up csrf-token="{{ csrf_token() }}"></sign-up>
         <div class="ui container">

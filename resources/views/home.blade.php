@@ -1,5 +1,5 @@
 @extends('layout')
 
 @section('content')
-    <welcome></welcome>
+    <welcome><i class="loading circle notched icon"></i></welcome>
 @stop
