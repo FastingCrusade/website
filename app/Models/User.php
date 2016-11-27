@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,8 +30,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $visible = [
-        'id',
-        'name',
+        'first_name',
+        'last_name',
     ];
 
     /**
@@ -77,5 +78,15 @@ class User extends Authenticatable
     public function fasts()
     {
         return $this->hasMany('App\Models\Fasts');
+    }
+
+    /**
+     * Relationship to Gender.
+     *
+     * @return BelongsTo
+     */
+    public function gender()
+    {
+        return $this->belongsTo('App\Models\Gender');
     }
 }

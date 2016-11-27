@@ -17,6 +17,7 @@ Vue.component('navigation', require('./components/Navigation.vue'));
 Vue.component('welcome', function (resolve) {require(['./components/Welcome.vue'], resolve);});
 Vue.component('log-in', function (resolve) {require(['./components/auth/LogIn.vue'], resolve);});
 Vue.component('sign-up', function (resolve) {require(['./components/auth/SignUp.vue'], resolve);});
+Vue.component('user', function (resolve) {require(['./components/User.vue'], resolve);});
 
 const app = new Vue({
     el: '#app'
@@ -24,6 +25,5 @@ const app = new Vue({
 
 $(function () {
     var $dropdowns = $('.ui.dropdown');
-    console.log('Found ' + $dropdowns.length + ' dropdowns.');
     $dropdowns.dropdown();
 });
