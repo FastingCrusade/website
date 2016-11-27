@@ -14,7 +14,7 @@
                 {{ user }}
                 <div class="menu">
                     <div class="item">Account Management</div>
-                    <div class="item">Log Out<span class="description"><i class="sign out icon"></i></span></div>
+                    <a href="/logout" class="item">Log Out<span class="description"><i class="sign out icon"></i></span></a>
                 </div>
             </div>
         </div>
