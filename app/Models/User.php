@@ -94,6 +94,7 @@ class User extends Authenticatable
     public function __toString()
     {
         $visible = json_decode(parent::__toString(), true);
+        $visible['full_name'] = $this->fullName();
         $visible['gender'] = [
             'id'   => $this->gender->id,
             'icon' => $this->gender->icon,

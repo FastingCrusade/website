@@ -24,7 +24,7 @@
 <body>
 <div class="flex-center position-ref full-height" id="app">
     <div>
-        <navigation user="{{ $current_user->fullName() }}" admin="{{ $current_user->is_admin }}">@include('navigation')</navigation>
+        <navigation user="{{ $current_user }}" admin="{{ $current_user->is_admin }}">@include('navigation')</navigation>
         <log-in></log-in>
         <sign-up></sign-up>
         <div class="ui container" id="main-content">
