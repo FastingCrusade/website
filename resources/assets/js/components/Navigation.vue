@@ -38,7 +38,7 @@
         },
         computed: {
             settingsUrl: function () {
-                settingsUrl: ['/users', this.user.id].join('/')
+                return ['/users', this.user.id].join('/');
             },
             userIcon: function () {
                 var icon = 'user icon';
