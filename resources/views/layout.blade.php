@@ -24,9 +24,9 @@
 <body>
 <div class="flex-center position-ref full-height" id="app">
     <div>
-        <navigation user="{{ $user_name }}" admin="{{ $admin }}">@include('navigation')</navigation>
-        <log-in csrf-token="{{ csrf_token() }}"></log-in>
-        <sign-up csrf-token="{{ csrf_token() }}"></sign-up>
+        <navigation user="{{ $current_user->fullName() }}" admin="{{ $current_user->is_admin }}">@include('navigation')</navigation>
+        <log-in></log-in>
+        <sign-up></sign-up>
         <div class="ui container" id="main-content">
             @yield('content')
         </div>

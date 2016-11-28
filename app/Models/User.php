@@ -30,6 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $visible = [
+        'id',
         'first_name',
         'last_name',
     ];
@@ -41,10 +42,10 @@ class User extends Authenticatable
      */
     public function fullName()
     {
-        $name = '';
-
         if ($this->first_name || $this->last_name) {
             $name = collect([$this->first_name, $this->last_name])->implode(' ');
+        } else {
+            $name = $this->email;
         }
 
         return $name;
@@ -88,5 +89,17 @@ class User extends Authenticatable
     public function gender()
     {
         return $this->belongsTo('App\Models\Gender');
+    }
+
+    public function __toString()
+    {
+        $visible = json_decode(parent::__toString(), true);
+        $visible['gender'] = [
+            'id'   => $this->gender->id,
+            'icon' => $this->gender->icon,
+            'name' => $this->gender->name,
+        ];
+
+        return json_encode($visible, false);
     }
 }

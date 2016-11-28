@@ -37,40 +37,48 @@
                 Gender:
             </div>
             <div class="three wide column">
-                <div v-if="editing" class="ui fluid selection dropdown">
+                <div v-if="editing" class="ui fluid gender selection dropdown">
                     <input type="hidden" name="gender">
                     <i class="dropdown icon"></i>
                     <div class="default text">Gender</div>
                     <div class="menu">
-                        <dropdown-item v-for="gender in genders" :item="gender"></dropdown-item>
+                        <dropdown-item v-for="gender in genders" :item="gender" :is_active="gender.id === user.gender.id"></dropdown-item>
                     </div>
                 </div>
                 <div v-else>
-                    <i :class="genderIcon"></i>{{ genderName }}
+                    <i :class="user.gender.icon"></i>{{ user.gender.name }}
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="column">
-                <h2 class="ui header">Administrators Only</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="is_admin">
-                    <label>Make administrator.</label>
+        <div v-if="admin">
+            <div class="row">
+                <div class="column">
+                    <h2 class="ui header">Administrators Only</h2>
                 </div>
-                <div class="ui warning icon message">
-                    <i class="warning sign icon"></i>
-                    <div class="content">
-                        <div class="header">
-                            Are you absolutely sre?
+            </div>
+            <div class="row">
+                <div v-if="editing" class="column">
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" name="is_admin" :checked="admin">
+                        <label>Is Administrator.</label>
+                    </div>
+                    <div class="ui warning icon message">
+                        <i class="warning sign icon"></i>
+                        <div class="content">
+                            <div class="header">
+                                Are you absolutely sre?
+                            </div>
+                            <p>
+                                Making a user an administrator will give them <strong>full</strong> privileges for the
+                                <strong>entire</strong> site. They will be able do anything you can do.
+                            </p>
                         </div>
-                        <p>
-                            Making a user an administrator will give them <strong>full</strong> privileges for the
-                            <strong>entire</strong> site. They will be able do anything you can do.
-                        </p>
+                    </div>
+                </div>
+                <div v-else class="column">
+                    <div class="ui disabled toggle checkbox">
+                        <input type="checkbox" name="is_admin" :checked="admin">
+                        <label>Is Administrator.</label>
                     </div>
                 </div>
             </div>
@@ -93,7 +101,7 @@
                 } else {
                     return false;
                 }
-            }
+            },
         },
         components: {
             'dropdown-item': Vue.component('dropdown-item', function (resolve) {require(['./DropdownItem.vue'], resolve);}),
@@ -102,6 +110,20 @@
 
     $(function () {
         $('.ui.dropdown').dropdown();
+        $('.ui.checkbox').checkbox();
+        var $gender_dropdown = $('.gender.dropdown');
+        var attempts = 0;
+
+        var interval = setInterval(function () {
+            if (!$gender_dropdown.find('.item').length < 1 && attempts < 19) {
+                var selected_gender = $gender_dropdown.find('.item.active').data('value');
+                console.log('Selected gender:', selected_gender);
+                $gender_dropdown.dropdown('set selected', selected_gender);
+                clearInterval(interval);
+            } else {
+                attempts = attempts + 1;
+            }
+        }, 500);
     });
 </script>
 <style>

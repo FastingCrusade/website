@@ -18,35 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     /** @var User $user */
-    $user = Auth::user();
-
-    if ($user) {
-        $name = $user->fullName() ?: $user->email;
-    } else {
-        $name = null;
-    }
-
-    return view('home', [
-        'user_name' => $name,
-        'admin'     => $user ? $user->is_admin : false,
-    ]);
+    return view('home');
 });
 
-Route::get('/user/{user}', function (App\Models\User $user) {
-    if (Auth::user()) {
-        $is_admin = Auth::user()->is_admin;
-        $editable = (Auth::user()->id === $user->id);
-    } else {
-        $is_admin = false;
-        $editable = false;
-    }
+Route::get('/users/{user}', function (App\Models\User $user) {
+    $editable = (Auth::user() && Auth::user()->id === $user->id);
     $genders = Gender::all()->toJson();
 
     return view('user', [
-        'user_name' => Auth::user() ? (Auth::user()->fullName() ?: Auth::user()->email) : null,
         'user'      => $user,
         'editable'  => $editable,
-        'admin'     => $is_admin,
         'genders'   => $genders,
     ]);
 });
