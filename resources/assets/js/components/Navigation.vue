@@ -33,13 +33,15 @@
         props: ['user_json', 'admin'],
         data: function () {
             return {
-                user: JSON.parse(this.user_json),
             };
         },
         computed: {
             settingsUrl: function () {
                 settingsUrl: ['/users', this.user.id].join('/')
             },
+            user: function () {
+                return JSON.parse(this.user_json);
+            }
             userIcon: function () {
                 var icon = 'user icon';
 
