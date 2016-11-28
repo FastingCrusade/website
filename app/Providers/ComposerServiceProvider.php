@@ -19,7 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             $user = Auth::user() ?: App::make('App\Models\User', [[]]);
-            $view->with('logged_in', ($user->id));
+            $view->with('logged_in', ($user->id ? 'true' : 'false'));
             $view->with('current_user', $user);
         });
     }
