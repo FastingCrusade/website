@@ -41,7 +41,6 @@ class Gravatar
         $hash = $this->hash($email);
 
         $query = http_build_query([
-            's' => $this->size->width(),
             'd' => $this->default,
         ]);
 

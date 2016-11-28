@@ -130,14 +130,10 @@ class User extends Authenticatable
     /**
      * Returns the URL for the profile image.
      *
-     * @param int $size
-     *
      * @return string
      */
-    public function profileImageUrl($size = Size::NAVIGATION)
+    public function profileImageUrl()
     {
-        $this->imageHandler->setSize($size);
-
         return $this->imageHandler->url($this->email);
     }
 }
