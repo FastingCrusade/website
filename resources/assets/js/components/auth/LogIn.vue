@@ -34,9 +34,13 @@
 </style>
 <script>
     export default {
-        props: ['csrfToken'],
         data: function () {
             return {};
+        },
+        computed: {
+            csrfToken: function () {
+                return $('meta[name="csrf_token"]').attr('content');
+            }
         }
     }
 </script>

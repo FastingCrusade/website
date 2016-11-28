@@ -26,6 +26,10 @@
 </template>
 <script>
     export default {
-        props: ['csrfToken']
+        computed: {
+            csrfToken: function () {
+                return $('meta[name="csrf_token"]').attr('content');
+            }
+        }
     }
 </script>
