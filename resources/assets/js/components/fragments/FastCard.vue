@@ -1,6 +1,7 @@
 <template>
     <div class="card">
         <div class="content">
+            <img class="right floated mini ui image" :src="card.image_url">
             <div class="header">
                 {{ header }}
             </div>
