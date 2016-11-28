@@ -11,7 +11,7 @@
             </a>
             <div v-else class="ui right dropdown item">
                 <i :class="userIcon"></i>
-                {{ user }}
+                {{ user.full_name }}
                 <div class="menu">
                     <a :href="settingsUrl" class="item">Account Management</a>
                     <a href="/logout" class="item">Log Out<span class="description"><i class="sign out icon"></i></span></a>
