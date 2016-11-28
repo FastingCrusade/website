@@ -20,6 +20,7 @@ Vue.component('sign-up', function (resolve) {require(['./components/auth/SignUp.
 Vue.component('user', function (resolve) {require(['./components/User.vue'], resolve);});
 Vue.component('admin-tools', function (resolve) {require(['./components/fragments/AdminTools.vue'], resolve);});
 Vue.component('admin', function (resolve) {require(['./components/Admin.vue'], resolve);});
+Vue.component('home', function (resolve) {require(['./components/Home.vue'], resolve);});
 
 const app = new Vue({
     el: '#app'

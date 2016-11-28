@@ -5,7 +5,7 @@
                 <i class="sidebar icon"></i>
             </a>
             <a href="/" class="item">Home</a>
-            <a v-if="!user.full_name" class="right item">
+            <a v-if="!logged_in" class="right item">
                 <a class="ui navigation button" @click="showLogin()">Log In</a>
                 <a class="ui navigation button" @click="showSignUp()">Sign Up</a>
             </a>
@@ -30,7 +30,7 @@
 </style>
 <script>
     export default {
-        props: ['user_json', 'admin'],
+        props: ['user_json', 'admin', 'logged_in'],
         data: function () {
             return {
                 user: JSON.parse(this.user_json),

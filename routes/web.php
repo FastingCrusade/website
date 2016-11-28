@@ -12,12 +12,21 @@
 */
 
 use App\Models\Gender;
+use Illuminate\Support\Facades\App;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    $cards = json_encode([
+        App::make('App\Models\Fast', [[
+            'description' => 'My First Fast',
+        ]]),
+    ]);
+
+    return view('home', [
+        'cards' => $cards,
+    ]);
 });
 Route::get('/admin', function () {
     // TODO Should 404 to hide its existence.
