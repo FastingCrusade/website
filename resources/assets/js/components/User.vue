@@ -1,8 +1,6 @@
 <template>
     <div class="ui grid">
-        <div v-if="admin" class="admin tools row">
-            <div class="column">Edit</div>
-        </div>
+        <admin-tools :is_admin="admin"></admin-tools>
         <div class="row">
             <div class="column">
                 <h1 class="ui header">Account Settings</h1>
@@ -127,11 +125,4 @@
     });
 </script>
 <style>
-    .admin.tools.row {
-        padding: 0 0 1rem;
-    }
-    .admin.tools.row>.column {
-        text-align: right;
-        align-self: inherit;
-    }
 </style>
