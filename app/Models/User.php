@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use App\Contracts\ImageHandler;
+use App\ImageHandlers\Gravatar;
+use App\Misc\Size;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\App;
 
 class User extends Authenticatable
 {
@@ -37,10 +40,11 @@ class User extends Authenticatable
     /** @var ImageHandler $imageHandler */
     protected $imageHandler;
 
-    public function __construct(ImageHandler $imageHandler, array $attributes)
+    public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->imageHandler = $imageHandler;
+        $this->imageHandler = App::make('App\Contracts\ImageHandler');
+        $this->imageHandler->setDefault(Gravatar::MYSTERY);
     }
 
     /**
@@ -126,10 +130,14 @@ class User extends Authenticatable
     /**
      * Returns the URL for the profile image.
      *
+     * @param int $size
+     *
      * @return string
      */
-    public function profileImageUrl()
+    public function profileImageUrl($size = Size::NAVIGATION)
     {
-        return $this->imageHandler->url();
+        $this->imageHandler->setSize($size);
+
+        return $this->imageHandler->url($this->email);
     }
 }

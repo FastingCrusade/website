@@ -17,6 +17,8 @@ trait ImageHandler
 {
     /** @var Size $size */
     protected $size;
+    /** @var string $default */
+    protected $default;
 
     /**
      * Returns a file handle for the resource.
@@ -57,6 +59,20 @@ trait ImageHandler
     }
 
     /**
+     * Sets the default image to use.
+     *
+     * @param string $default
+     *
+     * @return $this
+     */
+    public function setDefault($default)
+    {
+        $this->default = $default;
+
+        return $this;
+    }
+
+    /**
      * Sets the Size for the image.
      *
      * @param      $size
@@ -64,7 +80,7 @@ trait ImageHandler
      *
      * @return $this
      */
-    protected function setSize($size, $height = null)
+    public function setSize($size, $height = null)
     {
         if ($size instanceof Size) {
             $this->size = $size;

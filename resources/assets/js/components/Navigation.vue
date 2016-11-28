@@ -10,7 +10,7 @@
                 <a class="ui navigation button" @click="showSignUp()">Sign Up</a>
             </a>
             <div v-else class="ui right dropdown item">
-                <i :class="userIcon"></i>
+                <img :src="user.profile_image_url" class="ui mini image">
                 {{ user.full_name }}
                 <div class="menu">
                     <a :href="settingsUrl" class="item">Account Management</a>

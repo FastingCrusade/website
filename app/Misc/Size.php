@@ -13,9 +13,10 @@ use InvalidArgumentException;
 
 class Size
 {
-    const SMALL = 20;
+    const MINI = 35;
+    const SMALL = 150;
 
-    const NAVIGATION = self::SMALL;
+    const NAVIGATION = self::MINI;
 
     /** @var int $height */
     private $height;
@@ -37,10 +38,13 @@ class Size
      */
     public function width($pixels = null)
     {
-        if (!is_null($pixels) && is_numeric($pixels)) {
-            $this->width = intval($pixels);
-        } else {
-            throw new InvalidArgumentException("The width must be numeric. {$pixels} was given.");
+        if (!is_null($pixels)) {
+            if (is_numeric($pixels)) {
+                $this->width = intval($pixels);
+            } else {
+                $pixels = $pixels ?: 'Null';
+                throw new InvalidArgumentException("The width must be numeric. {$pixels} was given.");
+            }
         }
 
         return $this->width;
@@ -53,12 +57,15 @@ class Size
      *
      * @return int
      */
-    public function height($pixels = null)
+    public
+    function height($pixels = null)
     {
-        if (!is_null($pixels) && is_numeric($pixels)) {
-            $this->height = intval($pixels);
-        } else {
-            throw new InvalidArgumentException("The height must be numeric. {$pixels} was given.");
+        if (!is_null($pixels)) {
+            if (is_numeric($pixels)) {
+                $this->height = intval($pixels);
+            } else {
+                throw new InvalidArgumentException("The height must be numeric. {$pixels} was given.");
+            }
         }
 
         return $this->height;
