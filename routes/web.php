@@ -21,7 +21,7 @@ Route::get('/', function () {
     $cards = json_encode([
         App::make('App\Models\Fast', [[
             'description' => 'My First Fast',
-            'image_url'   => Auth::user()->profileImageUrl(),
+            'image_url'   => Auth::user() ? Auth::user()->profileImageUrl() : App::make('App\Models\User')->profileImageUrl(),
         ]]),
     ]);
 
