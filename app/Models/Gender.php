@@ -17,6 +17,15 @@ class Gender extends Model
 {
     use SoftDeletes;
 
+    const MALE = 1;
+    const FEMALE = 2;
+    const NEUTER = 3;
+    const OTHER = 4;
+    const TRANSGENDER = 5;
+    const INTERGENDER = 6;
+    const NONBINARY = 7;
+    const UNKNOWN = 8;
+
     /**
      * Relationship to Users.
      *

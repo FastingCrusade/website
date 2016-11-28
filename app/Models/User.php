@@ -95,6 +95,11 @@ class User extends Authenticatable
     {
         $visible = json_decode(parent::__toString(), true);
         $visible['full_name'] = $this->fullName();
+
+        if (!$this->gender) {
+            $this->gender()->associate(Gender::find(Gender::UNKNOWN));
+        }
+
         $visible['gender'] = [
             'id'   => $this->gender->id,
             'icon' => $this->gender->icon,
