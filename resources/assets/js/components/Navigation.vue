@@ -5,14 +5,18 @@
                 <i class="sidebar icon"></i>
             </a>
             <a class="active item">Home</a>
-            <a v-if="!user" class="right item">
+            <a v-if="!user.full_name" class="right item">
                 <a class="ui navigation button" @click="showLogin()">Log In</a>
                 <a class="ui navigation button" @click="showSignUp()">Sign Up</a>
             </a>
-            <a v-if="user" class="right item">
+            <div v-else class="ui right dropdown item">
                 <i :class="userIcon"></i>
-                {{ user }}
-            </a>
+                {{ user.full_name }}
+                <div class="menu">
+                    <a :href="settingsUrl" class="item">Account Management</a>
+                    <a href="/logout" class="item">Log Out<span class="description"><i class="sign out icon"></i></span></a>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -26,12 +30,16 @@
 </style>
 <script>
     export default {
-        props: ['user', 'admin'],
+        props: ['user_json', 'admin'],
         data: function () {
             return {
+                user: JSON.parse(this.user_json),
             };
         },
         computed: {
+            settingsUrl: function () {
+                return ['/users', this.user.id].join('/');
+            },
             userIcon: function () {
                 var icon = 'user icon';
 

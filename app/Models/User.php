@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,7 +31,8 @@ class User extends Authenticatable
      */
     protected $visible = [
         'id',
-        'name',
+        'first_name',
+        'last_name',
     ];
 
     /**
@@ -40,10 +42,10 @@ class User extends Authenticatable
      */
     public function fullName()
     {
-        $name = '';
-
         if ($this->first_name || $this->last_name) {
             $name = collect([$this->first_name, $this->last_name])->implode(' ');
+        } else {
+            $name = $this->email;
         }
 
         return $name;
@@ -77,5 +79,28 @@ class User extends Authenticatable
     public function fasts()
     {
         return $this->hasMany('App\Models\Fasts');
+    }
+
+    /**
+     * Relationship to Gender.
+     *
+     * @return BelongsTo
+     */
+    public function gender()
+    {
+        return $this->belongsTo('App\Models\Gender');
+    }
+
+    public function __toString()
+    {
+        $visible = json_decode(parent::__toString(), true);
+        $visible['full_name'] = $this->fullName();
+        $visible['gender'] = [
+            'id'   => $this->gender->id,
+            'icon' => $this->gender->icon,
+            'name' => $this->gender->name,
+        ];
+
+        return json_encode($visible, false);
     }
 }

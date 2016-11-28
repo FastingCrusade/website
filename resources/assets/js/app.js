@@ -14,10 +14,17 @@ require('./bootstrap');
  */
 
 Vue.component('navigation', require('./components/Navigation.vue'));
-Vue.component('welcome', require('./components/Welcome.vue'));
+Vue.component('welcome', function (resolve) {require(['./components/Welcome.vue'], resolve);});
 Vue.component('log-in', function (resolve) {require(['./components/auth/LogIn.vue'], resolve);});
 Vue.component('sign-up', function (resolve) {require(['./components/auth/SignUp.vue'], resolve);});
+Vue.component('user', function (resolve) {require(['./components/User.vue'], resolve);});
+Vue.component('admin-tools', function (resolve) {require(['./components/AdminTools.vue'], resolve);});
 
 const app = new Vue({
     el: '#app'
+});
+
+$(function () {
+    var $dropdowns = $('.ui.dropdown');
+    $dropdowns.dropdown();
 });

@@ -11,23 +11,24 @@
 |
 */
 
+use App\Models\Gender;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     /** @var User $user */
-    $user = Auth::user();
+    return view('home');
+});
 
-    if ($user) {
-        $name = $user->fullName() ?: $user->email;
-    } else {
-        $name = null;
-    }
+Route::get('/users/{user}', function (App\Models\User $user) {
+    $editable = (Auth::user() && Auth::user()->id === $user->id);
+    $genders = Gender::all()->toJson();
 
-    return view('home', [
-        'user'  => $name,
-        'admin' => $user ? $user->is_admin : false,
+    return view('user', [
+        'user'      => $user,
+        'editable'  => $editable,
+        'genders'   => $genders,
     ]);
 });
 
