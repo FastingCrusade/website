@@ -41,7 +41,7 @@
             },
             user: function () {
                 return JSON.parse(this.user_json);
-            }
+            },
             userIcon: function () {
                 var icon = 'user icon';
 
