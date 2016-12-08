@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    /** @var User $user */
     return view('home');
 });
 
@@ -46,6 +45,8 @@ Route::get('/admin', function () {
 
     return $response;
 });
+
+Route::patch('/gender/{gender}/replace', 'GenderSwap')->middleware('auth');
 
 //Auth::routes();
 Route::post('register', 'Auth\RegisterController@register');

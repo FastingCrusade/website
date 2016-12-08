@@ -11,7 +11,7 @@
                         <h1 class="ui header">Genders</h1>
                         <div class="ui equal width grid">
                             <div class="two column row">
-                                <gender-display v-for="gender in genders" :gender="gender"></gender-display>
+                                <gender-display v-for="gender in genders" :gender="gender" :genders_json="genders_json"></gender-display>
                             </div>
                             <div class="one column row">
                                 <div class="column">
@@ -25,7 +25,11 @@
                                                 <input type="text" name="icon" placeholder="Icon class...">
                                             </div>
                                             <div class="field">
-                                                <i class="help circle icon"></i>
+                                                <i class="gender help circle icon"></i>
+                                                <div class="ui popup">
+                                                    See <a href="http://semantic-ui.com/elements/icon.html" title="Semantic UI: Icons">the Semantic UI</a>
+                                                    page for more information and class names.
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -49,12 +53,15 @@
     </div>
 </template>
 <style>
+    .two.column.row > .column {
+        padding-top: 1rem;
+    }
 </style>
 <script>
-    export default{
+    export default {
         props: ['genders_json'],
         data(){
-            return{
+            return {
                 genders: JSON.parse(this.genders_json),
             }
         },
@@ -65,5 +72,9 @@
 
     $(function () {
         $('.tabular.admin.menu .item').tab();
+        $('.gender.help').popup({
+            inline: true,
+            hoverable: true,
+        });
     });
 </script>
