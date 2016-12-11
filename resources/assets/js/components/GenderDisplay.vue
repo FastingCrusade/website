@@ -1,9 +1,9 @@
 <template>
-    <div class="column">
-        <i :class="gender.icon"></i> {{ gender.name}}
+    <div class="column" data-gender-id="gender.id">
         <button class="ui icon red mini button" @click="showModal">
             <i class="close icon"></i>
         </button>
+        <i :class="gender.icon"></i> {{ gender.name}}
         <div :class="modalClass">
             <div class="content">
                 <div class="ui form">
