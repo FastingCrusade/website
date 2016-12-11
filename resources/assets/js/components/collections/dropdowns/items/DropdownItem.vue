@@ -15,6 +15,9 @@
                     return 'item';
                 }
             }
+        },
+        mounted() {
+            this.$emit('item-added');
         }
     };
 </script>

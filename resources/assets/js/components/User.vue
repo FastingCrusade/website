@@ -35,14 +35,7 @@
                 Gender:
             </div>
             <div class="three wide column">
-                <div v-if="editing" class="ui fluid gender selection dropdown">
-                    <input type="hidden" name="gender">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Gender</div>
-                    <div class="menu">
-                        <dropdown-item v-for="gender in genders" :item="gender" :is_active="gender.id === user.gender.id"></dropdown-item>
-                    </div>
-                </div>
+                <gender-dropdown v-if="editing" :genders_json="genders_json" :active_id="user.gender.id"></gender-dropdown>
                 <div v-else>
                     <i :class="user.gender.icon"></i>{{ user.gender.name }}
                 </div>
@@ -64,7 +57,7 @@
                         <i class="warning sign icon"></i>
                         <div class="content">
                             <div class="header">
-                                Are you absolutely sre?
+                                Are you absolutely sure?
                             </div>
                             <p>
                                 Making a user an administrator will give them <strong>full</strong> privileges for the
@@ -89,7 +82,6 @@
         data: function () {
             return {
                 user: JSON.parse(this.user_json),
-                genders: JSON.parse(this.genders_json),
             };
         },
         computed: {
@@ -102,12 +94,11 @@
             },
         },
         components: {
-            'dropdown-item': Vue.component('dropdown-item', function (resolve) {require(['./DropdownItem.vue'], resolve);}),
+            'gender-dropdown': Vue.component('gender-dropdown', function (resolve) {require(['./collections/dropdowns/GenderDropdown.vue'], resolve);}),
         }
     };
 
     $(function () {
-        $('.ui.dropdown').dropdown();
         $('.ui.checkbox').checkbox();
         var $gender_dropdown = $('.gender.dropdown');
         var attempts = 0;

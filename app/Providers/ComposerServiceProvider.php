@@ -18,7 +18,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*', function ($view) {
-            $user = Auth::user() ?: App::make('App\Models\User');
+            $user = Auth::user() ?: App::make('App\Models\User', [[]]);
             $view->with('current_user', $user);
         });
     }
