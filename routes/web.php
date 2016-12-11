@@ -45,7 +45,7 @@ Route::get('/user/{user}', function (User $user) {
         'genders'  => $genders,
     ]);
 });
-Route::patch('/user/{user}', function (User $user) {});
+Route::patch('/user/{user}', 'User@update');
 
 // Gender Routes
 Route::patch('/gender/{gender}/replace', 'GenderSwap')->middleware('auth');
