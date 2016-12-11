@@ -1,6 +1,6 @@
 <template>
     <div class="ui grid">
-        <admin-tools :is_admin="admin"></admin-tools>
+        <admin-tools v-on:begin-editing="beginEditing" :is_admin="admin"></admin-tools>
         <div class="row">
             <div class="column">
                 <h1 class="ui header">Account Settings</h1>
@@ -15,7 +15,7 @@
             <div class="column">Name:</div>
             <div class="three wide column">
                 <div v-if="editing" class="ui fluid input">
-                    <input type="text" name="first_name" :value="user.first_name">
+                    <input type="text" name="first_name" v-model.trim="user.first_name">
                 </div>
                 <div v-else>
                     {{ user.first_name }}
@@ -23,7 +23,7 @@
             </div>
             <div class="three wide column">
                 <div v-if="editing" class="ui fluid input">
-                    <input type="text" name="last_name" :value="user.last_name">
+                    <input type="text" name="last_name" v-model.trim="user.last_name">
                 </div>
                 <div v-else>
                     {{ user.last_name }}
@@ -41,6 +41,9 @@
                 </div>
             </div>
         </div>
+        <div v-if="editing" class="row">
+            <button class="ui green button" @click="updatePersonal">Update</button>
+        </div>
         <div v-if="admin">
             <div class="row">
                 <div class="column">
@@ -49,8 +52,8 @@
             </div>
             <div class="row">
                 <div v-if="editing" class="column">
-                    <div class="ui toggle checkbox">
-                        <input type="checkbox" name="is_admin" :checked="admin">
+                    <div class="ui toggle admin checkbox">
+                        <input type="checkbox" v-model="admin_toggle" name="is_admin">
                         <label>Is Administrator.</label>
                     </div>
                     <div class="ui warning icon message">
@@ -67,30 +70,70 @@
                     </div>
                 </div>
                 <div v-else class="column">
-                    <div class="ui disabled toggle checkbox">
-                        <input type="checkbox" name="is_admin" :checked="admin">
+                    <div class="ui disabled toggle admin checkbox">
+                        <input type="checkbox" v-model="admin_toggle" name="is_admin">
                         <label>Is Administrator.</label>
                     </div>
                 </div>
             </div>
+            <div v-if="editing" class="row">
+                <button class="ui yellow button" @click="updateAdmin">Update</button>
+            </div>
         </div>
     </div>
 </template>
+<style>
+    .ui.warning.message {
+        margin-bottom: 1rem;
+    }
+</style>
 <script>
     export default {
         props: ['user_json', 'editable', 'admin', 'genders_json'],
         data: function () {
             return {
                 user: JSON.parse(this.user_json),
+                admin_toggle: this.admin,
+                is_editing: false,
             };
         },
         computed: {
             editing: function () {
-                if (this.isEditing || this.editable) {
+                if (this.is_editing || this.editable) {
                     return true;
                 } else {
                     return false;
                 }
+            },
+        },
+        methods: {
+            beginEditing: function () {
+                console.log('Caught event to begin editing');
+                this.is_editing = true;
+            },
+            updatePersonal: function () {
+                // TODO React to response
+                $.ajax({
+                    url: '/user/' + this.user.id,
+                    method: 'PATCH',
+                    data: {
+                        first_name: this.user.first_name,
+                        last_name: this.user.last_name,
+                        gender: $('.gender.dropdown').find('input').val(),
+                        '_token': $('meta[name="csrf_token"]').attr('content'),
+                    },
+                });
+            },
+            updateAdmin: function () {
+                // TODO React to response.
+                $.ajax({
+                    url: '/user/' + this.user.id,
+                    method: 'PATCH',
+                    data: {
+                        admin_toggle: $('.admin.toggle.checkbox').checkbox('is checked'),
+                        '_token': $('meta[name="csrf_token"]').attr('content'),
+                    }
+                });
             },
         },
         components: {
