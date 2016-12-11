@@ -100,7 +100,7 @@ class User extends Authenticatable
      */
     public function gender()
     {
-        return $this->belongsTo('App\Models\Gender');
+        return $this->belongsTo('App\Models\Gender')->withTrashed();
     }
 
     /**

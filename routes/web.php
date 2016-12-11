@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    /** @var User $user */
     return view('home');
 });
 
@@ -31,6 +30,25 @@ Route::get('/users/{user}', function (App\Models\User $user) {
         'genders'   => $genders,
     ]);
 });
+
+Route::get('/admin', function () {
+    // TODO Should 404 to hide its existence.
+    $response = redirect('/');
+
+    if (Auth::user() && Auth::user()->is_admin) {
+        $genders = Gender::all()->toJson();
+
+        $response = view('admin', [
+            'genders' => $genders,
+        ]);
+    }
+
+    return $response;
+});
+
+Route::patch('/gender/{gender}/replace', 'GenderSwap')->middleware('auth');
+Route::delete('/gender/{gender}', 'Gender@delete')->middleware('auth');
+Route::post('/genders', 'Gender@create')->middleware('auth');
 
 //Auth::routes();
 Route::post('register', 'Auth\RegisterController@register');

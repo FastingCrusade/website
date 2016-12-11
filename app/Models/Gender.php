@@ -17,6 +17,13 @@ class Gender extends Model
 {
     use SoftDeletes;
 
+    protected $guarded = [
+        'id',
+        'created_at',
+        'deleted_at',
+        'updated_at',
+    ];
+
     const MALE = 1;
     const FEMALE = 2;
     const NEUTER = 3;
