@@ -15,7 +15,7 @@
             <div class="column">Name:</div>
             <div class="three wide column">
                 <div v-if="editing" class="ui fluid input">
-                    <input type="text" name="first_name" :value="user.first_name">
+                    <input type="text" name="first_name" v-model="user.first_name">
                 </div>
                 <div v-else>
                     {{ user.first_name }}
@@ -23,7 +23,7 @@
             </div>
             <div class="three wide column">
                 <div v-if="editing" class="ui fluid input">
-                    <input type="text" name="last_name" :value="user.last_name">
+                    <input type="text" name="last_name" v-model="user.last_name">
                 </div>
                 <div v-else>
                     {{ user.last_name }}
@@ -50,7 +50,7 @@
             <div class="row">
                 <div v-if="editing" class="column">
                     <div class="ui toggle checkbox">
-                        <input type="checkbox" name="is_admin" :checked="admin">
+                        <input type="checkbox" v-model="admin" name="is_admin">
                         <label>Is Administrator.</label>
                     </div>
                     <div class="ui warning icon message">
@@ -68,7 +68,7 @@
                 </div>
                 <div v-else class="column">
                     <div class="ui disabled toggle checkbox">
-                        <input type="checkbox" name="is_admin" :checked="admin">
+                        <input type="checkbox" v-model="admin" name="is_admin">
                         <label>Is Administrator.</label>
                     </div>
                 </div>
