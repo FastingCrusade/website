@@ -106,7 +106,7 @@
                         first_name: this.user.first_name,
                         last_name: this.user.last_name,
                         gender: $('.gender.dropdown').find('input').val(),
-                    };
+                    },
                 });
             },
         },
