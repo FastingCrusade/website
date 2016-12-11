@@ -25,21 +25,24 @@ class User extends ApiController
             $this->code = Response::HTTP_UNAUTHORIZED;
             $this->message = 'Not authorized.';
         } else {
-            try {
-                $gender = Gender::findOrFail($request->input('gender'));
-            } catch (ModelNotFoundException $exception) {
-                $this->status = 'FAILED';
-                $this->code = Response::HTTP_NOT_ACCEPTABLE;
-                $this->message = 'Invalid gender provided.';
-                $gender = null;
-            }
+            $user->first_name = $request->input('first_name') ?: $user->first_name;
+            $user->last_name = $request->input('last_name') ?: $user->last_name;
+            $user->is_admin = $request->input('admin_toggle') ?: $user->is_admin;
 
-            if ($this->code !== Response::HTTP_NOT_ACCEPTABLE) {
-                $user->first_name = $request->input('first_name');
-                $user->last_name = $request->input('last_name');
-                $user->gender()->associate($gender);
+            if ($request->input('gender')) {
+                try {
+                    $gender = Gender::findOrFail($request->input('gender'));
+                    $user->gender()->associate($gender);
+                    $user->save();
+                    $this->message = "Updated {$user->id}.";
+                } catch (ModelNotFoundException $exception) {
+                    $this->status = 'FAILED';
+                    $this->code = Response::HTTP_NOT_ACCEPTABLE;
+                    $this->message = 'Invalid gender provided.';
+                    $gender = null;
+                }
+            } else {
                 $user->save();
-
                 $this->message = "Updated {$user->id}.";
             }
         }

@@ -10,6 +10,7 @@
     .admin.tools.row>.column {
         text-align: right;
         align-self: inherit;
+        cursor: pointer;
     }
 </style>
 <script>

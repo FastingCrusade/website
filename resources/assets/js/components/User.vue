@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div v-if="editing" class="row">
             <button class="ui green button" @click="updatePersonal">Update</button>
         </div>
         <div v-if="admin">
@@ -52,8 +52,8 @@
             </div>
             <div class="row">
                 <div v-if="editing" class="column">
-                    <div class="ui toggle checkbox">
-                        <input type="checkbox" v-model="admin" name="is_admin">
+                    <div class="ui toggle admin checkbox">
+                        <input type="checkbox" v-model="admin_toggle" name="is_admin">
                         <label>Is Administrator.</label>
                     </div>
                     <div class="ui warning icon message">
@@ -70,21 +70,30 @@
                     </div>
                 </div>
                 <div v-else class="column">
-                    <div class="ui disabled toggle checkbox">
-                        <input type="checkbox" v-model="admin" name="is_admin">
+                    <div class="ui disabled toggle admin checkbox">
+                        <input type="checkbox" v-model="admin_toggle" name="is_admin">
                         <label>Is Administrator.</label>
                     </div>
                 </div>
             </div>
+            <div v-if="editing" class="row">
+                <button class="ui yellow button" @click="updateAdmin">Update</button>
+            </div>
         </div>
     </div>
 </template>
+<style>
+    .ui.warning.message {
+        margin-bottom: 1rem;
+    }
+</style>
 <script>
     export default {
         props: ['user_json', 'editable', 'admin', 'genders_json'],
         data: function () {
             return {
                 user: JSON.parse(this.user_json),
+                admin_toggle: this.admin,
             };
         },
         computed: {
@@ -108,6 +117,17 @@
                         gender: $('.gender.dropdown').find('input').val(),
                         '_token': $('meta[name="csrf_token"]').attr('content'),
                     },
+                });
+            },
+            updateAdmin: function () {
+                // TODO React to response.
+                $.ajax({
+                    url: '/user/' + this.user.id,
+                    method: 'PATCH',
+                    data: {
+                        admin_toggle: $('.admin.toggle.checkbox').checkbox('is checked'),
+                        '_token': $('meta[name="csrf_token"]').attr('content'),
+                    }
                 });
             },
         },
