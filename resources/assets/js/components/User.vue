@@ -1,6 +1,6 @@
 <template>
     <div class="ui grid">
-        <admin-tools :is_admin="admin"></admin-tools>
+        <admin-tools v-on:begin-editing="beginEditing" :is_admin="admin"></admin-tools>
         <div class="row">
             <div class="column">
                 <h1 class="ui header">Account Settings</h1>
@@ -94,11 +94,12 @@
             return {
                 user: JSON.parse(this.user_json),
                 admin_toggle: this.admin,
+                is_editing: false,
             };
         },
         computed: {
             editing: function () {
-                if (this.isEditing || this.editable) {
+                if (this.is_editing || this.editable) {
                     return true;
                 } else {
                     return false;
@@ -106,6 +107,10 @@
             },
         },
         methods: {
+            beginEditing: function () {
+                console.log('Caught event to begin editing');
+                this.is_editing = true;
+            },
             updatePersonal: function () {
                 // TODO React to response
                 $.ajax({

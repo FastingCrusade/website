@@ -1,6 +1,6 @@
 <template>
     <div v-if="is_admin" class="admin tools row">
-        <div class="column">Edit</div>
+        <div class="column" @click="beginEditing">Edit</div>
     </div>
 </template>
 <style>
@@ -16,9 +16,15 @@
 <script>
     export default{
         props: ['is_admin'],
-        data(){
+        data() {
             return{
             }
+        },
+        methods: {
+            beginEditing: function () {
+                this.$emit('begin-editing');
+                console.log('Attempted to emit.');
+            },
         },
         components:{
         }

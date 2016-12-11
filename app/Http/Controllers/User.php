@@ -20,7 +20,7 @@ class User extends ApiController
 {
     public function update(Request $request, UserModel $user)
     {
-        if (!Auth::user() || (!Auth::user()->is_admin) || Auth::user()->id !== $user->id) {
+        if ((!Auth::user() || Auth::user()->id !== $user->id) && !(Auth::user() && Auth::user()->is_admin)) {
             $this->status = 'FAILED';
             $this->code = Response::HTTP_UNAUTHORIZED;
             $this->message = 'Not authorized.';
