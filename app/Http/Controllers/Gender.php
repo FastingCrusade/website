@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Gender as GenderModel;
@@ -25,5 +26,17 @@ class Gender extends ApiController
         }
 
         return $response;
+    }
+
+    public function create(Request $request)
+    {
+        /** @var GenderModel $gender */
+        $gender = GenderModel::create($request->only(['name', 'icon']));
+        if (preg_match('/icon$|^icon| icon /', $gender->icon) === 0) {
+            $gender->icon .= ' icon';
+            $gender->save();
+        }
+
+        return $this->response("Created {$gender->id}.");
     }
 }

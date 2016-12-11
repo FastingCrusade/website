@@ -48,6 +48,7 @@ Route::get('/admin', function () {
 
 Route::patch('/gender/{gender}/replace', 'GenderSwap')->middleware('auth');
 Route::delete('/gender/{gender}', 'Gender@delete')->middleware('auth');
+Route::post('/genders', 'Gender@create')->middleware('auth');
 
 //Auth::routes();
 Route::post('register', 'Auth\RegisterController@register');

@@ -31,6 +31,9 @@
                                                     page for more information and class names.
                                                 </div>
                                             </div>
+                                            <div class="field">
+                                                <button class="ui green button" @click="addGender">Add</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -65,8 +68,28 @@
                 genders: JSON.parse(this.genders_json),
             }
         },
-        components:{
+        components: {
             'gender-display': Vue.component('gender-display', function (resolve) {require(['./GenderDisplay.vue'], resolve);}),
+        },
+        methods: {
+            addGender: function (event) {
+                var $button = $(event.currentTarget);
+                var data = {
+                    '_token': $('meta[name="csrf_token"]').attr('content'),
+                };
+                var $form = $button.closest('.ui.form');
+                $form.find('input').each(function () {
+                    var $element = $(this);
+                    data[$element.attr('name')] = $element.val();
+                });
+
+                // TODO Act on the result.
+                $.ajax({
+                    url: '/genders',
+                    method: 'POST',
+                    data: data,
+                });
+            }
         }
     }
 
