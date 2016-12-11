@@ -15,7 +15,7 @@
             <div class="column">Name:</div>
             <div class="three wide column">
                 <div v-if="editing" class="ui fluid input">
-                    <input type="text" name="first_name" v-model="user.first_name">
+                    <input type="text" name="first_name" v-model.trim="user.first_name">
                 </div>
                 <div v-else>
                     {{ user.first_name }}
@@ -23,7 +23,7 @@
             </div>
             <div class="three wide column">
                 <div v-if="editing" class="ui fluid input">
-                    <input type="text" name="last_name" v-model="user.last_name">
+                    <input type="text" name="last_name" v-model.trim="user.last_name">
                 </div>
                 <div v-else>
                     {{ user.last_name }}
@@ -40,6 +40,9 @@
                     <i :class="user.gender.icon"></i>{{ user.gender.name }}
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <button class="ui green button" @click="updatePersonal">Update</button>
         </div>
         <div v-if="admin">
             <div class="row">
@@ -91,6 +94,20 @@
                 } else {
                     return false;
                 }
+            },
+        },
+        methods: {
+            updatePersonal: function () {
+                // TODO React to response
+                $.ajax({
+                    url: '/user/' + this.user.id,
+                    method: 'PATCH',
+                    data = {
+                        first_name: this.user.first_name,
+                        last_name: this.user.last_name,
+                        gender: $('.gender.dropdown').find('input').val(),
+                    };
+                });
             },
         },
         components: {
