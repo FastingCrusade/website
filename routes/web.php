@@ -17,20 +17,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('soon');
 });
-
-Route::get('/users/{user}', function (App\Models\User $user) {
-    $editable = (Auth::user() && Auth::user()->id === $user->id);
-    $genders = Gender::all()->toJson();
-
-    return view('user', [
-        'user'      => $user,
-        'editable'  => $editable,
-        'genders'   => $genders,
-    ]);
-});
-
 Route::get('/admin', function () {
     // TODO Should 404 to hide its existence.
     $response = redirect('/');
@@ -46,9 +34,26 @@ Route::get('/admin', function () {
     return $response;
 });
 
+// User Routes
+Route::get('/user/{user}', function (User $user) {
+    $editable = (Auth::user() && Auth::user()->id === $user->id);
+    $genders = Gender::all()->toJson();
+
+    return view('user', [
+        'user'     => $user,
+        'editable' => $editable,
+        'genders'  => $genders,
+    ]);
+});
+Route::patch('/user/{user}', 'User@update');
+
+// Gender Routes
 Route::patch('/gender/{gender}/replace', 'GenderSwap')->middleware('auth');
 Route::delete('/gender/{gender}', 'Gender@delete')->middleware('auth');
 Route::post('/genders', 'Gender@create')->middleware('auth');
+
+// Subscription Routes
+Route::post('/newsletters/subscription', 'Newsletters@create');
 
 //Auth::routes();
 Route::post('register', 'Auth\RegisterController@register');
