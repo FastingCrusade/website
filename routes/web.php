@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('soon');
 });
 Route::get('/admin', function () {
     // TODO Should 404 to hide its existence.
@@ -51,6 +51,9 @@ Route::patch('/user/{user}', 'User@update');
 Route::patch('/gender/{gender}/replace', 'GenderSwap')->middleware('auth');
 Route::delete('/gender/{gender}', 'Gender@delete')->middleware('auth');
 Route::post('/genders', 'Gender@create')->middleware('auth');
+
+// Subscription Routes
+Route::post('/newsletters/subscription', 'Newsletters@create');
 
 //Auth::routes();
 Route::post('register', 'Auth\RegisterController@register');
