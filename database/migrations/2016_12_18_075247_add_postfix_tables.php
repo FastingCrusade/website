@@ -43,7 +43,7 @@ class AddPostfixTables extends Migration
             CREATE VIEW postfix_mailboxes AS
             SELECT
              virtual_mailboxes.virtual_address AS address,
-             users.home||\'/\' AS mailbox
+             users.mail_directory||\'/\' AS mailbox
             FROM
              users
              JOIN virtual_mailboxes ON virtual_mailboxes.user_id = users.id
