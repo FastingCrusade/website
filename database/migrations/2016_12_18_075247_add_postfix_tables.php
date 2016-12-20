@@ -24,7 +24,7 @@ class AddPostfixTables extends Migration
         });
 
         Schema::create('virtual_mailboxes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id', true);
             $table->string('virtual_address');
             $table->integer('user_id');
             $table->timestamps();
