@@ -15,7 +15,7 @@ class AddPostfixTables extends Migration
     public function up()
     {
         Schema::create('mail_transports', function (Blueprint $table) {
-            $table->string('domain')->index();
+            $table->string('domain');
             $table->string('transport');
             $table->timestamps();
             $table->softDeletes();
@@ -30,7 +30,7 @@ class AddPostfixTables extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->primary('virtual_address');
+            $table->index('virtual_address');
         });
 
         Schema::table('users', function (Blueprint $table) {
