@@ -6,6 +6,10 @@
         }
     </style>
     <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+
+    <title>Coming Soon!</title>
+    <link rel="shortcut icon" href="{{ asset('img/c_logo.svg') }}" />
+
 </head>
 <body class="grey">
 <div class="ui grid centered container">
