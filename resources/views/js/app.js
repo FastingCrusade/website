@@ -1,6 +1,6 @@
-var fcApp = angular.module('fcApp', ['ui.router']);
+angular.module('fcApp', ['ui.router', 'fc.comingSoon'])
 
-fcApp.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/home');
     
@@ -9,7 +9,8 @@ fcApp.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            templateUrl: 'soon.html'
+            templateUrl: 'html/soon.html',
+	    controller: 'ComingSoonCtrl'
         })
         
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
