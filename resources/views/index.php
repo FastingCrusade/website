@@ -25,7 +25,7 @@
 <!-- NAVIGATION -->
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand custom-brand" ui-sref="#"><img src="/img/full-logo.png"/></a>
+        <a class="navbar-brand custom-brand" ui-sref="home"><img src="/img/full-logo.png"/></a>
     </div>
     <ul class="nav navbar-nav">
         <li><a ui-sref="home">Home</a></li>

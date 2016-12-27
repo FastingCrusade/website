@@ -15,7 +15,8 @@ angular.module('fcApp', ['ui.router', 'fc.comingSoon'])
         
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('about', {
-            // we'll get to this in a bit       
+            url: '/about',
+            templateUrl: 'angular/html/about.html'
         });
         
 });
