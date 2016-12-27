@@ -25,7 +25,7 @@
     </div>
     <div class="row">
         <div class="column">
-            Your site for fasting.
+            Your site for fasting.  Also for testing.
         </div>
     </div>
     <div class="row">

@@ -9,7 +9,7 @@ angular.module('fcApp', ['ui.router', 'fc.comingSoon'])
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            templateUrl: 'html/soon.html',
+            templateUrl: 'angular/html/soon.html',
 	    controller: 'ComingSoonCtrl'
         })
         
