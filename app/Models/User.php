@@ -108,7 +108,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function __toString()
+    public function jsonSerialize()
     {
         $visible = json_decode(parent::__toString(), true);
         $visible['full_name'] = $this->fullName();
