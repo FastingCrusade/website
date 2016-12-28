@@ -6,7 +6,7 @@
  * Time: 12:31
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 
 use App\Models\Gender;
