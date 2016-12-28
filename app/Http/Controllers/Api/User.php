@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Auth;
 
 class User extends ApiController
 {
+    public function index(UserModel $user)
+    {
+        return $this->response($user);
+    }
+
     public function update(Request $request, UserModel $user)
     {
         if ((!Auth::user() || Auth::user()->id !== $user->id) && !(Auth::user() && Auth::user()->is_admin)) {

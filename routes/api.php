@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Gender;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,16 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/users', 'Users@index');
 
 // User Routes
-Route::get('/user/{user}', function (User $user) {
-    $editable = (Auth::user() && Auth::user()->id === $user->id);
-    $genders = Gender::all()->toJson();
-
-    return view('user', [
-        'user'     => $user,
-        'editable' => $editable,
-        'genders'  => $genders,
-    ]);
-});
+Route::get('/user/{user}', 'User@index');
 Route::patch('/user/{user}', 'User@update');
 
 // Gender Routes
