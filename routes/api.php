@@ -2,7 +2,6 @@
 
 use App\Models\Gender;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/users', 'Users@index');
 
 // User Routes
 Route::get('/user/{user}', function (User $user) {
