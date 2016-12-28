@@ -110,7 +110,7 @@ class User extends Authenticatable
      */
     public function jsonSerialize()
     {
-        $visible = json_decode(parent::__toString(), true);
+        $visible = parent::toArray();
         $visible['full_name'] = $this->fullName();
         $visible['profile_image_url'] = $this->profileImageUrl();
 
