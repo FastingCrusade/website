@@ -1,20 +1,20 @@
 .fc-main-app {
-    background-color: #5e5e5e;
+   background-color: #5e5e5e;
 }
 
 .coming-soon {
-    text-align: center;
+   text-align: center;
 }
 
 .navbar-brand.custom-brand {
-    padding: 3px 15px;
+   padding: 3px 15px;
 }
 
 .navbar-brand > img {
-    width: 200px;
-    height: 42px;
+   width: 200px;
+   height: 42px;
 }
 
 .ui.form .email-input {
-    width: 300px !important;
+   width: 300px !important;
 }

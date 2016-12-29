@@ -1,22 +1,39 @@
-angular.module('fcApp', ['ui.router', 'fc.comingSoon'])
-
-.config(function($stateProvider, $urlRouterProvider) {
+angular.module('fcApp', [
+   'ui.router', 
+   'fc.nav',
+   'fc.comingSoon'
+]).config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/home');
+   $urlRouterProvider.otherwise('/home');
     
-    $stateProvider
+   $stateProvider
         
-        // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
-            url: '/home',
-            templateUrl: 'angular/html/soon.html',
-	    controller: 'ComingSoonCtrl'
-        })
+      // HOME STATES AND NESTED VIEWS ========================================
+      .state('home', {
+         url: '/home',
+         views: {
+            'main': {
+               templateUrl: 'angular/html/soon.html',
+               controller: 'ComingSoonCtrl'
+            },
+            'navigation': {
+               templateUrl: 'angular/html/nav.html',
+               controller: 'NavCtrl'
+            }
+         }
+      })
         
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('about', {
-            url: '/about',
-            templateUrl: 'angular/html/about.html'
-        });
-        
+      // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+      .state('about', {
+         url: '/about',
+         views: {
+            'main': {
+               templateUrl: 'angular/html/about.html'
+            },
+            'navigation': {
+               templateUrl: 'angular/html/nav.html',
+               controller: 'NavCtrl'
+            }
+         }
+      });  
 });
