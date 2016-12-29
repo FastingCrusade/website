@@ -1,7 +1,7 @@
-angular.module('fcApp', [
+angular.module('fc', [
    'ui.router', 
    'fc.nav',
-   'fc.comingSoon'
+   'fc.comingSoon',
 ]).config(function($stateProvider, $urlRouterProvider) {
     
    $urlRouterProvider.otherwise('/home');

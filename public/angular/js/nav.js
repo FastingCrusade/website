@@ -1,14 +1,13 @@
 angular.module('fc.nav', [
-   'ui.bootstrap'
+   'ui.bootstrap',
+   'fc.services.userService'
 ])
-.controller('NavCtrl', function($scope, $http) {
+.controller('NavCtrl', ['$scope', 'userService', function($scope, userService) {
    
    $scope.login = login;
 
    function login() {
-      console.log("Username: " + $scope.username);
-      console.log("Password: " + $scope.password);
-      console.log("Remember: " + $scope.rememberMe);
+      userService.login($scope.username, $scope.password, $scope.rememberMe);
    }
 
-});
+}]);

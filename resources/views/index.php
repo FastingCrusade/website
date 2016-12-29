@@ -16,9 +16,10 @@
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
 
     <!-- Custom JS -->
-    <script src="angular/js/app.js"></script>
-    <script src="angular/js/comingSoon.js"></script>
+    <script src="angular/js/services/user-service.js"></script>
+    <script src="angular/js/coming-soon.js"></script>
     <script src="angular/js/nav.js"></script>
+    <script src="angular/js/app.js"></script>
 
     <!-- Page title and favicon -->
     <title>Coming Soon!</title>
@@ -30,7 +31,7 @@
     
 
 </head> 
-<body ng-app="fcApp" class="fc-main-app">
+<body ng-app="fc" class="fc-main-app">
 
 <!-- NAVIGATION -->
 <div ui-view="navigation"></div>
