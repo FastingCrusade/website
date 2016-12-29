@@ -6,7 +6,7 @@
  * Time: 00:35
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 
 use App\Models\EmailSubscription;

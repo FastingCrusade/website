@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::get('/users', 'Users@index');
+
+// User Routes
+Route::get('/user/{user}', 'User@index');
+Route::patch('/user/{user}', 'User@update');
+
+// Gender Routes
+Route::patch('/gender/{gender}/replace', 'GenderSwap')->middleware('auth');
+Route::delete('/gender/{gender}', 'Gender@delete')->middleware('auth');
+Route::post('/genders', 'Gender@create')->middleware('auth');
+
+// Subscription Routes
+Route::post('/newsletters/subscription', 'Newsletters@create');
+
+

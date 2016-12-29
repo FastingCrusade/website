@@ -6,7 +6,7 @@
  * Time: 23:43
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 
 use App\Models\Gender;
@@ -42,7 +42,7 @@ class GenderSwap extends ApiController
                 $replacement = Gender::findOrFail($request->input('with'));
             } catch (ModelNotFoundException $exception) {
                 $this->status = 'FAILED';
-                $this->message = 'Invalid replacement provided.';
+                $this->data = 'Invalid replacement provided.';
                 $this->code = Response::HTTP_NOT_ACCEPTABLE;
             }
 
@@ -57,11 +57,11 @@ class GenderSwap extends ApiController
                     });
                 $gender->delete();
 
-                $this->message = "Replaced {$gender->id} with {$replacement->id}.";
+                $this->data = "Replaced {$gender->id} with {$replacement->id}.";
             }
         } else {
             $this->status = 'FAILED';
-            $this->message = 'Not Authorized';
+            $this->data = 'Not Authorized';
             $this->code = Response::HTTP_UNAUTHORIZED;
         }
 
