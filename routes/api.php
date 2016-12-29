@@ -23,9 +23,9 @@ Route::group(['middleware' => 'auth:token'], function () {
     Route::patch('/user/{user}', 'User@update');
 
     // Gender Routes
-    Route::patch('/gender/{gender}/replace', 'GenderSwap')->middleware('auth');
-    Route::delete('/gender/{gender}', 'Gender@delete')->middleware('auth');
-    Route::post('/genders', 'Gender@create')->middleware('auth');
+    Route::patch('/gender/{gender}/replace', 'GenderSwap');
+    Route::delete('/gender/{gender}', 'Gender@delete');
+    Route::post('/genders', 'Gender@create');
 
     // Subscription Routes
     Route::post('/newsletters/subscription', 'Newsletters@create');
