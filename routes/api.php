@@ -18,7 +18,7 @@ Route::get('/users', 'Users@index');
 Route::get('/user/{user}', 'User@index');
 
 // Authenticated routes.
-Route::group(['middleware' => 'auth:token'], function () {
+Route::group(['middleware' => 'auth:api'], function () {
     // User routes
     Route::patch('/user/{user}', 'User@update');
 
