@@ -6,9 +6,10 @@
  * Time: 01:24
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
 /**
@@ -22,26 +23,26 @@ abstract class ApiController extends Controller
 {
     protected $status = 'OK';
     protected $code = Response::HTTP_OK;
-    protected $message = '';
+    protected $data = '';
 
     /**
      * Generic API style response.
      *
-     * @param string $message
+     * @param string $data
      * @param string $status
      * @param int    $code
      *
      * @return Response
      */
-    protected function response($message = null, $status = null, $code = null)
+    protected function response($data = null, $status = null, $code = null)
     {
-        $message = $message ?: $this->message;
+        $data = $data ?: $this->data;
         $status = $status ?: $this->status;
         $code = $code ?: $this->code;
 
         return response()->json([
-            'status'  => $status,
-            'message' => $message,
+            'status' => $status,
+            'data'   => $data,
         ], $code);
     }
 }

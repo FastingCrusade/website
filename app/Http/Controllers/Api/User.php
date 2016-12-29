@@ -6,7 +6,7 @@
  * Time: 12:31
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 
 use App\Models\Gender;
@@ -18,12 +18,17 @@ use Illuminate\Support\Facades\Auth;
 
 class User extends ApiController
 {
+    public function index(UserModel $user)
+    {
+        return $this->response($user);
+    }
+
     public function update(Request $request, UserModel $user)
     {
         if ((!Auth::user() || Auth::user()->id !== $user->id) && !(Auth::user() && Auth::user()->is_admin)) {
             $this->status = 'FAILED';
             $this->code = Response::HTTP_UNAUTHORIZED;
-            $this->message = 'Not authorized.';
+            $this->data = 'Not authorized.';
         } else {
             $user->first_name = $request->input('first_name') ?: $user->first_name;
             $user->last_name = $request->input('last_name') ?: $user->last_name;
@@ -34,16 +39,16 @@ class User extends ApiController
                     $gender = Gender::findOrFail($request->input('gender'));
                     $user->gender()->associate($gender);
                     $user->save();
-                    $this->message = "Updated {$user->id}.";
+                    $this->data = "Updated {$user->id}.";
                 } catch (ModelNotFoundException $exception) {
                     $this->status = 'FAILED';
                     $this->code = Response::HTTP_NOT_ACCEPTABLE;
-                    $this->message = 'Invalid gender provided.';
+                    $this->data = 'Invalid gender provided.';
                     $gender = null;
                 }
             } else {
                 $user->save();
-                $this->message = "Updated {$user->id}.";
+                $this->data = "Updated {$user->id}.";
             }
         }
 
