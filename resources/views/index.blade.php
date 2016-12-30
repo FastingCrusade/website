@@ -16,7 +16,7 @@
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
 
     <!-- Custom JS -->
-    <script src="angular/js/directives/ng-enter.js"></script>
+    <script src="angular/js/directives/directives.js"></script>
     <script src="angular/js/services/user-service.js"></script>
     <script src="angular/js/coming-soon.js"></script>
     <script src="angular/js/home.js"></script>
