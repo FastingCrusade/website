@@ -33,8 +33,6 @@ class LoginController extends Controller
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -54,6 +52,13 @@ class LoginController extends Controller
         ], Response::HTTP_UNAUTHORIZED);
     }
 
+    /**
+     * Returns the response expected for a successful login attempt.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
     public function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
