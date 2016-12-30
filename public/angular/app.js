@@ -3,6 +3,7 @@ angular.module('fc', [
    'fc.nav',
    'fc.home',
    'fc.comingSoon',
+   'fc.account.register'
 ]).config(function($stateProvider, $urlRouterProvider) {
     
    $urlRouterProvider.otherwise('/soon');
@@ -13,11 +14,11 @@ angular.module('fc', [
          url: '/soon',
          views: {
             'main': {
-               templateUrl: 'angular/html/soon.html',
+               templateUrl: 'angular/soon/coming-soon.html',
                controller: 'ComingSoonCtrl'
             },
             'navigation': {
-               templateUrl: 'angular/html/nav.html',
+               templateUrl: 'angular/nav/nav.html',
                controller: 'NavCtrl'
             }
          }
@@ -27,11 +28,11 @@ angular.module('fc', [
          url: '/home',
          views: {
             'main': {
-               templateUrl: 'angular/html/home.html',
+               templateUrl: 'angular/home/home.html',
                controller: 'HomeCtrl'
             },
             'navigation': {
-               templateUrl: 'angular/html/nav.html',
+               templateUrl: 'angular/nav/nav.html',
                controller: 'NavCtrl'
             }
          }
@@ -41,12 +42,30 @@ angular.module('fc', [
          url: '/about',
          views: {
             'main': {
-               templateUrl: 'angular/html/about.html'
+               templateUrl: 'angular/about/about.html'
             },
             'navigation': {
-               templateUrl: 'angular/html/nav.html',
+               templateUrl: 'angular/nav/nav.html',
                controller: 'NavCtrl'
             }
          }
+      }) 
+
+      .state('account', {
+         url: '/account',
+         views: {
+            'main': {
+               template: '<div ui-view></div>'
+            },
+            'navigation': {
+               templateUrl: 'angular/nav/nav.html',
+               controller: 'NavCtrl'
+            }
+         }
+      })
+      .state('account.register', {
+         url: '/register',
+         templateUrl: 'angular/account/register.html',
+         controller: 'RegisterCtrl'
       });  
 });

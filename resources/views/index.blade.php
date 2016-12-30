@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css"> 
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="angular/css/main.css">
-    <link rel="stylesheet" type="text/css" href="angular/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="angular/account/register.css">
+    <link rel="stylesheet" type="text/css" href="angular/nav/nav.css">
+    <link rel="stylesheet" type="text/css" href="angular/main.css">
 
     <!-- 3rd Party JS -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
@@ -16,12 +17,14 @@
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
 
     <!-- Custom JS -->
-    <script src="angular/js/directives/directives.js"></script>
-    <script src="angular/js/services/user-service.js"></script>
-    <script src="angular/js/coming-soon.js"></script>
-    <script src="angular/js/home.js"></script>
-    <script src="angular/js/nav.js"></script>
-    <script src="angular/js/app.js"></script>
+    <script src="angular/common/directives/directives.js"></script>
+    <script src="angular/common/services/user-service.js"></script>
+    <script src="angular/account/register.js"></script>
+    <script src="angular/soon/coming-soon.js"></script>
+    <script src="angular/about/about.js"></script>
+    <script src="angular/home/home.js"></script>
+    <script src="angular/nav/nav.js"></script>
+    <script src="angular/app.js"></script>
 
     <!-- Page title and favicon -->
     <title>Coming Soon!</title>

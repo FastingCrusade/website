@@ -2,6 +2,10 @@
 
 }
 
+.navbar-right > li > a {
+   cursor: pointer;
+}
+
 .sign-in .sign-in-dropdown {
    padding: 15px;
    width: 300px;
@@ -22,4 +26,10 @@
 .sign-in .sign-in-dropdown .remember-me-check {
    float: left;
    margin-right: 10px;
+}
+
+.sign-in .sign-in-dropdown .login-error {
+   color: red;
+   text-align: center;
+   padding: 5px 0;
 }

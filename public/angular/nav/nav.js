@@ -19,7 +19,9 @@ angular.module('fc.nav', [
                // TODO: set cookie for rememberMe?
             };
             $state.go('home');
+            $scope.loginFailure = false;
          }, function(error) {
+            $scope.loginFailure = true;
             console.error('Error logging in: ' + error.statusText);
          });
    }
