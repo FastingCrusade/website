@@ -8,17 +8,17 @@
             <li><a ui-sref="home">Home</a></li>
             <li><a ui-sref="about">About</a></li>
          </ul>
-         <ul class="nav navbar-nav navbar-right">
+         <ul class="nav navbar-nav navbar-right" ng-show="!user.loggedIn">
             <li><a ui-sref-"register">Register</a></li>
             <li uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
                <a uib-dropdown-toggle id="sign-in-button">Sign In<strong class="caret"></strong></a>
                <div uib-dropdown-menu aria-labelledby="sign-in-button" class="sign-in-dropdown">
                   <form name="loginForm">
-                     <input class="form-control login-input" type="text" ng-model="username" 
-                        placeholder="Username" required />
+                     <input class="form-control login-input" type="email" ng-model="email" 
+                        placeholder="Email" required />
                      <input class="form-control login-input" type="password" ng-model="password" 
                         placeholder="Password" required />
-                     <input class="btn btn-primary login-button" value="Sign In" ng-click="login()" 
+                     <input class="btn btn-primary login-button" value="Sign In" ng-click="login()" ng-enter="login()"
                         ng-disabled=!loginForm.$valid />
                   </form>
                   <input class="remember-me-check" type="checkbox" ng-model="rememberMe" ng-init="rememberMe = false" />
@@ -26,6 +26,10 @@
                   <a class="pull-right" href="#">Forgot Password</a>
                </div>
             </li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right" ng-show="user.loggedIn">
+            <li><a ui-sref-"account">My Account</a></li>
+            <li><a ng-click="logout()">Log Out</a></li>
          </ul>
       </div>
    </div>

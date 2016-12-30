@@ -1,16 +1,16 @@
 angular.module('fc', [
    'ui.router', 
    'fc.nav',
+   'fc.home',
    'fc.comingSoon',
 ]).config(function($stateProvider, $urlRouterProvider) {
     
-   $urlRouterProvider.otherwise('/home');
+   $urlRouterProvider.otherwise('/soon');
     
    $stateProvider
         
-      // HOME STATES AND NESTED VIEWS ========================================
-      .state('home', {
-         url: '/home',
+      .state('soon', {
+         url: '/soon',
          views: {
             'main': {
                templateUrl: 'angular/html/soon.html',
@@ -22,8 +22,21 @@ angular.module('fc', [
             }
          }
       })
+      
+      .state('home', {
+         url: '/home',
+         views: {
+            'main': {
+               templateUrl: 'angular/html/home.html',
+               controller: 'HomeCtrl'
+            },
+            'navigation': {
+               templateUrl: 'angular/html/nav.html',
+               controller: 'NavCtrl'
+            }
+         }
+      })
         
-      // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
       .state('about', {
          url: '/about',
          views: {

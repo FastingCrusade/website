@@ -8,10 +8,18 @@ angular.module('fc.services.userService', [
 
    return userService;   
 
-   function login(username, password, rememberMe) {
-      console.log("Username: " + username);
+   function login(email, password, rememberMe) {
+      console.log("Email: " + email);
       console.log("Password: " + password);
       console.log("Remember: " + rememberMe);
+
+      var token = angular.element(document.querySelector('#csrf_token'))[0].content;
+
+      return $http({
+         method: 'POST',
+         url: '/login',
+         data: { 'email': email, 'password': password, '_token': token }
+      });
    }
 
 });

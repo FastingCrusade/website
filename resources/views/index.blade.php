@@ -16,8 +16,10 @@
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
 
     <!-- Custom JS -->
+    <script src="angular/js/directives/ng-enter.js"></script>
     <script src="angular/js/services/user-service.js"></script>
     <script src="angular/js/coming-soon.js"></script>
+    <script src="angular/js/home.js"></script>
     <script src="angular/js/nav.js"></script>
     <script src="angular/js/app.js"></script>
 
@@ -26,7 +28,7 @@
     <link rel="icon" href="../../public/img/c_logo.png">
 
     <!-- CSRF Token for Authentication -->
-    <meta name="csrf_token" content="{{ csrf_token() }}">
+    <meta id="csrf_token" content="{{ csrf_token() }}">
 <head> 
     
 
