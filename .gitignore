@@ -10,3 +10,4 @@ Homestead.yaml
 /resources/views/auth
 *.swp
 public/semantic
+bower_components
