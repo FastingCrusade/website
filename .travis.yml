@@ -5,6 +5,7 @@ php:
   - nightly
 install:
   - composer install
+  - ./artisan migrate
 services:
   - postgresql
 before_script:
