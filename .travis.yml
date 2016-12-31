@@ -3,10 +3,10 @@ php:
   - '7.0'
   - '7.1'
   - nightly
-install:
-  - composer install
-  - ./artisan migrate
 services:
   - postgresql
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
+install:
+  - composer install
+  - ./artisan migrate
