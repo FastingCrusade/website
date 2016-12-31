@@ -8,3 +8,6 @@ Homestead.json
 Homestead.yaml
 .env
 /resources/views/auth
+*.swp
+public/semantic
+bower_components

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('soon');
+    return view('index');
 });
 Route::get('/admin', function () {
     // TODO Should 404 to hide its existence.

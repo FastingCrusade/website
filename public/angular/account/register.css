@@ -1,0 +1,16 @@
+.registration {
+
+}
+
+.registration .registration-error {
+   color: red;
+   padding-top: 5px;
+}
+
+.registration .registration-success-panel {
+   text-align: center;
+}
+
+.registration .return-home {
+   margin-top: 10px;
+}

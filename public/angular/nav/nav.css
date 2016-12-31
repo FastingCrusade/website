@@ -1,0 +1,35 @@
+.sign-in {
+
+}
+
+.navbar-right > li > a {
+   cursor: pointer;
+}
+
+.sign-in .sign-in-dropdown {
+   padding: 15px;
+   width: 300px;
+}
+
+
+.sign-in .sign-in-dropdown .login-input {
+   margin-bottom: 10px;
+   height: 35px;
+}
+
+
+.sign-in .sign-in-dropdown .login-button {
+   width: 100%;
+   height: 35px;
+}
+
+.sign-in .sign-in-dropdown .remember-me-check {
+   float: left;
+   margin-right: 10px;
+}
+
+.sign-in .sign-in-dropdown .login-error {
+   color: red;
+   text-align: center;
+   padding: 5px 0;
+}
