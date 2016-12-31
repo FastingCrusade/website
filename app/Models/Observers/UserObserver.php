@@ -11,6 +11,13 @@ namespace App\Models\Observers;
 
 use App\Models\User;
 
+/**
+ * Class UserObserver
+ *
+ * Provides observation methods for the User class.
+ *
+ * @package App\Models\Observers
+ */
 class UserObserver
 {
     /**
