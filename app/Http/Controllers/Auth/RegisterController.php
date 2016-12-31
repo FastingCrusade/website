@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -64,14 +63,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        /** @var User $user */
-        $user = App::make('App\Models\User',[
+        return User::create([
             'email'    => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-        $user->api_token = md5($user->email . config('app.token_salt'));
-        $user->save();
-
-        return $user;
     }
 }
