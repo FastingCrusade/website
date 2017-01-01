@@ -1,0 +1,12 @@
+language: php
+php:
+  - '7.0'
+  - '7.1'
+services:
+  - postgresql
+before_install:
+  - "psql -c 'create database travis_ci_test;' -U postgres"
+  - echo 'HELLO TRAVIS'
+install:
+  - "composer install"
+  - "./artisan migrate"

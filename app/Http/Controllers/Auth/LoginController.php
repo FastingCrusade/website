@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -31,11 +33,41 @@ class LoginController extends Controller
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    /**
+     * Returns the response expected for a failed login attempt.
+     *
+     * @return mixed
+     */
+    public function sendFailedLoginResponse()
+    {
+        return response()->json([
+            'status' => 'REJECTED',
+            'data' => [],
+        ], Response::HTTP_UNAUTHORIZED);
+    }
+
+    /**
+     * Returns the response expected for a successful login attempt.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return response()->json([
+            'status' => 'OK',
+            'data' => Auth::user(),
+        ], Response::HTTP_OK);
     }
 }

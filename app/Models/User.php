@@ -60,7 +60,7 @@ class User extends Authenticatable
             $name = $this->email;
         }
 
-        return $name;
+        return trim($name);
     }
 
     /**
@@ -90,7 +90,7 @@ class User extends Authenticatable
      */
     public function fasts()
     {
-        return $this->hasMany('App\Models\Fasts');
+        return $this->hasMany('App\Models\Fast');
     }
 
     /**
@@ -108,9 +108,9 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function __toString()
+    public function jsonSerialize()
     {
-        $visible = json_decode(parent::__toString(), true);
+        $visible = $this->toArray();
         $visible['full_name'] = $this->fullName();
         $visible['profile_image_url'] = $this->profileImageUrl();
 
