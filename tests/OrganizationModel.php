@@ -13,10 +13,10 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Models\Organization as OrganizationModel;
+use App\Models\Organization;
 use Illuminate\Support\Collection;
 
-class Organization extends TestCase
+class OrganizationModel extends TestCase
 {
     use DatabaseTransactions;
 
@@ -24,7 +24,7 @@ class Organization extends TestCase
     {
         /** @var User $user */
         $user = factory('App\Models\User')->create();
-        /** @var OrganizationModel $organization */
+        /** @var Organization $organization */
         $organization = factory('App\Models\Organization')->create([
             'user_id' => $user->id,
         ]);
@@ -35,7 +35,7 @@ class Organization extends TestCase
 
     public function testUsers()
     {
-        /** @var OrganizationModel $organization */
+        /** @var Organization $organization */
         $organization = factory('App\Models\Organization')->create([]);
         /** @var Collection $users */
         $users = factory('App\Models\User', 3)->create();
