@@ -34,11 +34,39 @@ class FastsController extends TestCase
         $this->assertEquals(60, $response->data->total);
     }
 
-    public function testCreate()
+    public function testCreateAsAdmin()
+    {
+        /** @noinspection PhpParamsInspection */
+        /** @var User $admin */
+        $admin = factory('App\Models\User')->states('admin')->create();
+        /** @var User $user */
+        $user = factory('App\Models\User')->create();
+        $this->post(
+            '/api/fasts',
+            [
+                'user_id'     => $user->id,
+                'category_id' => factory('App\Models\Category')->create()->id,
+                'start'       => Carbon::now(),
+                'end'         => Carbon::now()->addDays(3),
+                'description' => 'Just a test fast, nothing to see here.',
+            ],
+            [
+                'Authorization' => "Bearer {$admin->api_token}",
+            ]
+        );
+
+        $this->assertResponseStatus(Response::HTTP_CREATED);
+        $this->seeJson([
+            'status' => 'OK',
+        ]);
+        $this->assertTrue(is_int(json_decode($this->response->content())->data));
+    }
+
+    public function testCreateAsSelf()
     {
         /** @noinspection PhpParamsInspection */
         /** @var User $user */
-        $user = factory('App\Models\User')->states('admin')->create();
+        $user = factory('App\Models\User')->create();
         $this->post(
             '/api/fasts',
             [
@@ -58,5 +86,29 @@ class FastsController extends TestCase
             'status' => 'OK',
         ]);
         $this->assertTrue(is_int(json_decode($this->response->content())->data));
+    }
+
+    public function testCreateAsOther()
+    {
+        /** @noinspection PhpParamsInspection */
+        /** @var User $user */
+        $user = factory('App\Models\User')->create();
+        /** @var User $requester */
+        $requester = factory('App\Models\User')->create();
+        $this->post(
+            '/api/fasts',
+            [
+                'user_id'     => $user->id,
+                'category_id' => factory('App\Models\Category')->create()->id,
+                'start'       => Carbon::now(),
+                'end'         => Carbon::now()->addDays(3),
+                'description' => 'Just a test fast, nothing to see here.',
+            ],
+            [
+                'Authorization' => "Bearer {$requester->api_token}",
+            ]
+        );
+
+        $this->assertResponseStatus(Response::HTTP_UNAUTHORIZED);
     }
 }
