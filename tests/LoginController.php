@@ -11,7 +11,6 @@ namespace Testing;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends TestCase
@@ -25,7 +24,7 @@ class LoginController extends TestCase
         Auth::login($user);
 
         $this->post('/login', [
-
+            '_token' => csrf_token(),
         ]);
 
         $this->assertResponseOK();

@@ -41,7 +41,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if (Auth::check()) {
-            $response = $this->sendLoginResponse($request, false);
+            $response = $this->sendLoginResponse($request);
         } else {
             $this->validateLogin($request);
 
@@ -78,7 +78,7 @@ class LoginController extends Controller
     {
         return response()->json([
             'status' => 'REJECTED',
-            'data' => [],
+            'data'   => [],
         ], Response::HTTP_UNAUTHORIZED);
     }
 
@@ -86,21 +86,18 @@ class LoginController extends Controller
      * Returns the response expected for a successful login attempt.
      *
      * @param Request $request
-     * @param bool    $clear_session
      *
      * @return Response
      */
-    public function sendLoginResponse(Request $request, $clear_session = true)
+    public function sendLoginResponse(Request $request)
     {
-        if ($clear_session) {
-            $request->session()->regenerate();
-        }
+        $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
 
         return response()->json([
             'status' => 'OK',
-            'data' => Auth::user(),
+            'data'   => Auth::user(),
         ], Response::HTTP_OK);
     }
 }
