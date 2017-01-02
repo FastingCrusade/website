@@ -6,9 +6,6 @@ services:
   - postgresql
 before_install:
   - "psql -c 'create database travis_ci_test;' -U postgres"
-  - "touch .env"
 install:
   - "composer install"
-  - "./artisan key:generate"
-  - "./artisan config:cache"
   - "./artisan migrate"
