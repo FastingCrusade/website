@@ -6,13 +6,27 @@
    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.fast-card .fast-title {
-   margin: 10px 0;
+.fast-card .fast-category {
+   padding-top: 10px;
+   margin: 0;
+}
+
+.fast-card .fast-subtitle {
+   font-style: italic;
 }
 
 .fast-card .fast-card-divider {
    border-color: #222222;
-   margin: 0 10px 10px 10px;
+   margin: 10px;
+}
+
+.fast-card .fast-progress {
+   width: 90%;
+   margin: 10px auto;
+}
+
+.fast-card .fast-progress .progress-bar {
+   color: black;
 }
 
 .slick-next:before, .slick-prev:before {

@@ -3,7 +3,7 @@
 <head>
 
     <!-- 3rd Party CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css"> 
     <link rel="stylesheet" type="text/css" href="angular/bower_components/slick-carousel/slick/slick.css"> 
     <link rel="stylesheet" type="text/css" href="angular/bower_components/slick-carousel/slick/slick-theme.css"> 
@@ -12,14 +12,15 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="angular/common/directives/fast-card.css">
     <link rel="stylesheet" type="text/css" href="angular/account/register.css">
+    <link rel="stylesheet" type="text/css" href="angular/home/new-fast.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/nav.css">
     <link rel="stylesheet" type="text/css" href="angular/main.css">
    
     <!-- 3rd Party JS -->
     <script src="angular/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
     <script src="https://unpkg.com/angular-ui-router@0.3.2/release/angular-ui-router.min.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.0.3.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script>
     <script src="angular/bower_components/slick-carousel/slick/slick.js"></script>
     <script src="angular/bower_components/angular-slick/dist/slick.js"></script>
     <script src="angular/bower_components/moment/min/moment.min.js"></script>

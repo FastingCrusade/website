@@ -8,6 +8,35 @@ angular.module('fc.services.fastService', [
    fastService.addFast = addFast;
    fastService.fasts = [];
 
+   fastService.fastCategories = [];
+   var categoryList = [
+      'Candy',
+      'Soda',
+      'Fast Food',
+      'Junk Food',
+      'Dairy',
+      'Pizza',
+      'Meat',
+      'Smoking',
+      'Alcohol',
+      'Addiction',
+      'Bad Habit',
+      'Specific Sin',
+      'Negativity',
+      'Phone',
+      'TV',
+      'Computer',
+      'Video Games',
+      'Staying Up Late',
+      'Being Lazy'
+   ];
+   for (var i = 0; i < categoryList.length; ++i) {
+      fastService.fastCategories.push({
+         'name': categoryList[i],
+         'id': i
+      });
+   }
+
    return fastService;   
 
    function getFasts(user) {
@@ -16,20 +45,11 @@ angular.module('fc.services.fastService', [
       // TODO: Remove when backend is hooked up
       if (fastService.fasts.length <= 0 ) {
          fastService.fasts.push({
-            'name': 'First Fast',
-            'daysActive': 11
-         });
-         fastService.fasts.push({
-            'name': 'Fast #2',
-            'daysActive': 2
-         });
-         fastService.fasts.push({
-            'name': 'Fast Third Time',
-            'daysActive': 23
-         });
-         fastService.fasts.push({
-            'name': 'Fast AGAIN?',
-            'daysActive': 4555
+            'category': fastService.fastCategories[2],
+            'subtype': 'First Fast',
+            'start': new Date() - 100,
+            'end': new Date() - 0 + 1000000,
+            'description': 'This is the first fast.'
          });
       }
       return fastService.fasts;

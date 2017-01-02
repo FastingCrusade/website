@@ -6,7 +6,7 @@ angular.module('fc.home.newFast', [
    function($scope, $state, fastService) {
    
    $scope.createFast = createFast;
-   $scope.fastCategories = [];
+   $scope.fastCategories = fastService.fastCategories;
   
    $('#startTimePicker').datetimepicker();
    $('#endTimePicker').datetimepicker({
@@ -18,45 +18,17 @@ angular.module('fc.home.newFast', [
    $('#endTimePicker').on('dp.change', function(e) {
       $('#startTimePicker').data('DateTimePicker').maxDate(e.date);
    });
- 
-   var categoryList = [
-      'Candy',
-      'Soda',
-      'Fast Food',
-      'Junk Food',
-      'Dairy',
-      'Pizza',
-      'Meat',
-      'Smoking',
-      'Alcohol',
-      'Addiction',
-      'Bad Habit',
-      'Specific Sin',
-      'Negativity',
-      'Phone',
-      'TV',
-      'Computer',
-      'Video Games',
-      'Staying Up Late',
-      'Being Lazy'
-   ];   
-   for (var i = 0; i < categoryList.length; ++i) {
-      $scope.fastCategories.push({
-         'name': categoryList[i],
-         'id': i
-      });
-   }   
 
    function createFast() {
       var newFast = {};
       newFast.userId = 1;               // TODO: Get user id
       newFast.category_id = $scope.selectedCategory.id;
       newFast.subtype = $scope.subtype;
-      newFast.start = $scope.start / 1000;
-      newFast.end = $scope.end / 1000;
+      newFast.start = new Date($('#startTimePicker').data().date);
+      newFast.end = new Date($('#endTimePicker').data().date);
       newFast.description = $scope.description;
 
-      fastService.createFast(newFast);
+      fastService.addFast(newFast);
       $state.go('home.welcome');
    }
 

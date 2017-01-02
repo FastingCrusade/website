@@ -1,0 +1,15 @@
+.new-fast {
+
+}
+
+.new-fast .category-select {
+   border: 1px solid #ccc;
+}
+
+.new-fast .has-error .category-select {
+   border-color: #a94442;
+}
+
+.new-fast .submit-new-fast {
+   text-align: center;
+}

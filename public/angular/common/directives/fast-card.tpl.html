@@ -1,7 +1,8 @@
 <div class="fast-card">
-   <h1 class="fast-title">{{ fast.name }}</h1>
+   <h1 class="fast-category">{{ fast.category.name }} Fast</h1>
+   <span class="fast-subtitle">{{ fast.subtype }}</span>
    <hr class="fast-card-divider"/>
-   <span>Active for: {{ fast.daysActive }}</span>
-   <br/>   
-   <a>Comments</a>
+   <uib-progressbar animate="false" max="fast.end - fast.start" value="currentTime - fast.start" 
+      class="fast-progress" type="success"><b>{{ fast.end - currentTime }} ms</b></uib-progressbar>
+   <div>{{ fast.description }}</div>   
 </div>

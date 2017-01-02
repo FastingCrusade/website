@@ -1,6 +1,7 @@
 angular.module('fc.home.welcome', [
    'fc.services.fastService',
-   'slick'
+   'slick',
+   'ui.bootstrap'
 ])
 .controller('WelcomeCtrl', ['$rootScope', '$scope', '$state', 'fastService', 
    function($rootScope, $scope, $state, fastService) {

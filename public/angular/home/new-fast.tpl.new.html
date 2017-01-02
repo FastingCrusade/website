@@ -7,30 +7,11 @@
                <form class="form-horizontal" name="newFastForm">
                   <div class="row">
                      <div class="form-group">
-                        <label class="col-md-2 control-label">Fast Title</label>
-                        <div class="col-md-3" ng-class="{ 'has-error' : !newFastForm.title.$valid }">
-                           <input class="form-control" type="text" name="title" ng-model="title" required autofocus>
-                        </div>
-
-                        <label class="col-md-2 control-label">Description</label>
-                        <div class="col-md-3">
-                           <input class="form-control" type="textarea" name="description" ng-model="description">
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="row">
-                     <div class="form-group">
-                        <label class="col-md-2 control-label">Category</label>
-                        <div class="col-md-3">
-                           <div class="btn-group" uib-dropdown>
-                              <button class="btn btn-secondary" uib-dropdown-toggle type="button" id="categoryMenu" 
-                                 ng-model="selectedCategory">{{ category.name }} <span class="caret"></span></button>
-                              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="categoryMenu">
-                                 <li ng-repeat="category in fastCategories" class="dropdown-item" role="menuitem">
-                                    <span>{{ category.name }}</span>
-                                 </li>
-                              </ul>
+                        <div ng-class="{ 'has-error' : !newFastForm.category.$valid }">
+                           <label class="col-md-2 control-label">Category</label>
+                           <div class="col-md-3">
+                              <select class="btn btn-secondary category-select" ng-model="selectedCategory" required
+                                 name="category" ng-options="category.name for category in fastCategories"></select>
                            </div>
                         </div>
 
@@ -43,29 +24,42 @@
 
                   <div class="row">
                      <div class="form-group">
-                        <label class="col-md-2 control-label">Start Date</label>
-                        <div class="col-md-3" ng-class="{ 'has-error' : !newFastForm.start.$valid }">
-                           <div class="input-group date" id="startTimePicker">
-                              <input type="text" class="form-control" ng-model="start" name="start" required/>
-                              <span class="input-group-addon">
-                                 <span class="glyphicon glyphicon-calendar"></span>
-                              </span>
+                        <div ng-class="{ 'has-error' : !newFastForm.start.$valid }">
+                           <label class="col-md-2 control-label">Start Date</label>
+                           <div class="col-md-3">
+                              <div class="input-group date" id="startTimePicker">
+                                 <input type="text" class="form-control" ng-model="start" name="start" required/>
+                                 <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                 </span>
+                              </div>
                            </div>
                         </div>
 
-                        <label class="col-md-2 control-label">End Date</label>
-                        <div class="col-md-3" ng-class="{ 'has-error' : !newFastForm.end.$valid }">
-                           <div class="input-group date" id="endTimePicker">
-                              <input type="text" class="form-control" ng-model="end" name="end" required/>
-                              <span class="input-group-addon">
-                                 <span class="glyphicon glyphicon-calendar"></span>
-                              </span>
+                        <div ng-class="{ 'has-error' : !newFastForm.end.$valid }">
+                           <label class="col-md-2 control-label">End Date</label>
+                           <div class="col-md-3">
+                              <div class="input-group date" id="endTimePicker">
+                                 <input type="text" class="form-control" ng-model="end" name="end" required/>
+                                 <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                 </span>
+                              </div>
                            </div>
                         </div>
                      </div>
                   </div>   
 
-                  <div class="form-group">
+                  <div class="row">
+                     <div class="form-group">
+                        <label class="col-md-2 control-label">Description</label>
+                        <div class="col-md-8">
+                           <textarea class="form-control" name="description" ng-model="description"></textarea>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="form-group submit-new-fast">
                         <button class="btn btn-primary create-fast-button" ng-click="createFast()"
                            ng-disabled=!newFastForm.$valid>Create Fast!</button>
                   </div>
