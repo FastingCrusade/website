@@ -41,10 +41,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if (Auth::check()) {
-            $response = response()->json([
-                'status' => 'OK',
-                'data' => 'Already logged in.',
-            ], Response::HTTP_ACCEPTED);
+            $response = $this->sendLoginResponse($request);
         } else {
             $this->validateLogin($request);
 
