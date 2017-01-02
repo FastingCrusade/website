@@ -28,7 +28,7 @@ class LoginController extends TestCase
 
         ]);
 
-        $this->assertResponseStatus(Response::HTTP_ACCEPTED);
+        $this->assertResponseOK();
         $this->seeJson();
     }
 }
