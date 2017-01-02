@@ -9,15 +9,14 @@ angular.module('fc.nav', [
    $scope.login = login;
    $scope.logout = logout;
    $scope.user = $rootScope.user;
+   $scope.isLoggedIn = $rootScope.isLoggedIn;
 
    function login() {
       userService.login($scope.email, $scope.password, $scope.rememberMe)
          .then(function(response) {
-            $rootScope.user = {
-               'user': $scope.email,
-               'loggedIn': true
-               // TODO: set cookie for rememberMe?
-            };
+            $rootScope.user = JSON.parse(response.data.data);
+            $rootScope.isLoggedIn = true;
+            $scope.isLoggedIn = true;
             $state.go('home.welcome');
             $scope.loginFailure = false;
          }, function(error) {
@@ -27,9 +26,13 @@ angular.module('fc.nav', [
    }
 
    function logout() {
-      // TODO: Make rest call
-      $rootScope.user = null;
-      $state.go('soon');
+      userService.logout()
+      .then(function(response) {
+         $rootScope.user = null;
+         $rootScope.isLoggedIn = false;
+         $scope.isLoggedIn = false;
+         $state.go('soon');
+      });
    }
 
 }]);

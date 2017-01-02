@@ -43,8 +43,7 @@ angular.module('fc', [
          controller: 'WelcomeCtrl'
       })
       .state('home.newfast', {  
-         // TODO: why doesn't it read the updates to the non-.new file?
-         templateUrl: 'angular/home/new-fast.tpl.new.html',
+         templateUrl: 'angular/home/new-fast.tpl.html',
          controller: 'NewFastCtrl'
       })
         

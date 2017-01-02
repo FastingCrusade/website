@@ -1,7 +1,7 @@
 angular.module('fc.services.fastService', [
 
 ])
-.factory('fastService', function($http) {
+.factory('fastService', function($rootScope, $state, $http) {
 
    var fastService = {};
    fastService.getFasts = getFasts;
@@ -40,59 +40,44 @@ angular.module('fc.services.fastService', [
    return fastService;   
 
    function getFasts(user) {
-      var token = angular.element(document.querySelector('#csrf_token'))[0].content;
       
-      // TODO: Remove when backend is hooked up
-      if (fastService.fasts.length <= 0 ) {
-         fastService.fasts.push({
-            'category': fastService.fastCategories[2],
-            'subtype': 'First Fast',
-            'start': new Date() - 100,
-            'end': new Date() - 0 + 1000000,
-            'description': 'This is the first fast.'
-         });
-      }
-      return fastService.fasts;
-/*
       $http({
-         method: 'POST',
-         url: '/login',
-         data: { 
-            'user': user,
-            '_token': token 
-         }
+         method: 'GET',
+         url: '/api/user/' + $rootScope.user.id + '/fasts'
       }).then(function(response) {
-         fasts = response.data;
-         return fasts;
+         fastService.fasts = response.data;
+         return fastService.fasts;
       }, function(error) {
-         console.log('Error retrieving fasts for user ' + user + ': ' + error.statusText);
+         console.log('Error retrieving fasts: ' + error.statusText);
       });
-*/
    }
 
    function addFast(newFast) {
       var token = angular.element(document.querySelector('#csrf_token'))[0].content;
 
+/*
       // TODO: Remove when backend is hooked up.
       fastService.fasts.push(newFast);
       return fastService.fasts;
-      
-/*
+*/    
+      $http.defaults.headers.common['Authorization'] = 'Bearer ' + token;
       $http({
          method: 'POST',
-         url: '/register',
+         url: '/api/fasts',
          data: { 
-            'email': email, 
-            'password': password, 
-            'name': name, 
-            '_token': token 
+            'user_id': $rootScope.user.id,
+            'category_id': newFast.category_id,
+            'subtype': newFast.subtype,
+            'start': newFast.start / 1000,
+            'end': newFast.end / 1000,
+            'description': newFast.description,
+            'api_token': token
          }
       }).then(function(response) {
-         fasts.push(newFast);
-         return fasts;
+         fastService.fasts.push(newFast);
+         $state.go('home.welcome');
       }, function(error) {
-         console.log('Error adding fast for user ' + user + ': ' + error.statusText);
+         console.log('Error adding fast: ' + error.statusText);
       });
-*/
    }
 });

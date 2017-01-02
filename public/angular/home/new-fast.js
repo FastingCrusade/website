@@ -21,7 +21,6 @@ angular.module('fc.home.newFast', [
 
    function createFast() {
       var newFast = {};
-      newFast.userId = 1;               // TODO: Get user id
       newFast.category_id = $scope.selectedCategory.id;
       newFast.subtype = $scope.subtype;
       newFast.start = new Date($('#startTimePicker').data().date);

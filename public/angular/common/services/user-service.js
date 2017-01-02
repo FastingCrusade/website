@@ -5,6 +5,7 @@ angular.module('fc.services.userService', [
 
    var userService = {};
    userService.login = login;
+   userService.logout = logout;
    userService.register = register;
 
    return userService;   
@@ -35,6 +36,13 @@ angular.module('fc.services.userService', [
             'name': name, 
             '_token': token 
          }
+      });
+   }
+
+   function logout() {
+      return $http({
+         method: 'GET',
+         url: '/logout'
       });
    }
 
