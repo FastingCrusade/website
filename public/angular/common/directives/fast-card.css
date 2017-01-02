@@ -1,0 +1,20 @@
+.fast-card {
+   height: 250px;
+   width: 200px;
+   text-align: center;
+   margin: 5px 10px;
+   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fast-card .fast-title {
+   margin: 10px 0;
+}
+
+.fast-card .fast-card-divider {
+   border-color: #222222;
+   margin: 0 10px 10px 10px;
+}
+
+.slick-next:before, .slick-prev:before {
+   color: #222222;
+}

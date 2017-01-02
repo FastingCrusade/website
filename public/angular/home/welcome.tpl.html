@@ -1,0 +1,26 @@
+<div class="welcome">
+   <div class="row">
+      <div class="col-md-8">
+         <slick dots="true" infinite="false" speed="300" slides-to-show="3" touch-move="false" slides-to-scroll="1" center-mode="true">
+            <div fast-card ng-repeat="fast in fasts" fast="fast"></div>
+         </slick>
+      </div>
+      <div class="col-md-2">
+         <button class="btn btn-default" ng-click="state.go('home.newfast')">Create New Fast!</button>
+      </div>
+      <div class="col-md-2">
+         <a>Friends</a><br/>
+         <a>Fasts</a><br/>
+         <a>Resources</a>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-6">
+         <span>Then here is a column of recent friend updates</span>
+      </div>
+      <div class="col-md-6">
+         <span>And over here... another column of other stuff?</span>
+      </div>
+   </div>
+</div>
+

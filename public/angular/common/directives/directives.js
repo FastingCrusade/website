@@ -20,8 +20,8 @@ angular.module('fc.directives.ng-enter', [
    }];
 
    return {
-      restrict: 'E',
-      templateUrl: 'angular/html/directives/fast-card.tpl.html',
+      restrict: 'A',
+      templateUrl: 'angular/common/directives/fast-card.tpl.html',
       controller: fastCardCtrl,
       scope: {
          fast: '='

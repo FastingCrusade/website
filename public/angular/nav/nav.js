@@ -18,7 +18,7 @@ angular.module('fc.nav', [
                'loggedIn': true
                // TODO: set cookie for rememberMe?
             };
-            $state.go('home');
+            $state.go('home.welcome');
             $scope.loginFailure = false;
          }, function(error) {
             $scope.loginFailure = true;
