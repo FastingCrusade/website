@@ -32,14 +32,6 @@ class LoginController extends Controller
     protected $redirectTo = '/';
 
     /**
-     * Create a new controller instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'logout']);
-    }
-
-    /**
      * Returns the response expected for a failed login attempt.
      *
      * @return mixed
