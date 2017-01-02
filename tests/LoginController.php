@@ -29,6 +29,10 @@ class LoginController extends TestCase
             '_token' => csrf_token(),
         ]);
 
+        if ($this->response->getStatusCode() !== 200) {
+            dd($this->response->getContent());
+        }
+
         $this->assertResponseOK();
         $this->seeJson();
     }
