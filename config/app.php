@@ -232,5 +232,6 @@ return [
     |
     */
 
-    'token_salt' => env('TOKEN_SALT'),
+    'token_salt'       => env('TOKEN_SALT'),
+    'results_per_page' => env('RESULTS_PER_PAGE', 50),
 ];
