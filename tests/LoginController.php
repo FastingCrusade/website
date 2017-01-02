@@ -11,19 +11,19 @@ namespace Testing;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
 
     public function testLoginAlreadyLoggedIn()
     {
         /** @var User $user */
         $user = factory('App\Models\User')->create();
         Auth::login($user);
+        Session::start();
 
         $this->post('/login', [
             '_token' => csrf_token(),
