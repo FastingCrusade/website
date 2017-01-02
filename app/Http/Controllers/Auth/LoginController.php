@@ -31,6 +31,20 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/';
 
+    public function login(Request $request)
+    {
+        if (Auth::check()) {
+            $response = response()->json([
+                'status' => 'OK',
+                'data' => 'Already logged in.',
+            ], Response::HTTP_ACCEPTED);
+        } else {
+            $response = parent::login($request);
+        }
+
+        return $response;
+    }
+
     /**
      * Returns the response expected for a failed login attempt.
      *
