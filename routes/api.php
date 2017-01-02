@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // User Routes
 Route::get('/users', 'Users@index');
 Route::get('/user/{user}', 'User@index');
+Route::get('/user/{user}/fasts', 'UserFasts@index');
 
 // Fasts Routes
 Route::get('/fasts', 'Fasts@index');
