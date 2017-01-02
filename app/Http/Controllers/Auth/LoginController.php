@@ -55,17 +55,17 @@ class LoginController extends Controller
                 $this->fireLockoutEvent($request);
 
                 $response = $this->sendLockoutResponse($request);
-            }
-
-            if ($this->attemptLogin($request)) {
-                $response = $this->sendLoginResponse($request);
             } else {
-                // If the login attempt was unsuccessful we will increment the number of attempts
-                // to login and redirect the user back to the login form. Of course, when this
-                // user surpasses their maximum number of attempts they will get locked out.
-                $this->incrementLoginAttempts($request);
+                if ($this->attemptLogin($request)) {
+                    $response = $this->sendLoginResponse($request);
+                } else {
+                    // If the login attempt was unsuccessful we will increment the number of attempts
+                    // to login and redirect the user back to the login form. Of course, when this
+                    // user surpasses their maximum number of attempts they will get locked out.
+                    $this->incrementLoginAttempts($request);
 
-                $response = $this->sendFailedLoginResponse($request);
+                    $response = $this->sendFailedLoginResponse();
+                }
             }
         }
 
