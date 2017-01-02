@@ -12,6 +12,7 @@ namespace Testing;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\Response;
 
 class FastsController extends TestCase
 {
@@ -52,7 +53,7 @@ class FastsController extends TestCase
             ]
         );
 
-        $this->assertResponseOk();
+        $this->assertResponseStatus(Response::HTTP_CREATED);
         $this->seeJson([
             'status' => 'OK',
         ]);
