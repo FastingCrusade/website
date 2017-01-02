@@ -41,10 +41,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if (Auth::check()) {
-            $response = response()->json([
-                'status' => 'OK',
-                'data' => 'Already logged in.',
-            ], Response::HTTP_ACCEPTED);
+            $response = $this->sendLoginResponse($request);
         } else {
             $this->validateLogin($request);
 
@@ -81,7 +78,7 @@ class LoginController extends Controller
     {
         return response()->json([
             'status' => 'REJECTED',
-            'data' => [],
+            'data'   => [],
         ], Response::HTTP_UNAUTHORIZED);
     }
 
@@ -100,7 +97,7 @@ class LoginController extends Controller
 
         return response()->json([
             'status' => 'OK',
-            'data' => Auth::user(),
+            'data'   => Auth::user(),
         ], Response::HTTP_OK);
     }
 }
