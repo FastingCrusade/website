@@ -11,11 +11,13 @@ namespace Testing;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends TestCase
 {
     use DatabaseTransactions;
+    use WithoutMiddleware;
 
     public function testLoginAlreadyLoggedIn()
     {
