@@ -41,7 +41,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if (Auth::check()) {
-            $response = $this->sendLoginResponse($request);
+            $response = $this->sendLoginResponse($request, false);
         } else {
             $this->validateLogin($request);
 
@@ -86,12 +86,15 @@ class LoginController extends Controller
      * Returns the response expected for a successful login attempt.
      *
      * @param Request $request
+     * @param bool    $clear_session
      *
      * @return Response
      */
-    public function sendLoginResponse(Request $request)
+    public function sendLoginResponse(Request $request, $clear_session = true)
     {
-        $request->session()->regenerate();
+        if ($clear_session) {
+            $request->session()->regenerate();
+        }
 
         $this->clearLoginAttempts($request);
 
