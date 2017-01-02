@@ -10,4 +10,5 @@ before_install:
 install:
   - "composer install"
   - "./artisan key:generate"
+  - "./artisan config:cache"
   - "./artisan migrate"
