@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 // User Routes
 Route::get('/users', 'Users@index');
 Route::get('/user/{user}', 'User@index');
+Route::get('/user/{user}/fasts', 'UserFasts@index');
+
+// Fasts Routes
+Route::get('/fasts', 'Fasts@index');
 
 // Authenticated routes.
 Route::group(['middleware' => 'auth:api'], function () {
@@ -29,5 +33,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // Subscription Routes
     Route::post('/newsletters/subscription', 'Newsletters@create');
+
+    // Fasts Routes
+    Route::post('/fasts', 'Fasts@create');
 });
 

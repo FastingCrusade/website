@@ -13,6 +13,13 @@ use App\Exceptions\MethodNotImplemented;
 use App\Misc\Size;
 use Illuminate\Support\Facades\App;
 
+/**
+ * Class ImageHandler
+ *
+ * TODO: This currently breaks the Liskov Substitution Principle. It should probably just be an interface.
+ *
+ * @package App\Contracts
+ */
 trait ImageHandler
 {
     /** @var Size $size */
