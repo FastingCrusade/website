@@ -27,6 +27,12 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->state('App\Models\User', 'admin', function (Faker\Generator $faker) {
+    return [
+        'is_admin' => true,
+    ];
+});
+
 $factory->define(App\Models\Organization::class, function (Faker\Generator $faker) {
     return [
         'name'    => "{$faker->company} {$faker->companySuffix}",

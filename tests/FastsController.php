@@ -9,6 +9,8 @@
 namespace Testing;
 
 
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class FastsController extends TestCase
@@ -29,5 +31,31 @@ class FastsController extends TestCase
 
         $this->assertEquals('http://localhost/api/fasts?page=2', $response->data->next_page_url);
         $this->assertEquals(60, $response->data->total);
+    }
+
+    public function testCreate()
+    {
+        /** @noinspection PhpParamsInspection */
+        /** @var User $user */
+        $user = factory('App\Models\User')->states('admin')->create();
+        $this->post(
+            '/api/fasts',
+            [
+                'user_id'     => $user->id,
+                'category_id' => factory('App\Models\Category')->create()->id,
+                'start'       => Carbon::now(),
+                'end'         => Carbon::now()->addDays(3),
+                'description' => 'Just a test fast, nothing to see here.',
+            ],
+            [
+                'Authorization' => "Bearer {$user->api_token}",
+            ]
+        );
+
+        $this->assertResponseOk();
+        $this->seeJson([
+            'status' => 'OK',
+        ]);
+        $this->assertTrue(is_int(json_decode($this->response->content())->data));
     }
 }
