@@ -32,11 +32,44 @@ class LoginController extends Controller
     protected $redirectTo = '/';
 
     /**
-     * Create a new controller instance.
+     * Handles login requests.
+     *
+     * @param Request $request
+     *
+     * @return mixed
      */
-    public function __construct()
+    public function login(Request $request)
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        if (Auth::check()) {
+            $response = response()->json([
+                'status' => 'OK',
+                'data' => 'Already logged in.',
+            ], Response::HTTP_ACCEPTED);
+        } else {
+            $this->validateLogin($request);
+
+            // If the class is using the ThrottlesLogins trait, we can automatically throttle
+            // the login attempts for this application. We'll key this by the username and
+            // the IP address of the client making these requests into this application.
+            if ($this->hasTooManyLoginAttempts($request)) {
+                $this->fireLockoutEvent($request);
+
+                $response = $this->sendLockoutResponse($request);
+            } else {
+                if ($this->attemptLogin($request)) {
+                    $response = $this->sendLoginResponse($request);
+                } else {
+                    // If the login attempt was unsuccessful we will increment the number of attempts
+                    // to login and redirect the user back to the login form. Of course, when this
+                    // user surpasses their maximum number of attempts they will get locked out.
+                    $this->incrementLoginAttempts($request);
+
+                    $response = $this->sendFailedLoginResponse();
+                }
+            }
+        }
+
+        return $response;
     }
 
     /**
