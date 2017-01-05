@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Mockery;
 
 class UserModel extends TestCase
@@ -148,6 +149,44 @@ class UserModel extends TestCase
             'gender' => [
                 'id' => $gender->id,
             ],
+        ])->toJson(), $user->toJson());
+    }
+
+    public function testJsonSerializeAsAdmin()
+    {
+        /** @var Gender $gender */
+        $gender = factory('App\Models\Gender')->create();
+        /** @var User $user */
+        $user = factory('App\Models\User', 'admin')->create([
+            'gender_id' => $gender->id,
+        ]);
+        Auth::login($user);
+
+        $this->assertJson(collect([
+            'id'        => $user->id,
+            'gender'    => [
+                'id' => $gender->id,
+            ],
+            'api_token' => $user->api_token,
+        ])->toJson(), $user->toJson());
+    }
+
+    public function testJsonSerializeAsSelf()
+    {
+        /** @var Gender $gender */
+        $gender = factory('App\Models\Gender')->create();
+        /** @var User $user */
+        $user = factory('App\Models\User')->create([
+            'gender_id' => $gender->id,
+        ]);
+        Auth::login($user);
+
+        $this->assertJson(collect([
+            'id'        => $user->id,
+            'gender'    => [
+                'id' => $gender->id,
+            ],
+            'api_token' => $user->api_token,
         ])->toJson(), $user->toJson());
     }
 }
