@@ -157,7 +157,7 @@ class UserModel extends TestCase
         /** @var Gender $gender */
         $gender = factory('App\Models\Gender')->create();
         /** @var User $user */
-        $user = factory('App\Models\User', 'admin')->create([
+        $user = factory('App\Models\User')->states(['admin'])->create([
             'gender_id' => $gender->id,
         ]);
         Auth::login($user);

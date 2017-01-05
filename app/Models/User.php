@@ -125,7 +125,7 @@ class User extends Authenticatable
             'name' => $this->gender->name,
         ];
 
-        if (Auth::user()->id === $this->id || Auth::user()->is_admin) {
+        if (Auth::user() && (Auth::user()->id === $this->id || Auth::user()->is_admin)) {
             $visible['api_token'] = $this->api_token;
         }
 
