@@ -1,24 +1,24 @@
 <nav class="navbar navbar-inverse navbar-static-top">
    <div class="container">
       <div class="navbar-header">
-         <a class="navbar-brand custom-brand" ui-sref="home"><img src="/img/full-logo.png"/></a>
+         <a class="navbar-brand custom-brand" ui-sref="soon"><img src="/img/full-logo.svg"/></a>
       </div>
       <div class="navbar-collapse collapse">
          <ul class="nav navbar-nav">
-            <li><a ui-sref="home">Home</a></li>
+            <li ng-if="false"><a ui-sref="home.welcome">Home</a></li>
             <li><a ui-sref="about">About</a></li>
          </ul>
-         <ul class="nav navbar-nav navbar-right" ng-show="!user.loggedIn">
-            <li><a ui-sref="account.register">Register</a></li>
-            <li uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
+         <ul class="nav navbar-nav navbar-right" ng-show="!isLoggedIn">
+            <li ng-if="false"><a ui-sref="account.register">Register</a></li>
+            <li ng-if="false" uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
                <a uib-dropdown-toggle id="sign-in-button">Sign In<strong class="caret"></strong></a>
                <div uib-dropdown-menu aria-labelledby="sign-in-button" class="sign-in-dropdown">
-                  <form name="loginForm">
+                  <form name="loginForm" ng-submit="login()">
                      <input class="form-control login-input" type="email" ng-model="email" 
                         placeholder="Email" required />
                      <input class="form-control login-input" type="password" ng-model="password" 
                         placeholder="Password" required />
-                     <input class="btn btn-primary login-button" value="Sign In" ng-click="login()" ng-enter="login()"
+                     <input class="btn btn-primary login-button" value="Sign In" type="submit"
                         ng-disabled=!loginForm.$valid />
                   </form>
                   <input class="remember-me-check" type="checkbox" ng-model="rememberMe" ng-init="rememberMe = false" />
@@ -31,7 +31,7 @@
                </div>
             </li>
          </ul>
-         <ul class="nav navbar-nav navbar-right" ng-show="user.loggedIn">
+         <ul ng-if="false" class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
             <li><a ui-sref-"account">My Account</a></li>
             <li><a ng-click="logout()">Log Out</a></li>
          </ul>

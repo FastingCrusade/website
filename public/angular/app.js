@@ -1,10 +1,12 @@
 angular.module('fc', [
    'ui.router', 
    'fc.nav',
-   'fc.home',
+   'fc.home.welcome',
+   'fc.home.newFast',
    'fc.comingSoon',
    'fc.account.register'
-]).config(function($stateProvider, $urlRouterProvider) {
+])
+.config(function($stateProvider, $urlRouterProvider) {
     
    $urlRouterProvider.otherwise('/soon');
     
@@ -14,11 +16,11 @@ angular.module('fc', [
          url: '/soon',
          views: {
             'main': {
-               templateUrl: 'angular/soon/coming-soon.html',
+               templateUrl: 'angular/soon/coming-soon.tpl.html',
                controller: 'ComingSoonCtrl'
             },
             'navigation': {
-               templateUrl: 'angular/nav/nav.html',
+               templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
             }
          }
@@ -28,24 +30,31 @@ angular.module('fc', [
          url: '/home',
          views: {
             'main': {
-               templateUrl: 'angular/home/home.html',
-               controller: 'HomeCtrl'
+               template: '<div ui-view></div>'
             },
             'navigation': {
-               templateUrl: 'angular/nav/nav.html',
+               templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
             }
          }
+      })
+      .state('home.welcome', {
+         templateUrl: 'angular/home/welcome.tpl.html',
+         controller: 'WelcomeCtrl'
+      })
+      .state('home.newfast', {  
+         templateUrl: 'angular/home/new-fast.tpl.html',
+         controller: 'NewFastCtrl'
       })
         
       .state('about', {
          url: '/about',
          views: {
             'main': {
-               templateUrl: 'angular/about/about.html'
+               templateUrl: 'angular/about/about.tpl.html'
             },
             'navigation': {
-               templateUrl: 'angular/nav/nav.html',
+               templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
             }
          }
@@ -58,14 +67,14 @@ angular.module('fc', [
                template: '<div ui-view></div>'
             },
             'navigation': {
-               templateUrl: 'angular/nav/nav.html',
+               templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
             }
          }
       })
       .state('account.register', {
          url: '/register',
-         templateUrl: 'angular/account/register.html',
+         templateUrl: 'angular/account/register.tpl.html',
          controller: 'RegisterCtrl'
       });  
 });

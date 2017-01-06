@@ -1,6 +1,8 @@
-<div class="slick-slide fast-card">
-   <h3>{{ fast.name }}</h3>
-   <hr/>
-   <span>Active for: {{ fast.daysActive }}</span>
-   <a>Comments</a>
+<div class="fast-card">
+   <h1 class="fast-category">{{ fast.category.name }} Fast</h1>
+   <span class="fast-subtitle">{{ fast.subtype }}</span>
+   <hr class="fast-card-divider"/>
+   <uib-progressbar animate="false" max="fast.end - fast.start" value="currentTime - fast.start" 
+      class="fast-progress" type="success"><b>{{ fast.end - currentTime }} ms</b></uib-progressbar>
+   <div>{{ fast.description }}</div>   
 </div>
