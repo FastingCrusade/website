@@ -12,6 +12,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="angular/common/directives/fast-card.css">
     <link rel="stylesheet" type="text/css" href="angular/account/register.css">
+    <link rel="stylesheet" type="text/css" href="angular/about/about.css">
     <link rel="stylesheet" type="text/css" href="angular/home/new-fast.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/nav.css">
     <link rel="stylesheet" type="text/css" href="angular/main.css">
