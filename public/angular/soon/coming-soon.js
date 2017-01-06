@@ -5,10 +5,12 @@ angular.module('fc.comingSoon', [
 
    $scope.submitEmail = submitEmail;
 
+   $scope.subscribed = false;
+
    function submitEmail() {
       newsService.subscribe($scope.email)
          .then(function () {
-            $this.closest('.column').text('Thank you, we\'ll let you know!');
+            $scope.subscribed = true;
          });
    }
 }]);
