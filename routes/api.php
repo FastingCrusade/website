@@ -21,6 +21,9 @@ Route::get('/user/{user}/fasts', 'UserFasts@index');
 // Fasts Routes
 Route::get('/fasts', 'Fasts@index');
 
+// Subscription Routes
+Route::post('/newsletters/subscription', 'Newsletters@create');
+
 // Authenticated routes.
 Route::group(['middleware' => 'auth:api'], function () {
     // User routes
@@ -30,9 +33,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::patch('/gender/{gender}/replace', 'GenderSwap');
     Route::delete('/gender/{gender}', 'Gender@delete');
     Route::post('/genders', 'Gender@create');
-
-    // Subscription Routes
-    Route::post('/newsletters/subscription', 'Newsletters@create');
 
     // Fasts Routes
     Route::post('/fasts', 'Fasts@create');
