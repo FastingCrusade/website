@@ -11,8 +11,8 @@ namespace Testing;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends TestCase
 {
@@ -23,12 +23,13 @@ class LoginController extends TestCase
         /** @var User $user */
         $user = factory('App\Models\User')->create();
         Auth::login($user);
+        Session::start();
 
         $this->post('/login', [
-
+            '_token' => csrf_token(),
         ]);
 
-        $this->assertResponseStatus(Response::HTTP_ACCEPTED);
+        $this->assertResponseOK();
         $this->seeJson();
     }
 }
