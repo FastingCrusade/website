@@ -1,10 +1,18 @@
 <div class="container registration">
    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-6">
+         <div class="panel panel-default">
+            <div class="panel-heading">Welcome to Fasting Crusade!</div>
+            <div class="panel-body registration-welcome">
+               <div>If you would like to join Fasting Crusade please fill out the registration form below!</div><br/>
+               <div>Provide basic information here, if you wish to add other personal information to your account that can be done through the Account Management page when logged in.</div><br/>
+               <div>Welcome again, and good luck fasting!</div>
+            </div>
+         </div>
          <div class="panel panel-default" ng-show="!registrationSuccess">
             <div class="panel-heading">Register</div>
             <div class="panel-body">
-               <form class="form-horizontal" role="form" name="registerForm">
+               <form class="form-horizontal" role="form" name="registerForm" ng-submit="submitRegistration()">
                   <div class="form-group" ng-class="{ 'has-error' : !registerForm.email.$valid }">
                      <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                      <div class="col-md-6">
@@ -35,12 +43,10 @@
                         </div>
                      </div>
 
-                     <div class="form-group">
-                        <div class="col-md-12 col-md-offset-4">
-                           <button class="btn btn-primary register-button" ng-click="submitRegistration()"
-                              ng-disabled=!registerForm.$valid>Register</button>
-                           <span class="pull-right registration-error" ng-show="registrationError">Error registering!  Ensure all fields meet requirements!</span>
-                        </div>
+                     <div class="form-group register-button">
+                        <button class="btn btn-primary" type="submit"
+                           ng-disabled=!registerForm.$valid>Register</button>
+                        <span class="pull-right registration-error" ng-show="registrationError">Error registering!  Ensure all fields meet requirements!</span>
                      </div>
                   </div>
                </form>
@@ -54,6 +60,9 @@
                <br/>
                <button class="btn btn-primary return-home" ng-click="returnHome()">Return to Main Page</button>
             </div>
+         </div>
+         <div class="col-md-6">
+            <img src="img/registration.svg">
          </div>
       </div>
    </div>

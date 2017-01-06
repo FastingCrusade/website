@@ -60,7 +60,7 @@ angular.module('fc.services.fastService', [
       fastService.fasts.push(newFast);
       return fastService.fasts;
 */    
-      $http.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+      $http.defaults.headers.common['Authorization'] = 'Bearer ' + $rootScope.user.api_token;
       $http({
          method: 'POST',
          url: '/api/fasts',
@@ -70,8 +70,7 @@ angular.module('fc.services.fastService', [
             'subtype': newFast.subtype,
             'start': newFast.start / 1000,
             'end': newFast.end / 1000,
-            'description': newFast.description,
-            'api_token': token
+            'description': newFast.description
          }
       }).then(function(response) {
          fastService.fasts.push(newFast);

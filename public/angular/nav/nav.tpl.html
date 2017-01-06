@@ -13,12 +13,12 @@
             <li uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
                <a uib-dropdown-toggle id="sign-in-button">Sign In<strong class="caret"></strong></a>
                <div uib-dropdown-menu aria-labelledby="sign-in-button" class="sign-in-dropdown">
-                  <form name="loginForm">
+                  <form name="loginForm" ng-submit="login()">
                      <input class="form-control login-input" type="email" ng-model="email" 
                         placeholder="Email" required />
                      <input class="form-control login-input" type="password" ng-model="password" 
                         placeholder="Password" required />
-                     <input class="btn btn-primary login-button" value="Sign In" ng-click="login()" ng-enter="login()"
+                     <input class="btn btn-primary login-button" value="Sign In" type="submit"
                         ng-disabled=!loginForm.$valid />
                   </form>
                   <input class="remember-me-check" type="checkbox" ng-model="rememberMe" ng-init="rememberMe = false" />

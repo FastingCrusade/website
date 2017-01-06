@@ -48,7 +48,7 @@
     
 
 </head> 
-<body ng-app="fc" class="fc-main-app">
+<body ng-app="fc" class="fc-main-app" style="background: url(img/coming-soon.jpg) no-repeat center center fixed;">
 
 <!-- NAVIGATION -->
 <div ui-view="navigation"></div>
