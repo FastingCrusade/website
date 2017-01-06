@@ -1,0 +1,69 @@
+<div class="container registration">
+   <div class="row">
+      <div class="col-md-6">
+         <div class="panel panel-default">
+            <div class="panel-heading">Welcome to Fasting Crusade!</div>
+            <div class="panel-body registration-welcome">
+               <div>If you would like to join Fasting Crusade please fill out the registration form below!</div><br/>
+               <div>Provide basic information here, if you wish to add other personal information to your account that can be done through the Account Management page when logged in.</div><br/>
+               <div>Welcome again, and good luck fasting!</div>
+            </div>
+         </div>
+         <div class="panel panel-default" ng-show="!registrationSuccess">
+            <div class="panel-heading">Register</div>
+            <div class="panel-body">
+               <form class="form-horizontal" role="form" name="registerForm" ng-submit="submitRegistration()">
+                  <div class="form-group" ng-class="{ 'has-error' : !registerForm.email.$valid }">
+                     <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                     <div class="col-md-6">
+                        <input class="form-control" type="email" name="email" ng-model="email" required autofocus>
+                     </div>
+                  </div>
+
+                  <div class="form-group" ng-class="{ 'has-error' : !registerForm.password.$valid }">
+                     <label for="password" class="col-md-4 control-label">Password (at least 6 characters)</label>
+                     <div class="col-md-6">
+                        <input class="form-control" type="password" name="password" ng-model="password" 
+                           pattern=".{6,}" required>
+                     </div>
+                  </div>
+
+                  <div class="form-group" ng-class="{ 'has-error' : password !== password_confirmation }">
+                     <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                        <div class="col-md-6">
+                           <input class="form-control" type="password" name="password_confirmation" 
+                              ng-model="password_confirmation" required>
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <label for="name" class="col-md-4 control-label">Name</label>
+                        <div class="col-md-6">
+                           <input class="form-control" type="text" name="name" ng-model="name">
+                        </div>
+                     </div>
+
+                     <div class="form-group register-button">
+                        <button class="btn btn-primary" type="submit"
+                           ng-disabled=!registerForm.$valid>Register</button>
+                        <span class="pull-right registration-error" ng-show="registrationError">Error registering!  Ensure all fields meet requirements!</span>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+
+         <div class="panel panel-default" ng-show="registrationSuccess">
+            <div class="panel-body registration-success-panel">
+               <h3>Registration Successful!</h3>
+               <span>You may now "Sign In" in the top right, or return to the main page.</span>
+               <br/>
+               <button class="btn btn-primary return-home" ng-click="returnHome()">Return to Main Page</button>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <img src="img/registration.svg">
+         </div>
+      </div>
+   </div>
+</div>

@@ -6,6 +6,10 @@
         }
     </style>
     <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+
+    <title>Coming Soon!</title>
+    <link rel="shortcut icon" href="{{ asset('img/c_logo.svg') }}" />
+
 </head>
 <body class="grey">
 <div class="ui grid centered container">
@@ -21,7 +25,7 @@
     </div>
     <div class="row">
         <div class="column">
-            Your site for fasting.
+            Your site for fasting.  Also for testing.
         </div>
     </div>
     <div class="row">

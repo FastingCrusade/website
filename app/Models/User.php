@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -60,7 +61,7 @@ class User extends Authenticatable
             $name = $this->email;
         }
 
-        return $name;
+        return trim($name);
     }
 
     /**
@@ -90,7 +91,7 @@ class User extends Authenticatable
      */
     public function fasts()
     {
-        return $this->hasMany('App\Models\Fasts');
+        return $this->hasMany('App\Models\Fast');
     }
 
     /**
@@ -108,9 +109,9 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function __toString()
+    public function jsonSerialize()
     {
-        $visible = json_decode(parent::__toString(), true);
+        $visible = $this->toArray();
         $visible['full_name'] = $this->fullName();
         $visible['profile_image_url'] = $this->profileImageUrl();
 
@@ -123,6 +124,10 @@ class User extends Authenticatable
             'icon' => $this->gender->icon,
             'name' => $this->gender->name,
         ];
+
+        if (Auth::user() && (Auth::user()->id === $this->id || Auth::user()->is_admin)) {
+            $visible['api_token'] = $this->api_token;
+        }
 
         return json_encode($visible, false);
     }

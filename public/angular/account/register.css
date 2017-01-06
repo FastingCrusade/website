@@ -1,0 +1,25 @@
+.registration {
+
+}
+
+.registration .registration-welcome {
+   text-align: center;
+   height: 165px;
+}
+
+.registration .register-button {
+   text-align: center;
+}
+
+.registration .registration-error {
+   color: red;
+   padding-top: 5px;
+}
+
+.registration .registration-success-panel {
+   text-align: center;
+}
+
+.registration .return-home {
+   margin-top: 10px;
+}
