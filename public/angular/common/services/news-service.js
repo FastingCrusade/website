@@ -13,7 +13,7 @@ angular.module('fc.services.news', [
    
       return $http({
          method: 'POST',
-         url: '/api/newsletters/subscriptions',
+         url: '/api/newsletters/subscription',
          data: {
             'email': email,
             '_token': token
