@@ -1,7 +1,7 @@
 <div class="coming-soon">
    <div class="row">
       <div class="column-md-12 main-logo">
-         <img src="img/c-logo-square.svg" style="height: 10rem">
+         <img src="img/c-logo-webred.svg" style="height: 10rem">
       </div>
    </div>
    <div class="row">
@@ -13,10 +13,13 @@
    <div class="row">
       <div class="ui form">
          <div class="field">
-            <form name="emailForm">
+            <form name="emailForm" ng-show="!subscribed">
                <input type="email" name="email" ng-model="email" placeholder="Your email address" class="email-input" required>
                <button class="ui red button" ng-click="submitEmail($event)" ng-disabled="!emailForm.email.$valid">Sign Up</button>
             </form>
+            <div ng-show="subscribed">
+               <span style="color: red">Thank you!  We'll let you know!</span>
+            </div>
          </div>
       </div>
    </div>
