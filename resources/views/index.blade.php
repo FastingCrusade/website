@@ -12,6 +12,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="angular/common/directives/fast-card.css">
     <link rel="stylesheet" type="text/css" href="angular/account/register.css">
+    <link rel="stylesheet" type="text/css" href="angular/about/about.css">
     <link rel="stylesheet" type="text/css" href="angular/home/new-fast.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/nav.css">
     <link rel="stylesheet" type="text/css" href="angular/main.css">
@@ -30,6 +31,7 @@
     <script src="angular/common/directives/directives.js"></script>
     <script src="angular/common/services/user-service.js"></script>
     <script src="angular/common/services/fast-service.js"></script>
+    <script src="angular/common/services/news-service.js"></script>
     <script src="angular/account/register.js"></script>
     <script src="angular/soon/coming-soon.js"></script>
     <script src="angular/about/about.js"></script>
