@@ -22,6 +22,9 @@ angular.module('fc', [
             'navigation': {
                templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
+            },
+            'footer': {
+               templateUrl: 'angular/nav/footer.tpl.html',
             }
          }
       })
@@ -35,6 +38,9 @@ angular.module('fc', [
             'navigation': {
                templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
+            },
+            'footer': {
+               templateUrl: 'angular/nav/footer.tpl.html',
             }
          }
       })
@@ -56,6 +62,9 @@ angular.module('fc', [
             'navigation': {
                templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
+            },
+            'footer': {
+               templateUrl: 'angular/nav/footer.tpl.html',
             }
          }
       }) 
@@ -69,6 +78,9 @@ angular.module('fc', [
             'navigation': {
                templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
+            },
+            'footer': {
+               templateUrl: 'angular/nav/footer.tpl.html',
             }
          }
       })
@@ -76,5 +88,29 @@ angular.module('fc', [
          url: '/register',
          templateUrl: 'angular/account/register.tpl.html',
          controller: 'RegisterCtrl'
-      });  
+      })
+
+      .state('admin', {
+         url: '/',
+         views: {
+            'main': {
+               template: '<div ui-view></div>'
+            },
+            'navigation': {
+               templateUrl: 'angular/nav/nav.tpl.html',
+               controller: 'NavCtrl'
+            },
+            'footer': {
+               templateUrl: 'angular/nav/footer.tpl.html',
+            }
+         }
+      }) 
+      .state('admin.privacy', {
+         url: 'privacy',
+         templateUrl: 'angular/admin/privacy.tpl.html'
+      })
+      .state('admin.contact', {
+         url: 'contact',
+         templateUrl: 'angular/admin/contact.tpl.html'
+      });
 });
