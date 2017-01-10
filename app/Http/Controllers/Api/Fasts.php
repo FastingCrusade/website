@@ -13,6 +13,7 @@ use App\Models\Fast;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -48,9 +49,10 @@ class Fasts extends ApiController
 
         if ($user->id === $request->input('user_id') || $user->is_admin) {
             /** @var Fast $fast */
-            $fast = Fast::create($request->all());
+            $fast = App::make('App\Models\Fast');
+            $fast->fill($request->only($fast->getFillable()));
 
-            if ($fast) {
+            if ($fast->save()) {
                 $response = $this->response($fast->id, 'OK', Response::HTTP_CREATED);
             } else {
                 $response = $this->response('Failed to create a Fast.', 'FAILED', Response::HTTP_NOT_ACCEPTABLE);
