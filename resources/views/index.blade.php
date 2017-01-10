@@ -13,8 +13,10 @@
     <link rel="stylesheet" type="text/css" href="angular/common/directives/fast-card.css">
     <link rel="stylesheet" type="text/css" href="angular/account/register.css">
     <link rel="stylesheet" type="text/css" href="angular/about/about.css">
+    <link rel="stylesheet" type="text/css" href="angular/admin/privacy.css">
     <link rel="stylesheet" type="text/css" href="angular/home/new-fast.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/nav.css">
+    <link rel="stylesheet" type="text/css" href="angular/nav/footer.css">
     <link rel="stylesheet" type="text/css" href="angular/main.css">
    
     <!-- 3rd Party JS -->
@@ -59,6 +61,8 @@
 <div class="container">
     <div ui-view="main"></div>
 </div>
+
+<div ui-view="footer"></div>
 
 </body> 
 </html>
