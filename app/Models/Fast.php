@@ -17,6 +17,14 @@ class Fast extends Commentable
         'description',
     ];
 
+    protected $dates = [
+        'created_at',
+        'deleted_at',
+        'updated_at',
+        'start',
+        'end',
+    ];
+
     /**
      * Relationship to User.
      *
