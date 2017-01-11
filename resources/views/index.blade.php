@@ -44,7 +44,7 @@
 
     <!-- Page title and favicon -->
     <title>Fasting Crusade</title>
-    <link rel="icon" href="../../public/img/c_logo.svg">
+    <link rel="icon" href="{{ asset('img/c-logo-webred.svg') }}img/c_logo.svg">
 
     <!-- CSRF Token for Authentication -->
     <meta id="csrf_token" content="{{ csrf_token() }}">
