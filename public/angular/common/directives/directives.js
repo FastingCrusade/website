@@ -15,7 +15,7 @@ angular.module('fc.directives.ng-enter', [
 })
 .directive('fastCard', function () {
 
-   var fastCardCtrl = ['$scope', function($scope) {
+   var fastCardCtrl = ['$scope', '$filter', function($scope, $filter) {
       
    }];
 

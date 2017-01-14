@@ -28,7 +28,7 @@ angular.module('fc.home.newFast', [
       newFast.description = $scope.description;
 
       fastService.addFast(newFast);
-      $state.go('home.welcome');
+      $state.go('root.home.welcome');
    }
 
 }]);
