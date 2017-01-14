@@ -5,12 +5,12 @@
       </div>
       <div class="navbar-collapse collapse">
          <ul class="nav navbar-nav">
-            <li ng-if="false"><a ui-sref="home.welcome">Home</a></li>
+            <li><a ui-sref="home.welcome">Home</a></li>
             <li><a ui-sref="about">About</a></li>
          </ul>
          <ul class="nav navbar-nav navbar-right" ng-show="!isLoggedIn">
-            <li ng-if="false"><a ui-sref="account.register">Register</a></li>
-            <li ng-if="false" uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
+            <li><a ui-sref="account.register">Register</a></li>
+            <li uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
                <a uib-dropdown-toggle id="sign-in-button">Sign In<strong class="caret"></strong></a>
                <div uib-dropdown-menu aria-labelledby="sign-in-button" class="sign-in-dropdown">
                   <form name="loginForm" ng-submit="login()">
@@ -31,7 +31,7 @@
                </div>
             </li>
          </ul>
-         <ul ng-if="false" class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
+         <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
             <li><a ui-sref-"account">My Account</a></li>
             <li><a ng-click="logout()">Log Out</a></li>
          </ul>

@@ -41,14 +41,9 @@ angular.module('fc.services.fastService', [
 
    function getFasts(user) {
       
-      $http({
+      return $http({
          method: 'GET',
          url: '/api/user/' + $rootScope.user.id + '/fasts'
-      }).then(function(response) {
-         fastService.fasts = response.data;
-         return fastService.fasts;
-      }, function(error) {
-         console.log('Error retrieving fasts: ' + error.statusText);
       });
    }
 
@@ -73,7 +68,6 @@ angular.module('fc.services.fastService', [
             'description': newFast.description
          }
       }).then(function(response) {
-         fastService.fasts.push(newFast);
          $state.go('home.welcome');
       }, function(error) {
          console.log('Error adding fast: ' + error.statusText);
