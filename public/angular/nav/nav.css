@@ -2,6 +2,10 @@
 
 }
 
+.account-nav {
+   padding-right: 20px;
+}
+
 .navbar-right > li > a {
    cursor: pointer;
 }

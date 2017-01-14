@@ -13,9 +13,9 @@
    <div class="row">
       <div class="ui form">
          <div class="field">
-            <form name="emailForm" ng-show="!subscribed">
+            <form name="emailForm" ng-show="!subscribed" ng-submit="submitEmail($event)">
                <input type="email" name="email" ng-model="email" placeholder="Your email address" class="email-input" required>
-               <button class="ui red button" ng-click="submitEmail($event)" ng-disabled="!emailForm.email.$valid">Sign Up</button>
+               <button class="ui red button" ng-disabled="!emailForm.email.$valid">Sign Up</button>
             </form>
             <div ng-show="subscribed">
                <span style="color: red">Thank you!  We'll let you know!</span>

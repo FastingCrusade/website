@@ -17,7 +17,7 @@ angular.module('fc.nav', [
             $rootScope.user = JSON.parse(response.data.data);
             $rootScope.isLoggedIn = true;
             $scope.isLoggedIn = true;
-            $state.go('home.welcome');
+            $state.go('root.home.welcome');
             $scope.loginFailure = false;
          }, function(error) {
             $scope.loginFailure = true;
@@ -31,7 +31,7 @@ angular.module('fc.nav', [
          $rootScope.user = null;
          $rootScope.isLoggedIn = false;
          $scope.isLoggedIn = false;
-         $state.go('soon');
+         $state.go('root.soon');
       });
    }
 

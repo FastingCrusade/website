@@ -6,7 +6,6 @@ angular.module('fc.services.fastService', [
    var fastService = {};
    fastService.getFasts = getFasts;
    fastService.addFast = addFast;
-   fastService.fasts = [];
 
    fastService.fastCategories = [];
    var categoryList = [
@@ -41,25 +40,15 @@ angular.module('fc.services.fastService', [
 
    function getFasts(user) {
       
-      $http({
+      return $http({
          method: 'GET',
          url: '/api/user/' + $rootScope.user.id + '/fasts'
-      }).then(function(response) {
-         fastService.fasts = response.data;
-         return fastService.fasts;
-      }, function(error) {
-         console.log('Error retrieving fasts: ' + error.statusText);
       });
    }
 
    function addFast(newFast) {
       var token = angular.element(document.querySelector('#csrf_token'))[0].content;
 
-/*
-      // TODO: Remove when backend is hooked up.
-      fastService.fasts.push(newFast);
-      return fastService.fasts;
-*/    
       $http.defaults.headers.common['Authorization'] = 'Bearer ' + $rootScope.user.api_token;
       $http({
          method: 'POST',
@@ -73,8 +62,7 @@ angular.module('fc.services.fastService', [
             'description': newFast.description
          }
       }).then(function(response) {
-         fastService.fasts.push(newFast);
-         $state.go('home.welcome');
+         $state.go('root.home.welcome');
       }, function(error) {
          console.log('Error adding fast: ' + error.statusText);
       });

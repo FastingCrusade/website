@@ -15,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-slick": "^0.2.1",
-    "eonasdan-bootstrap-datetimepicker": "^4.17.44"
+    "eonasdan-bootstrap-datetimepicker": "^4.17.44",
+    "angular-slick-carousel": "^3.1.7"
   }
 }
