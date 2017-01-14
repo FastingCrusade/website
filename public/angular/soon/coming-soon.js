@@ -1,23 +1,16 @@
-angular.module('fc.comingSoon', [])
-.controller('ComingSoonCtrl', function($scope, $http) {
+angular.module('fc.comingSoon', [
+   'fc.services.news'
+])
+.controller('ComingSoonCtrl', ['$scope', '$http', 'newsService', function($scope, $http, newsService) {
+
    $scope.submitEmail = submitEmail;
 
-   function submitEmail(event) {
-      event.stopPropagation();
-      event.preventDefault();
-        
-      console.log('Email address: ' + $scope.email);
-      /*
-      $http({
-         url: 'newsletters/subscription',
-         method: 'POST',
-         data: {
-            email: $scope.email,
-            '_token': '{{ csrf_token() }}'
-         }
-      }).then(function () {
-         $this.closest('.column').text('Thank you, we\'ll let you know!');
-      });
-      */
+   $scope.subscribed = false;
+
+   function submitEmail() {
+      newsService.subscribe($scope.email)
+         .then(function () {
+            $scope.subscribed = true;
+         });
    }
-});
+}]);

@@ -111,4 +111,50 @@ class FastsController extends TestCase
 
         $this->assertResponseStatus(Response::HTTP_UNAUTHORIZED);
     }
+
+    public function testExtraFieldsSent()
+    {
+        /** @noinspection PhpParamsInspection */
+        /** @var User $user */
+        $user = factory('App\Models\User')->create();
+        $this->post(
+            '/api/fasts',
+            [
+                'user_id'     => $user->id,
+                'category_id' => factory('App\Models\Category')->create()->id,
+                'start'       => Carbon::now(),
+                'end'         => Carbon::now()->addDays(3),
+                'description' => 'Just a test fast, nothing to see here.',
+                'api_token'   => 'testTokenGoesHere',
+            ],
+            [
+                'Authorization' => "Bearer {$user->api_token}",
+            ]
+        );
+
+        $this->assertResponseStatus(Response::HTTP_CREATED);
+    }
+
+    public function testSendingTimestamps()
+    {
+        /** @noinspection PhpParamsInspection */
+        /** @var User $user */
+        $user = factory('App\Models\User')->create();
+        $this->post(
+            '/api/fasts',
+            [
+                'user_id'     => $user->id,
+                'category_id' => factory('App\Models\Category')->create()->id,
+                'start'       => Carbon::now()->timestamp,
+                'end'         => Carbon::now()->addDays(3)->timestamp,
+                'description' => 'Just a test fast, nothing to see here.',
+                'api_token'   => 'testTokenGoesHere',
+            ],
+            [
+                'Authorization' => "Bearer {$user->api_token}",
+            ]
+        );
+
+        $this->assertResponseStatus(Response::HTTP_CREATED);
+    }
 }

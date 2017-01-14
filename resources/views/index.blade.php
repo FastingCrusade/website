@@ -12,8 +12,11 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="angular/common/directives/fast-card.css">
     <link rel="stylesheet" type="text/css" href="angular/account/register.css">
+    <link rel="stylesheet" type="text/css" href="angular/about/about.css">
+    <link rel="stylesheet" type="text/css" href="angular/admin/privacy.css">
     <link rel="stylesheet" type="text/css" href="angular/home/new-fast.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/nav.css">
+    <link rel="stylesheet" type="text/css" href="angular/nav/footer.css">
     <link rel="stylesheet" type="text/css" href="angular/main.css">
    
     <!-- 3rd Party JS -->
@@ -30,6 +33,7 @@
     <script src="angular/common/directives/directives.js"></script>
     <script src="angular/common/services/user-service.js"></script>
     <script src="angular/common/services/fast-service.js"></script>
+    <script src="angular/common/services/news-service.js"></script>
     <script src="angular/account/register.js"></script>
     <script src="angular/soon/coming-soon.js"></script>
     <script src="angular/about/about.js"></script>
@@ -40,7 +44,7 @@
 
     <!-- Page title and favicon -->
     <title>Fasting Crusade</title>
-    <link rel="icon" href="../../public/img/c_logo.svg">
+    <link rel="icon" href="{{ asset('img/c-logo-webred.svg') }}img/c_logo.svg">
 
     <!-- CSRF Token for Authentication -->
     <meta id="csrf_token" content="{{ csrf_token() }}">
@@ -57,6 +61,8 @@
 <div class="container">
     <div ui-view="main"></div>
 </div>
+
+<div ui-view="footer"></div>
 
 </body> 
 </html>

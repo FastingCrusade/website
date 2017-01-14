@@ -9,8 +9,20 @@ class Fast extends Commentable
 {
     use SoftDeletes;
 
-    protected $guarded = [
-        'id',
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'start',
+        'end',
+        'description',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'deleted_at',
+        'updated_at',
+        'start',
+        'end',
     ];
 
     /**
