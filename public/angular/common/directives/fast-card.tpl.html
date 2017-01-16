@@ -1,5 +1,5 @@
 <div class="fast-card">
-   <h1 class="fast-category">{{ fast.category.name }} Fast</h1>
+   <h1 class="fast-category">{{ fastCategories[fast.category_id].name }} Fast</h1>
    <span class="fast-subtitle">{{ fast.subtype }}</span>
    <hr class="fast-card-divider"/>
    <uib-progressbar animate="false" max="fast.end - fast.start" value="currentTime - fast.start" 

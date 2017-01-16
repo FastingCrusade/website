@@ -1,4 +1,5 @@
 angular.module('fc.directives.ng-enter', [
+   'fc.services.fastService'
 ])
 .directive('ngEnter', function () {
     return function (scope, element, attrs) {
@@ -26,10 +27,11 @@ angular.module('fc.directives.ng-enter', [
       scope: {
          fast: '='
       },
-      controller: ['$scope', '$interval', function($scope, $interval) {
+      controller: ['$scope', '$interval', 'fastService', function($scope, $interval, fastService) {
          
          $scope.$on('destroy', cancelInterval);
          $scope.currentTime = new Date();
+         $scope.fastCategories = fastService.fastCategories;
       
          var updateCurrentTime = $interval(function() {
             $scope.currentTime = new Date();
