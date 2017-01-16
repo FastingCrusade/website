@@ -1,10 +1,11 @@
 angular.module('fc.home.welcome', [
+   'fc.services.userService',
    'fc.services.fastService',
    'slickCarousel',
    'ui.bootstrap'
 ])
-.controller('WelcomeCtrl', ['$rootScope', '$scope', '$state', '$timeout', 'fastService', 
-   function($rootScope, $scope, $state, $timeout, fastService) {
+.controller('WelcomeCtrl', ['$scope', '$state', '$timeout', 'userService', 'fastService', 
+   function($scope, $state, $timeout, userService, fastService) {
 
    $scope.state = $state;
    $scope.fasts = [];
@@ -19,7 +20,7 @@ angular.module('fc.home.welcome', [
       centerMode: false
    };
 
-   fastService.getFasts($rootScope.user.name)
+   fastService.getFasts()
       .then(function(response) {
          $scope.fastsLoaded = false;
          $scope.fasts = response.data.data.data;
