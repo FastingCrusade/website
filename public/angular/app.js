@@ -1,6 +1,7 @@
 angular.module('fc', [
    'ui.router', 
    'fc.common.filters',
+   'fc.services.userService',
    'fc.nav',
    'fc.sidebar',
    'fc.home.welcome',
@@ -90,4 +91,20 @@ angular.module('fc', [
          url: 'contact',
          templateUrl: 'angular/admin/contact.tpl.html'
       });
-});
+})
+.run(['$rootScope', '$state', 'userService', function ($rootScope, $state, userService) {
+
+   var noAuthStates = [
+      'root.soon',
+      'root.account.register',
+      'root.about'
+   ]   
+
+   $rootScope.$on('$stateChangeStart', function (event, toState) {
+      if (!userService.isLoggedIn() && noAuthStates.indexOf(toState.name) === -1) {
+         event.preventDefault();
+         $state.go('root.soon');
+      }
+   });
+}])
+;

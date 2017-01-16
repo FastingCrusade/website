@@ -5,8 +5,11 @@ angular.module('fc.services.userService', [
 
    var userService = {};
    userService.login = login;
+   userService.isLoggedIn = isLoggedIn;
    userService.logout = logout;
    userService.register = register;
+
+   userService.user = null;
 
    return userService;   
 
@@ -21,7 +24,13 @@ angular.module('fc.services.userService', [
             'password': password, 
             '_token': token 
          }
+      }).then(function(response) {
+         userService.user = JSON.parse(response.data.data);
       });
+   }
+
+   function isLoggedIn() {
+      return !!userService.user;
    }
 
    function register(email, password, name) {
@@ -43,6 +52,8 @@ angular.module('fc.services.userService', [
       return $http({
          method: 'GET',
          url: '/logout'
+      }).then(function(data) {
+         userService.user = null;
       });
    }
 
