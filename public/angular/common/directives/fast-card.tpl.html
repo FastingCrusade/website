@@ -3,6 +3,6 @@
    <span class="fast-subtitle">{{ fast.subtype }}</span>
    <hr class="fast-card-divider"/>
    <uib-progressbar animate="false" max="fast.end - fast.start" value="currentTime - fast.start" 
-      class="fast-progress" type="success"><b>{{ currentTime | timeRemainingFromString:fast.end }} Left</b></uib-progressbar>
+      class="fast-progress" type="success"><b>{{ currentTime | timeRemainingFromString:fast.end }}</b></uib-progressbar>
    <div>{{ fast.description }}</div>   
 </div>

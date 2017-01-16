@@ -27,7 +27,7 @@ angular.module('fc.common.filters', [
          var returnString = '';
          returnString += (days > 0) ? days + 'D ': '';
          returnString += hours + ':' + minutes + ':' + seconds;
-         return returnString;
+         return returnString + ' Left';
       }
    };
 })

@@ -2,4 +2,19 @@
 
 }
 
+.welcome .new-fast {
+   height: 260px;
+   display: flex;
+}
+
+.welcome .new-fast .create-button {
+   margin: auto 0;
+   padding: 20px 10px;
+   border-width: 2px;
+}
+
+.welcome .fast-slider {
+   min-width: 220px;
+}
+
 
