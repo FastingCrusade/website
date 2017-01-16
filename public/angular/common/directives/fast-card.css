@@ -4,6 +4,7 @@
    text-align: center;
    margin: 5px 10px;
    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   background: linear-gradient(to bottom right, silver, grey);
 }
 
 .fast-card .fast-category {
