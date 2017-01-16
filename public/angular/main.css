@@ -18,3 +18,10 @@
 .ui.form .email-input {
    width: 300px !important;
 }
+
+.panel-default.text-panel {
+   background-color: rgba(180, 180, 180, .5);
+   border-color: #808080;
+   padding: 20px;
+   margin-top: 20px;
+}
