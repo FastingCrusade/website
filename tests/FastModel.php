@@ -11,9 +11,12 @@ namespace Testing;
 
 use App\Models\Fast;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class FastModel extends TestCase
 {
+    use DatabaseTransactions;
+    
     public function testToArray()
     {
         $start = Carbon::now();
