@@ -21,6 +21,12 @@
    margin: 10px;
 }
 
+.fast-card .not-begun {
+   width: 180px;
+   position: absolute;
+   display: flex;
+}
+
 .fast-card .fast-progress {
    width: 90%;
    margin: 10px auto;
