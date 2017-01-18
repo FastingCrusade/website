@@ -51,10 +51,10 @@
                   </div>   
 
                   <div class="row">
-                     <div class="form-group">
+                     <div class="form-group" ng-class="{ 'has-error' : !newFastForm.description.$valid }">
                         <label class="col-md-2 control-label">Description</label>
                         <div class="col-md-8">
-                           <textarea class="form-control" name="description" ng-model="description"></textarea>
+                           <textarea class="form-control" name="description" ng-model="description" required></textarea>
                         </div>
                      </div>
                   </div>
