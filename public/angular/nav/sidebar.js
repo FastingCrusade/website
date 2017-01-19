@@ -4,6 +4,8 @@ angular.module('fc.sidebar', [
 ])
 .controller('SidebarCtrl', ['$scope', '$state', 'userService',
    function($scope, $state, userService) {
+
+   $scope.user = userService.user;
    
    // Temporary dummy data
    $scope.followedFasts = [{
