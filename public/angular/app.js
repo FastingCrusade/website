@@ -1,6 +1,7 @@
 angular.module('fc', [
    'ui.router', 
    'fc.common.filters',
+   'fc.common.directives',
    'fc.services.userService',
    'fc.nav',
    'fc.sidebar',

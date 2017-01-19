@@ -1,3 +1,4 @@
+/* For full size fasts */
 .fast-card {
    height: 250px;
    width: 200px;
@@ -21,21 +22,42 @@
    margin: 10px;
 }
 
-.fast-card .not-begun {
+.fast-card .not-begun,
+.fast-card-small .not-begun {
    width: 180px;
    position: absolute;
    display: flex;
 }
 
-.fast-card .fast-progress {
+.fast-card .fast-progress,
+.fast-card-small .fast-progress {
    width: 90%;
    margin: 10px auto;
 }
 
-.fast-card .fast-progress .progress-bar {
+.fast-card .fast-progress .progress-bar,
+.fast-card-small .fast-progress .progress-bar {
    color: black;
 }
 
 .slick-next:before, .slick-prev:before {
    color: #222222;
+}
+
+/* For small sidebar fast cards */
+.fast-card-small {
+   max-width: 200px;
+}
+
+.fast-card-small .fast-category {
+   margin-bottom: 5px;
+}
+
+.fast-card-small .fast-category .fast-link {
+   cursor: pointer;
+}
+
+.fast-card-small .fast-category .fast-user {
+   font-style: italic;
+   font-size: small;
 }

@@ -1,7 +1,6 @@
 angular.module('fc.nav', [
    'ui.bootstrap',
-   'fc.services.userService',
-   'fc.directives.ng-enter'
+   'fc.services.userService'
 ])
 .controller('NavCtrl', ['$rootScope', '$scope', '$state', 'userService', 
    function($rootScope, $scope, $state, userService) {

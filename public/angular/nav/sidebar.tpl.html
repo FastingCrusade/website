@@ -6,10 +6,9 @@
 <div class="followed-fasts">
    <h3>Followed Fasts</h3>
    <ul class="fasts-list">
-      <li class="followed-fast" ng-repeat="fasts in followedFasts">
-         <span>Following fast {{fast.name}}</span>
+      <li class="followed-fast" ng-repeat="fast in followedFasts" fast-card-small fast="fast">
       </li>
-      <li ng-if="!follwedFasts">
+      <li ng-if="!followedFasts">
          <span>You have no follwed fasts at this time.</span>
       </li>
    </ul>
@@ -18,7 +17,7 @@
    <h3>Friends</h3>
    <ul class="friends-list">
       <li class="friend" ng-repeat="friend in friendsList">
-         <span>Friend {{friend.name}}</span>
+         <a class="friend-link">{{friend.name}}</a>
       </li>
       <li ng-if="!friendsList">
          <span>Add a friend to see them here!</span>

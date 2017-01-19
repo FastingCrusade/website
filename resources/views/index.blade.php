@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="angular/home/welcome.css">
     <link rel="stylesheet" type="text/css" href="angular/home/new-fast.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/nav.css">
+    <link rel="stylesheet" type="text/css" href="angular/nav/sidebar.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/footer.css">
     <link rel="stylesheet" type="text/css" href="angular/main.css">
    
