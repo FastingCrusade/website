@@ -27,7 +27,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->state('App\Models\User', 'admin', function (Faker\Generator $faker) {
+$factory->state(App\Models\User::class, 'admin', function (Faker\Generator $faker) {
     return [
         'is_admin' => true,
     ];
