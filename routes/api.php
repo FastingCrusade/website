@@ -20,6 +20,7 @@ Route::get('/user/{user}/fasts', 'UserFasts@index');
 
 // Fasts Routes
 Route::get('/fasts', 'Fasts@index');
+Route::get('/fast/{fast}/comments', 'FastComments@index');
 
 // Subscription Routes
 Route::post('/newsletters/subscription', 'Newsletters@create');
@@ -36,5 +37,5 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // Fasts Routes
     Route::post('/fasts', 'Fasts@create');
+    Route::post('/fast/{fast}/comments', 'FastComments@create');
 });
-
