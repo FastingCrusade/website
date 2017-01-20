@@ -21,7 +21,9 @@ class FastsController extends TestCase
 
     public function testIndex()
     {
-        factory('App\Models\Fast', 60)->create();
+        $number_created = 60;
+        $starting_count = Fast::all()->count();
+        factory('App\Models\Fast', $number_created)->create();
         $this->get('/api/fasts');
 
         $this->assertResponseOk();
@@ -32,7 +34,7 @@ class FastsController extends TestCase
         $response = json_decode($this->response->content());
 
         $this->assertEquals('http://localhost/api/fasts?page=2', $response->data->next_page_url);
-        $this->assertEquals(60, $response->data->total);
+        $this->assertEquals($starting_count + $number_created, $response->data->total);
     }
 
     public function testCreateAsAdmin()
