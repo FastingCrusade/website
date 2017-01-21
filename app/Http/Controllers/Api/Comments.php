@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Models\Comment;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,13 +46,16 @@ class Comments extends ApiController
     /**
      * Handles updating a Comment.
      *
+     * @param Request $request
      * @param Comment $comment
      *
      * @return Response
      */
-    public function update(Comment $comment)
+    public function update(Request $request, Comment $comment)
     {
         if (Auth::user()->id === $comment->user->id) {
+            $comment->contents = $request->input('contents');
+            $comment->save();
             $response = $this->response($comment->id, 'UPDATED', Response::HTTP_ACCEPTED);
         } else {
             $response = $this->notAuthorizedResponse();
