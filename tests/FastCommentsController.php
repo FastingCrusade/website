@@ -13,6 +13,7 @@ use App\Models\Comment;
 use App\Models\Fast;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 
 class FastCommentsController extends TestCase
@@ -36,7 +37,7 @@ class FastCommentsController extends TestCase
                 'Authorization' => "Bearer {$user->api_token}",
             ]
         );
-        $this->assertResponseOk();
+        $this->assertResponseStatus(Response::HTTP_CREATED);
     }
 
     public function testListFastComments()
@@ -75,12 +76,13 @@ class FastCommentsController extends TestCase
         );
         $fast->load('comments');
 
-        $this->assertResponseOk();
+        $this->assertResponseStatus(Response::HTTP_CREATED);
 
         /** @var Comment $comment */
         $comment = Comment::find(json_decode($this->response->getContent())->data);
 
         $this->assertEquals($fast->comments->first()->id, $comment->id);
         $this->assertEquals($fast->comments->first()->contents, $comment->contents);
+        $this->assertEquals($user->id, $comment->user_id);
     }
 }

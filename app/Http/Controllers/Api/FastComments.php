@@ -8,14 +8,15 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Comment;
 use App\Models\Fast;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 
 /**
  * Class FastComments
- *
  * Controller for managing the Comments on a Fast.
  *
  * @package App\Http\Controllers\Api
@@ -44,6 +45,12 @@ class FastComments extends ApiController
      */
     public function create(Request $request, Fast $fast)
     {
-        return $this->response();
+        /** @var Comment $comment */
+        $comment = $fast->comments()->create([
+            'user_id'  => Auth::user()->id,
+            'contents' => $request->input('contents'),
+        ]);
+
+        return $this->response($comment->id, 'CREATED', Response::HTTP_CREATED);
     }
 }
