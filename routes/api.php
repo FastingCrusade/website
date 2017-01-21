@@ -38,4 +38,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Fasts Routes
     Route::post('/fasts', 'Fasts@create');
     Route::post('/fast/{fast}/comments', 'FastComments@create');
+
+    // Comment Routes
+    Route::delete('/comments/{comment}', 'Comments@delete');
+    Route::post('/comments/{comment}', 'Comments@update');
 });
