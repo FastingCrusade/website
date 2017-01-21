@@ -47,11 +47,20 @@ $factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
         'user_id'          => function () {
             return factory('App\Models\User')->create()->id;
         },
+        'commentable_type' => 'App\Models\Fast',
+        'commentable_id'   => function () {
+            return factory('App\Models\Fast')->create()->id;
+        },
+        'contents'         => $faker->sentence,
+    ];
+});
+
+$factory->state(App\Models\Comment::class, 'fast', function (Faker\Generator $faker) {
+    return [
         'commentable_id'   => function () {
             return factory('App\Models\Fast')->create()->id;
         },
         'commentable_type' => 'App\Models\Fast',
-        'contents'         => $faker->sentence,
     ];
 });
 
