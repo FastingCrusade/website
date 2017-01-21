@@ -59,16 +59,6 @@ class Fast extends Commentable
     }
 
     /**
-     * Relationship to the Comments.
-     *
-     * @return MorphMany
-     */
-    public function comments()
-    {
-        return $this->morphMany('App\Models\Comment', 'commentable');
-    }
-
-    /**
      * Converts the object into an Array representation.
      *
      * @return array
