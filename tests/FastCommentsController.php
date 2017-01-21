@@ -9,6 +9,7 @@
 namespace Testing;
 
 
+use App\Models\Comment;
 use App\Models\Fast;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -52,5 +53,34 @@ class FastCommentsController extends TestCase
         $this->assertResponseOk();
 
         $this->assertEquals($comments->pluck('id'), collect(json_decode($this->response->getContent())->data)->pluck('id'));
+    }
+
+    public function testAddCommentToFast()
+    {
+        /** @var User $user */
+        $user = factory('App\Models\User')->create();
+        /** @var Fast $fast */
+        $fast = factory('App\Models\Fast')->create([
+            'user_id' => $user->id,
+        ]);
+
+        $this->post(
+            "/api/fast/{$fast->id}/comments",
+            [
+                'contents' => 'This is a test comment.',
+            ],
+            [
+                'Authorization' => "Bearer {$user->api_token}",
+            ]
+        );
+        $fast->load('comments');
+
+        $this->assertResponseOk();
+
+        /** @var Comment $comment */
+        $comment = Comment::find(json_decode($this->response->getContent())->data);
+
+        $this->assertEquals($fast->comments->first()->id, $comment->id);
+        $this->assertEquals($fast->comments->first()->contents, $comment->contents);
     }
 }
