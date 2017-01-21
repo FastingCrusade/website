@@ -12,6 +12,7 @@ namespace Testing;
 use App\Models\Comment;
 use App\Models\User as UserModel;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\Response;
 
 class CommentsController extends TestCase
 {
@@ -51,7 +52,7 @@ class CommentsController extends TestCase
                 'Authorization' => "Bearer {$user->api_token}",
             ]
         );
-        $this->assertResponseOk();
+        $this->assertResponseStatus(Response::HTTP_ACCEPTED);
 
         $comment = $comment->fresh();
         $this->assertEquals('This is an edited comment.', $comment->contents);
