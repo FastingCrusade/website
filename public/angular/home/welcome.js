@@ -12,12 +12,11 @@ angular.module('fc.home.welcome', [
    $scope.fastsLoaded = true;
    $scope.slickConfig = {
       dots: true,
-      infinite: false,
+      infinite: true,
       speed: 300,
-      slidesToShow: 3,
-      touchMove: false,
-      slidesToScroll: 1,
-      centerMode: false
+      slidesToShow: 1,
+      centerMode: true,
+      variableWidth: true
    };
 
    fastService.getFasts()

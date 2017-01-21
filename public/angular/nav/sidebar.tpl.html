@@ -1,3 +1,28 @@
-<div class="sidebar">
-
+<div class="profile-pic-area">
+   <img class="profile-pic" ng-src="/img/c-logo-dark.svg">
+   <span ng-if="!user.first_name">{{user.full_name}}</span>
+   <span ng-if="user.first_name">{{user.first_name user.last_name}}</span>
 </div>
+<hr>
+<div class="followed-fasts">
+   <h3>Followed Fasts</h3>
+   <ul class="fasts-list">
+      <li class="followed-fast" ng-repeat="fast in followedFasts" fast-card-small fast="fast">
+      </li>
+      <li ng-if="!followedFasts">
+         <span>You have no follwed fasts at this time.</span>
+      </li>
+   </ul>
+</div>
+<div class="friends">
+   <h3>Friends</h3>
+   <ul class="friends-list">
+      <li class="friend" ng-repeat="friend in friendsList">
+         <a class="friend-link">{{friend.name}}</a>
+      </li>
+      <li ng-if="!friendsList">
+         <span>Add a friend to see them here!</span>
+      </li>
+   </ul>
+</div>
+
