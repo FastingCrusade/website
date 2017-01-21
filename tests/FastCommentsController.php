@@ -50,6 +50,7 @@ class FastCommentsController extends TestCase
 
         $this->get("/api/fast/{$fast->id}/comments");
         $this->assertResponseOk();
-        $this->seeJson($comments->toArray());
+
+        $this->assertEquals($comments->pluck('id'), collect(json_decode($this->response->getContent())->data)->pluck('id'));
     }
 }

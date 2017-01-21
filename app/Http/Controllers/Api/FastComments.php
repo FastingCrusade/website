@@ -31,7 +31,7 @@ class FastComments extends ApiController
      */
     public function index(Fast $fast)
     {
-        return $this->response();
+        return $this->response($fast->comments);
     }
 
     /**

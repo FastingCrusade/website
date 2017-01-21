@@ -3,8 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class Fast
+ *
+ * @package App\Models
+ */
 class Fast extends Commentable
 {
     use SoftDeletes;
@@ -52,6 +58,21 @@ class Fast extends Commentable
         return $this->belongsTo('App\Models\Category');
     }
 
+    /**
+     * Relationship to the Comments.
+     *
+     * @return MorphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
+
+    /**
+     * Converts the object into an Array representation.
+     *
+     * @return array
+     */
     public function toArray()
     {
         $array = parent::toArray();
