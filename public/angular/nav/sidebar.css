@@ -1,9 +1,7 @@
 .sidebar {
-   background-color: #222;
    height: 90.4vh;
    top: -20px;
    padding-right: 0;
-   color: #9d9d9d;
 }
 
 .sidebar .profile-pic-area {
@@ -21,7 +19,7 @@
 }
 
 .sidebar hr {
-   color: #9d9d9d;
+   color: black;
    margin: 10px;
 } 
 
