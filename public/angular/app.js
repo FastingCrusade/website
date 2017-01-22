@@ -64,7 +64,7 @@ angular.module('fc', [
       })
       .state('root.main.user.full-fast', {  
          templateUrl: 'angular/fasts/full-fast.tpl.html',
-         controller: 'NewFastCtrl'
+         controller: 'FullFastCtrl'
       })
         
       .state('root.account', {

@@ -3,7 +3,7 @@ angular.module('fc.account.register', [
    'fc.services.userService'
 ])
 .controller('RegisterCtrl', ['$scope', '$state', 'constants', 'userService', 
-   function($scope, $state, userService) {
+   function($scope, $state, constants, userService) {
    
    $scope.submitRegistration = submitRegistration;
    $scope.returnHome = returnHome;

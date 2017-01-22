@@ -5,7 +5,7 @@ angular.module('fc.home.welcome', [
    'slickCarousel',
    'ui.bootstrap'
 ])
-.controller('WelcomeCtrl', ['$scope', '$state', '$timeout', 'constnats', 'userService', 'fastService', 
+.controller('WelcomeCtrl', ['$scope', '$state', '$timeout', 'constants', 'userService', 'fastService', 
    function($scope, $state, $timeout, constants, userService, fastService) {
 
    $scope.states = constants.states;
