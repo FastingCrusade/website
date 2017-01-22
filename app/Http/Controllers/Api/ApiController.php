@@ -45,4 +45,14 @@ abstract class ApiController extends Controller
             'data'   => $data,
         ], $code);
     }
+
+    /**
+     * General unauthorized response.
+     *
+     * @return Response
+     */
+    protected function notAuthorizedResponse()
+    {
+        return $this->response(null, 'NOT AUTHORIZED', Response::HTTP_UNAUTHORIZED);
+    }
 }

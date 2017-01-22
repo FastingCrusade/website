@@ -162,7 +162,7 @@ class FastsController extends TestCase
                 'start'       => Carbon::now(),
                 'end'         => Carbon::now()->addDays(3),
                 'description' => 'Just a test fast, nothing to see here.',
-                'api_token'   => 'testTokenGoesHere',
+                'extra_token'   => 'testTokenGoesHere',
             ],
             [
                 'Authorization' => "Bearer {$user->api_token}",
@@ -185,7 +185,7 @@ class FastsController extends TestCase
                 'start'       => Carbon::now()->timestamp,
                 'end'         => Carbon::now()->addDays(3)->timestamp,
                 'description' => 'Just a test fast, nothing to see here.',
-                'api_token'   => 'testTokenGoesHere',
+                'extra_token'   => 'testTokenGoesHere',
             ],
             [
                 'Authorization' => "Bearer {$user->api_token}",
