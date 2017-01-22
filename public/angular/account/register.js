@@ -1,7 +1,8 @@
 angular.module('fc.account.register', [
+   'fc.common.constants',
    'fc.services.userService'
 ])
-.controller('RegisterCtrl', ['$scope', '$state', 'userService', 
+.controller('RegisterCtrl', ['$scope', '$state', 'constants', 'userService', 
    function($scope, $state, userService) {
    
    $scope.submitRegistration = submitRegistration;
@@ -19,6 +20,6 @@ angular.module('fc.account.register', [
 
    // TODO: Eventually figure out what the "main" state is, when you first hit the app
    function returnHome() {
-      $state.go('root.soon');
+      $state.go(constants.states.soon);
    }
 }]);

@@ -35,41 +35,38 @@ angular.module('fc', [
          templateUrl: 'angular/soon/coming-soon.tpl.html',
          controller: 'ComingSoonCtrl'
       })
-      
-      .state('root.home', {
-         url: '/home',
-         templateUrl: 'angular/sidebar-page.tpl.html'
-      })
-      .state('root.home.welcome', {
-         views: {
-            'sidebar': {
-               templateUrl: 'angular/nav/sidebar.tpl.html',
-               controller: 'SidebarCtrl'
-            },
-            'content': {
-               templateUrl: 'angular/home/welcome.tpl.html',
-               controller: 'WelcomeCtrl'
-            }
-         }
-      })
-      .state('root.home.newfast', {  
-         views: {
-            'sidebar': {
-               templateUrl: 'angular/nav/sidebar.tpl.html',
-               controller: 'SidebarCtrl'
-            },
-            'content': {
-               templateUrl: 'angular/home/new-fast.tpl.html',
-               controller: 'NewFastCtrl'
-            }
-         }
-      })
-        
       .state('root.about', {
          url: '/about',
          templateUrl: 'angular/about/about.tpl.html'
       }) 
-
+      
+      .state('root.main', {
+         templateUrl: 'angular/sidebar-page.tpl.html'
+      })
+      .state('root.main.user', {
+         views: {
+            'sidebar': {
+               templateUrl: 'angular/nav/sidebar.tpl.html',
+               controller: 'SidebarCtrl'
+            },
+            'content': {
+               template: '<div ui-view></div>'
+            }
+         }
+      })
+      .state('root.main.user.welcome', {
+         templateUrl: 'angular/home/welcome.tpl.html',
+         controller: 'WelcomeCtrl'
+      })
+      .state('root.main.user.new-fast', {  
+         templateUrl: 'angular/fasts/new-fast.tpl.html',
+         controller: 'NewFastCtrl'
+      })
+      .state('root.main.user.full-fast', {  
+         templateUrl: 'angular/fasts/full-fast.tpl.html',
+         controller: 'NewFastCtrl'
+      })
+        
       .state('root.account', {
          url: '/account',
          template: '<div ui-view></div>'

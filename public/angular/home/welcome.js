@@ -1,12 +1,14 @@
 angular.module('fc.home.welcome', [
+   'fc.common.constants',
    'fc.services.userService',
    'fc.services.fastService',
    'slickCarousel',
    'ui.bootstrap'
 ])
-.controller('WelcomeCtrl', ['$scope', '$state', '$timeout', 'userService', 'fastService', 
-   function($scope, $state, $timeout, userService, fastService) {
+.controller('WelcomeCtrl', ['$scope', '$state', '$timeout', 'constnats', 'userService', 'fastService', 
+   function($scope, $state, $timeout, constants, userService, fastService) {
 
+   $scope.states = constants.states;
    $scope.state = $state;
    $scope.fasts = [];
    $scope.fastsLoaded = true;

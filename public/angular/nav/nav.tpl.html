@@ -1,14 +1,14 @@
 <nav class="navbar navbar-inverse navbar-static-top nav-colors">
    <div class="navbar-header">
-      <a class="navbar-brand custom-brand" ui-sref="root.soon"><img src="/img/full-logo-dark.svg"/></a>
+      <a class="navbar-brand custom-brand" ui-sref="{{states.soon}}"><img src="/img/full-logo-dark.svg"/></a>
    </div>
    <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-         <li ng-show="isLoggedIn"><a ui-sref="root.home.welcome">Home</a></li>
-         <li><a ui-sref="root.about">About</a></li>
+         <li ng-show="isLoggedIn"><a ui-sref="{{states.welcome}}">Home</a></li>
+         <li><a ui-sref="{{states.about}}">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right account-nav" ng-show="!isLoggedIn">
-         <li ng-show="false"><a ui-sref="root.account.register">Register</a></li>
+         <li><a ui-sref="{{states.register}}">Register</a></li>
          <li uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
             <a uib-dropdown-toggle id="sign-in-button">Sign In<strong class="caret"></strong></a>
             <div uib-dropdown-menu aria-labelledby="sign-in-button" class="sign-in-dropdown">
@@ -31,7 +31,7 @@
          </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
-         <li><a ui-sref-"root.account">My Account</a></li>
+         <li><a ui-sref-"{{states.account}}">My Account</a></li>
          <li><a ng-click="logout()">Log Out</a></li>
       </ul>
    </div>

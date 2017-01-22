@@ -1,9 +1,10 @@
 angular.module('fc.home.newFast', [
    'ui.bootstrap',
+   'fc.common.constants',
    'fc.services.fastService'
 ])
-.controller('NewFastCtrl', ['$scope', '$state', 'fastService',
-   function($scope, $state, fastService) {
+.controller('NewFastCtrl', ['$scope', '$state', 'constants', 'fastService',
+   function($scope, $state, constants, fastService) {
    
    $scope.createFast = createFast;
    $scope.fastCategories = fastService.fastCategories;
@@ -30,7 +31,7 @@ angular.module('fc.home.newFast', [
       newFast.description = $scope.description;
 
       fastService.addFast(newFast);
-      $state.go('root.home.welcome');
+      $state.go(constants.state.welcome);
    }
 
 }]);

@@ -1,10 +1,12 @@
 angular.module('fc.nav', [
    'ui.bootstrap',
+   'fc.common.constants',
    'fc.services.userService'
 ])
-.controller('NavCtrl', ['$rootScope', '$scope', '$state', 'userService', 
-   function($rootScope, $scope, $state, userService) {
+.controller('NavCtrl', ['$rootScope', '$scope', '$state', 'constants', 'userService', 
+   function($rootScope, $scope, $state, constants, userService) {
    
+   $scope.states = constants.states;
    $scope.login = login;
    $scope.logout = logout;
    $scope.isLoggedIn = userService.isLoggedIn();
@@ -13,7 +15,7 @@ angular.module('fc.nav', [
       userService.login($scope.email, $scope.password, $scope.rememberMe)
          .then(function(response) {
             $scope.isLoggedIn = true;
-            $state.go('root.home.welcome');
+            $state.go(constants.states.welcome);
             $scope.loginFailure = false;
          }, function(error) {
             $scope.loginFailure = true;
@@ -25,7 +27,7 @@ angular.module('fc.nav', [
       userService.logout()
       .then(function(response) {
          $scope.isLoggedIn = false;
-         $state.go('root.soon');
+         $state.go(constants.states.soon);
       });
    }
 

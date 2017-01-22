@@ -26,6 +26,7 @@ angular.module('fc.services.userService', [
          }
       }).then(function(response) {
          userService.user = JSON.parse(response.data.data);
+         $http.defaults.headers.common['Authorization'] = 'Bearer ' + userService.user.api_token;
       });
    }
 
