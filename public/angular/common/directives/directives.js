@@ -1,4 +1,5 @@
 angular.module('fc.common.directives', [
+   'fc.common.constants',
    'fc.services.fastService'
 ])
 .directive('ngEnter', function () {
@@ -22,15 +23,22 @@ angular.module('fc.common.directives', [
       scope: {
          fast: '='
       },
-      controller: ['$scope', '$interval', 'fastService', function($scope, $interval, fastService) {
+      controller: ['$scope', '$state', '$interval', 'constants', 'fastService', 
+         function($scope, $state, $interval, constants, fastService) {
          
          $scope.$on('destroy', cancelInterval);
          $scope.currentTime = new Date().getTime() / 1000;
          $scope.fastCategories = fastService.fastCategories;
+   
+         $scope.openFast = openFast;
       
          var updateCurrentTime = $interval(function() {
             $scope.currentTime = new Date().getTime() / 1000;
          }, 1000);
+
+         function openFast(fast) {
+            $state.go(constants.states.fullFast, { fast: fast });
+         }
 
          function cancelInterval() {
             if (angular.isDefined(updateCurrentTime)) {

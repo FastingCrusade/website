@@ -31,7 +31,7 @@ angular.module('fc.home.newFast', [
       newFast.description = $scope.description;
 
       fastService.addFast(newFast);
-      $state.go(constants.state.welcome);
+      $state.go(constants.states.welcome);
    }
 
 }]);

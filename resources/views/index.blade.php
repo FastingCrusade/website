@@ -43,6 +43,7 @@
     <script src="angular/about/about.js"></script>
     <script src="angular/home/welcome.js"></script>
     <script src="angular/fasts/new-fast.js"></script>
+    <script src="angular/fasts/full-fast.js"></script>
     <script src="angular/nav/nav.js"></script>
     <script src="angular/nav/sidebar.js"></script>
     <script src="angular/app.js"></script>

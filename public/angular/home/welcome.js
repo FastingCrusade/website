@@ -2,6 +2,7 @@ angular.module('fc.home.welcome', [
    'fc.common.constants',
    'fc.services.userService',
    'fc.services.fastService',
+   'fc.home.fullFast',
    'slickCarousel',
    'ui.bootstrap'
 ])

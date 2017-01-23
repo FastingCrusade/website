@@ -3,13 +3,14 @@ angular.module('fc.home.fullFast', [
    'fc.common.constants',
    'fc.services.fastService'
 ])
-.controller('NewFastCtrl', ['$scope', '$state', 'constants', 'fastService',
-   function($scope, $state, constants, fastService) {
+.controller('FullFastCtrl', ['$scope', '$state', '$stateParams', 'constants', 'fastService',
+   function($scope, $state, $stateParams, constants, fastService) {
    
    $scope.fastCategories = fastService.fastCategories;
+   $scope.fast = $stateParams.fast;
   
    function createFast() {
-
+      
    }
 
 }]);
