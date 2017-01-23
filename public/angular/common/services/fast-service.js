@@ -1,12 +1,11 @@
 angular.module('fc.services.fastService', [
-
+   'fc.services.userService'
 ])
-.factory('fastService', function($rootScope, $state, $http) {
+.factory('fastService', ['$state', '$http', 'userService', function($state, $http, userService) {
 
    var fastService = {};
    fastService.getFasts = getFasts;
    fastService.addFast = addFast;
-   fastService.fasts = [];
 
    fastService.fastCategories = [];
    var categoryList = [
@@ -39,33 +38,23 @@ angular.module('fc.services.fastService', [
 
    return fastService;   
 
-   function getFasts(user) {
+   function getFasts() {
       
-      $http({
+      return $http({
          method: 'GET',
-         url: '/api/user/' + $rootScope.user.id + '/fasts'
-      }).then(function(response) {
-         fastService.fasts = response.data;
-         return fastService.fasts;
-      }, function(error) {
-         console.log('Error retrieving fasts: ' + error.statusText);
+         url: '/api/user/' + userService.user.id + '/fasts'
       });
    }
 
    function addFast(newFast) {
       var token = angular.element(document.querySelector('#csrf_token'))[0].content;
 
-/*
-      // TODO: Remove when backend is hooked up.
-      fastService.fasts.push(newFast);
-      return fastService.fasts;
-*/    
-      $http.defaults.headers.common['Authorization'] = 'Bearer ' + $rootScope.user.api_token;
+      $http.defaults.headers.common['Authorization'] = 'Bearer ' + userService.user.api_token;
       $http({
          method: 'POST',
          url: '/api/fasts',
          data: { 
-            'user_id': $rootScope.user.id,
+            'user_id': userService.user.id,
             'category_id': newFast.category_id,
             'subtype': newFast.subtype,
             'start': newFast.start / 1000,
@@ -73,10 +62,9 @@ angular.module('fc.services.fastService', [
             'description': newFast.description
          }
       }).then(function(response) {
-         fastService.fasts.push(newFast);
-         $state.go('home.welcome');
+         $state.go('root.home.welcome');
       }, function(error) {
          console.log('Error adding fast: ' + error.statusText);
       });
    }
-});
+}]);

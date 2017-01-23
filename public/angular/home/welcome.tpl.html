@@ -1,21 +1,20 @@
 <div class="welcome">
    <div class="row">
-      <div class="col-md-8">
-         <slick dots="true" infinite="false" speed="300" slides-to-show="3" touch-move="false" slides-to-scroll="1" center-mode="true">
-            <div fast-card ng-repeat="fast in fasts" fast="fast"></div>
+      <div class="col-md-offset-2 col-md-1">
+         <div class="new-fast">
+            <button class="btn btn-primary create-button" ng-click="state.go('root.home.newfast')">Create New Fast!</button>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <slick ng-if="fastsLoaded" settings="slickConfig">
+            <div fast-card ng-repeat="fast in fasts" fast="fast" class="fast-slider"></div>
          </slick>
-      </div>
-      <div class="col-md-2">
-         <button class="btn btn-default" ng-click="state.go('home.newfast')">Create New Fast!</button>
-      </div>
-      <div class="col-md-2">
-         <a>Friends</a><br/>
-         <a>Fasts</a><br/>
-         <a>Resources</a>
       </div>
    </div>
    <div class="row">
+      <div class="col-md-12">
          <span>Then here is all the "pinned up" friend fasts</span>
+      </div>
    </div>
 </div>
 

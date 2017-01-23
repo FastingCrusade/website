@@ -1,4 +1,5 @@
-angular.module('fc.directives.ng-enter', [
+angular.module('fc.common.directives', [
+   'fc.services.fastService'
 ])
 .directive('ngEnter', function () {
     return function (scope, element, attrs) {
@@ -15,24 +16,20 @@ angular.module('fc.directives.ng-enter', [
 })
 .directive('fastCard', function () {
 
-   var fastCardCtrl = ['$scope', function($scope) {
-      
-   }];
-
    return {
       restrict: 'A',
       templateUrl: 'angular/common/directives/fast-card.tpl.html',
-      controller: fastCardCtrl,
       scope: {
          fast: '='
       },
-      controller: ['$scope', '$interval', function($scope, $interval) {
+      controller: ['$scope', '$interval', 'fastService', function($scope, $interval, fastService) {
          
          $scope.$on('destroy', cancelInterval);
-         $scope.currentTime = new Date();
+         $scope.currentTime = new Date().getTime() / 1000;
+         $scope.fastCategories = fastService.fastCategories;
       
          var updateCurrentTime = $interval(function() {
-            $scope.currentTime = new Date();
+            $scope.currentTime = new Date().getTime() / 1000;
          }, 1000);
 
          function cancelInterval() {
@@ -43,6 +40,32 @@ angular.module('fc.directives.ng-enter', [
          }
       }]
    };
+})
+.directive('fastCardSmall', function () {
 
+   return {
+      restrict: 'A',
+      templateUrl: 'angular/common/directives/fast-card-small.tpl.html',
+      scope: {
+         fast: '='
+      },
+      controller: ['$scope', '$interval', 'fastService', function($scope, $interval, fastService) {
+
+         $scope.$on('destroy', cancelInterval);
+         $scope.currentTime = new Date().getTime() / 1000;
+         $scope.fastCategories = fastService.fastCategories;
+
+         var updateCurrentTime = $interval(function() {
+            $scope.currentTime = new Date().getTime() / 1000;
+         }, 1000);
+
+         function cancelInterval() {
+            if (angular.isDefined(updateCurrentTime)) {
+               $interval.cancel(updateCurrentTime);
+               updateCurrentTime = undefined;
+            }
+         }
+      }]
+   };
 })
 ;

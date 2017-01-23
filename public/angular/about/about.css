@@ -1,3 +1,13 @@
 .about {
    text-align: center;
 }
+
+.about .panel-default.text-panel.about-panel {
+   background-color: rgb(180, 180, 180);
+}
+
+.about .about-body {
+   text-align: left;
+   margin: 10px;
+   font-size: 14pt;
+}

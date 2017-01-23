@@ -1,6 +1,10 @@
 angular.module('fc', [
    'ui.router', 
+   'fc.common.filters',
+   'fc.common.directives',
+   'fc.services.userService',
    'fc.nav',
+   'fc.sidebar',
    'fc.home.welcome',
    'fc.home.newFast',
    'fc.comingSoon',
@@ -11,70 +15,97 @@ angular.module('fc', [
    $urlRouterProvider.otherwise('/soon');
     
    $stateProvider
-        
-      .state('soon', {
-         url: '/soon',
+
+      .state('root', {
          views: {
             'main': {
-               templateUrl: 'angular/soon/coming-soon.tpl.html',
-               controller: 'ComingSoonCtrl'
+               template: '<div ui-view></div>'
             },
             'navigation': {
                templateUrl: 'angular/nav/nav.tpl.html',
                controller: 'NavCtrl'
+            },
+            'footer': {
+               templateUrl: 'angular/nav/footer.tpl.html',
             }
          }
+      })        
+      .state('root.soon', {
+         url: '/soon',
+         templateUrl: 'angular/soon/coming-soon.tpl.html',
+         controller: 'ComingSoonCtrl'
       })
       
-      .state('home', {
+      .state('root.home', {
          url: '/home',
+         templateUrl: 'angular/sidebar-page.tpl.html'
+      })
+      .state('root.home.welcome', {
          views: {
-            'main': {
-               template: '<div ui-view></div>'
+            'sidebar': {
+               templateUrl: 'angular/nav/sidebar.tpl.html',
+               controller: 'SidebarCtrl'
             },
-            'navigation': {
-               templateUrl: 'angular/nav/nav.tpl.html',
-               controller: 'NavCtrl'
+            'content': {
+               templateUrl: 'angular/home/welcome.tpl.html',
+               controller: 'WelcomeCtrl'
             }
          }
       })
-      .state('home.welcome', {
-         templateUrl: 'angular/home/welcome.tpl.html',
-         controller: 'WelcomeCtrl'
-      })
-      .state('home.newfast', {  
-         templateUrl: 'angular/home/new-fast.tpl.html',
-         controller: 'NewFastCtrl'
+      .state('root.home.newfast', {  
+         views: {
+            'sidebar': {
+               templateUrl: 'angular/nav/sidebar.tpl.html',
+               controller: 'SidebarCtrl'
+            },
+            'content': {
+               templateUrl: 'angular/home/new-fast.tpl.html',
+               controller: 'NewFastCtrl'
+            }
+         }
       })
         
-      .state('about', {
+      .state('root.about', {
          url: '/about',
-         views: {
-            'main': {
-               templateUrl: 'angular/about/about.tpl.html'
-            },
-            'navigation': {
-               templateUrl: 'angular/nav/nav.tpl.html',
-               controller: 'NavCtrl'
-            }
-         }
+         templateUrl: 'angular/about/about.tpl.html'
       }) 
 
-      .state('account', {
+      .state('root.account', {
          url: '/account',
-         views: {
-            'main': {
-               template: '<div ui-view></div>'
-            },
-            'navigation': {
-               templateUrl: 'angular/nav/nav.tpl.html',
-               controller: 'NavCtrl'
-            }
-         }
+         template: '<div ui-view></div>'
       })
-      .state('account.register', {
+      .state('root.account.register', {
          url: '/register',
          templateUrl: 'angular/account/register.tpl.html',
          controller: 'RegisterCtrl'
-      });  
-});
+      })
+
+      .state('root.admin', {
+         url: '/',
+         template: '<div ui-view></div>'
+      }) 
+      .state('root.admin.privacy', {
+         url: 'privacy',
+         templateUrl: 'angular/admin/privacy.tpl.html'
+      })
+      .state('root.admin.contact', {
+         url: 'contact',
+         templateUrl: 'angular/admin/contact.tpl.html'
+      });
+})
+.run(['$rootScope', '$state', 'userService', function ($rootScope, $state, userService) {
+
+   var noAuthStates = [
+      'root.soon',
+      'root.account.register',
+      'root.about'
+   ]   
+
+   $rootScope.$on('$stateChangeStart', function (event, toState) {
+      if (!userService.isLoggedIn() && noAuthStates.indexOf(toState.name) === -1) {
+         event.preventDefault();
+         $state.go('root.soon');
+      }
+   });
+}])
+;

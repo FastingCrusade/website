@@ -19,6 +19,6 @@ angular.module('fc.account.register', [
 
    // TODO: Eventually figure out what the "main" state is, when you first hit the app
    function returnHome() {
-      $state.go('soon');
+      $state.go('root.soon');
    }
 }]);

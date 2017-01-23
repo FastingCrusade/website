@@ -18,3 +18,27 @@
 .ui.form .email-input {
    width: 300px !important;
 }
+
+.panel-default.text-panel {
+   background-color: rgba(180, 180, 180, .8);
+   border-color: #808080;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+.nav-colors {
+   /* background-color: #222; */
+   /* color: #9d9d9d; */
+   background-color: #a29a8a;
+   color: black;
+   border-color: #080808;
+}
+
+.nav-colors .navbar-nav > li > a {
+   color: black;
+}
+
+.nav-colors .navbar-nav > .open > a:hover,
+.nav-colors .navbar-nav > .open > a {
+   background-color: #656565;
+}

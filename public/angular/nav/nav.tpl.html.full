@@ -1,15 +1,15 @@
-<nav class="navbar navbar-inverse navbar-static-top nav-colors">
+<nav class="navbar navbar-inverse navbar-static-top">
    <div class="navbar-header">
-      <a class="navbar-brand custom-brand" ui-sref="root.soon"><img src="/img/full-logo-dark.svg"/></a>
+      <a class="navbar-brand custom-brand" ui-sref="root.soon"><img src="/img/full-logo.svg"/></a>
    </div>
    <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-         <li ng-show="isLoggedIn"><a ui-sref="root.home.welcome">Home</a></li>
+         <li><a ui-sref="root.home.welcome">Home</a></li>
          <li><a ui-sref="root.about">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right account-nav" ng-show="!isLoggedIn">
-         <li ng-show="false"><a ui-sref="root.account.register">Register</a></li>
-         <li ng-show="false" uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
+         <li><a ui-sref="root.account.register">Register</a></li>
+         <li uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
             <a uib-dropdown-toggle id="sign-in-button">Sign In<strong class="caret"></strong></a>
             <div uib-dropdown-menu aria-labelledby="sign-in-button" class="sign-in-dropdown">
                <form name="loginForm" ng-submit="login()">

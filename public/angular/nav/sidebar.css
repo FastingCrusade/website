@@ -1,0 +1,43 @@
+.sidebar {
+   height: 90.4vh;
+   top: -20px;
+   padding-right: 0;
+}
+
+.sidebar .profile-pic-area {
+   margin: 20px;
+   max-height: 200px;
+   text-align: center;
+}
+
+.sidebar .profile-pic-area .profile-pic {
+   max-height: 18vh;
+   margin-bottom: 10px;
+}
+
+.sidebar .profile-pic-area .user-name {
+}
+
+.sidebar hr {
+   color: black;
+   margin: 10px;
+} 
+
+.sidebar .followed-fasts,
+.sidebar .friends {
+   margin: 20px;
+   padding: 10px;
+   box-shadow: inset 0 0 1em black;
+}
+
+.sidebar .followed-fasts .fasts-list,
+.sidebar .friends .friends-list {
+   list-style: none;
+   padding-left: 10px;
+   max-height: 220px;
+   overflow-y: auto;
+}
+
+.sidebar .friends .friends-list .friend-link {
+   cursor: pointer;
+}

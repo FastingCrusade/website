@@ -1,10 +1,9 @@
-<div class="fast-card">
-   <h1 class="fast-category">{{ fastCategories[fast.category_id].name }} Fast</h1>
-   <span class="fast-subtitle">{{ fast.subtype }}</span>
-   <hr class="fast-card-divider"/>
+<div class="fast-card-small">
+   <h4 class="fast-category">
+      <a class="fast-link">{{ fastCategories[fast.category_id].name }} Fast - <span class="fast-user">{{fast.user}}</span></a>
+   </h4>
    <uib-progressbar animate="false" max="fast.end - fast.start" value="currentTime - fast.start" 
       class="fast-progress" type="success">
       <span ng-class="{'not-begun' : fast.start > currentTime}">{{ fast.start | timeElapsedFromSeconds:currentTime:fast.end }}</span>
    </uib-progressbar>
-   <div>{{ fast.description }}</div>   
 </div>

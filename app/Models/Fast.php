@@ -9,8 +9,27 @@ class Fast extends Commentable
 {
     use SoftDeletes;
 
-    protected $guarded = [
-        'id',
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'start',
+        'end',
+        'description',
+        'subtype',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'deleted_at',
+        'updated_at',
+        'start',
+        'end',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'deleted_at',
+        'updated_at'
     ];
 
     /**
@@ -31,5 +50,15 @@ class Fast extends Commentable
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
+    }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+
+        $array['start'] = $this->start->timestamp;
+        $array['end'] = $this->end->timestamp;
+
+        return $array;
     }
 }
