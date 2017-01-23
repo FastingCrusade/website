@@ -25,10 +25,12 @@ class Replies extends ApiController
      * Lists replies to a Comment.
      *
      * @param Comment $comment
+     *
+     * @return Response
      */
     public function index(Comment $comment)
     {
-        $this->response($comment->comments);
+        return $this->response($comment->comments);
     }
 
     /**
