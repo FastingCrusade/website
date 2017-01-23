@@ -25,6 +25,9 @@ Route::get('/fast/{fast}/comments', 'FastComments@index');
 // Subscription Routes
 Route::post('/newsletters/subscription', 'Newsletters@create');
 
+// Reply Routes
+Route::get('/comment/{comment}/replies', 'Replies@index');
+
 // Authenticated routes.
 Route::group(['middleware' => 'auth:api'], function () {
     // User routes
@@ -42,4 +45,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Comment Routes
     Route::delete('/comments/{comment}', 'Comments@delete');
     Route::post('/comments/{comment}', 'Comments@update');
+
+    // Reply Routes
+    Route::post('/comment/{comment}/replies', 'Replies@create');
 });

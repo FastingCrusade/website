@@ -14,7 +14,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Response;
 
-class ReplyController extends TestCase
+class RepliesController extends TestCase
 {
     use DatabaseTransactions;
 
