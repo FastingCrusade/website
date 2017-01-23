@@ -45,10 +45,11 @@ class Replies extends ApiController
     {
         /** @var Comment $reply */
         $reply = Comment::create([
-            'contents' => $request->input('contents'),
-            'user_id'  => Auth::user()->id,
+            'contents'         => $request->input('contents'),
+            'user_id'          => Auth::user()->id,
+            'commentable_type' => Comment::class,
+            'commentable_id'   => $comment->id,
         ]);
-        $reply->parent()->associate($comment);
 
         return $this->response($reply->id, 'CREATED', Response::HTTP_CREATED);
     }
