@@ -11,3 +11,4 @@ Homestead.yaml
 *.swp
 public/semantic
 bower_components
+phpunit

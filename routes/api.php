@@ -20,9 +20,13 @@ Route::get('/user/{user}/fasts', 'UserFasts@index');
 
 // Fasts Routes
 Route::get('/fasts', 'Fasts@index');
+Route::get('/fast/{fast}/comments', 'FastComments@index');
 
 // Subscription Routes
 Route::post('/newsletters/subscription', 'Newsletters@create');
+
+// Reply Routes
+Route::get('/comment/{comment}/replies', 'Replies@index');
 
 // Authenticated routes.
 Route::group(['middleware' => 'auth:api'], function () {
@@ -36,5 +40,12 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // Fasts Routes
     Route::post('/fasts', 'Fasts@create');
-});
+    Route::post('/fast/{fast}/comments', 'FastComments@create');
 
+    // Comment Routes
+    Route::delete('/comments/{comment}', 'Comments@delete');
+    Route::post('/comments/{comment}', 'Comments@update');
+
+    // Reply Routes
+    Route::post('/comment/{comment}/replies', 'Replies@create');
+});
