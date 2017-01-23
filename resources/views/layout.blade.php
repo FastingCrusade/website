@@ -14,7 +14,7 @@
     @section('styles')
         {{-- TODO Gulp these into one file. --}}
         <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/app.css">
+        <link rel="stylesheet" type="text/css" href="/css/all.css">
     @show
 
     @section('top-scripts')

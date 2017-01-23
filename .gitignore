@@ -2,6 +2,7 @@
 /public/storage
 public/js/
 public/css/
+public/build/
 /vendor
 /.idea
 Homestead.json
@@ -10,5 +11,4 @@ Homestead.yaml
 /resources/views/auth
 *.swp
 public/semantic
-bower_components
-phpunit
+resources/assets/bower_components/

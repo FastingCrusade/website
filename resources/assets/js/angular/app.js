@@ -22,32 +22,32 @@ angular.module('fc', [
                template: '<div ui-view></div>'
             },
             'navigation': {
-               templateUrl: 'angular/nav/nav.tpl.html',
+               templateUrl: 'templates/nav/nav.tpl.html',
                controller: 'NavCtrl'
             },
             'footer': {
-               templateUrl: 'angular/nav/footer.tpl.html',
+               templateUrl: 'templates/nav/footer.tpl.html',
             }
          }
       })        
       .state('root.soon', {
          url: '/soon',
-         templateUrl: 'angular/soon/coming-soon.tpl.html',
+         templateUrl: 'templates/soon/coming-soon.tpl.html',
          controller: 'ComingSoonCtrl'
       })
       
       .state('root.home', {
          url: '/home',
-         templateUrl: 'angular/sidebar-page.tpl.html'
+         templateUrl: 'templates/sidebar-page.tpl.html'
       })
       .state('root.home.welcome', {
          views: {
             'sidebar': {
-               templateUrl: 'angular/nav/sidebar.tpl.html',
+               templateUrl: 'templates/nav/sidebar.tpl.html',
                controller: 'SidebarCtrl'
             },
             'content': {
-               templateUrl: 'angular/home/welcome.tpl.html',
+               templateUrl: 'templates/home/welcome.tpl.html',
                controller: 'WelcomeCtrl'
             }
          }
@@ -55,11 +55,11 @@ angular.module('fc', [
       .state('root.home.newfast', {  
          views: {
             'sidebar': {
-               templateUrl: 'angular/nav/sidebar.tpl.html',
+               templateUrl: 'templates/nav/sidebar.tpl.html',
                controller: 'SidebarCtrl'
             },
             'content': {
-               templateUrl: 'angular/home/new-fast.tpl.html',
+               templateUrl: 'templates/home/new-fast.tpl.html',
                controller: 'NewFastCtrl'
             }
          }
@@ -67,7 +67,7 @@ angular.module('fc', [
         
       .state('root.about', {
          url: '/about',
-         templateUrl: 'angular/about/about.tpl.html'
+         templateUrl: 'templates/about/about.tpl.html'
       }) 
 
       .state('root.account', {
@@ -76,7 +76,7 @@ angular.module('fc', [
       })
       .state('root.account.register', {
          url: '/register',
-         templateUrl: 'angular/account/register.tpl.html',
+         templateUrl: 'templates/account/register.tpl.html',
          controller: 'RegisterCtrl'
       })
 
@@ -86,11 +86,11 @@ angular.module('fc', [
       }) 
       .state('root.admin.privacy', {
          url: 'privacy',
-         templateUrl: 'angular/admin/privacy.tpl.html'
+         templateUrl: 'templates/admin/privacy.tpl.html'
       })
       .state('root.admin.contact', {
          url: 'contact',
-         templateUrl: 'angular/admin/contact.tpl.html'
+         templateUrl: 'templates/admin/contact.tpl.html'
       });
 })
 .run(['$rootScope', '$state', 'userService', function ($rootScope, $state, userService) {
