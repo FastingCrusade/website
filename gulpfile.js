@@ -26,9 +26,10 @@ elixir(mix => {
         )
         .styles(
             [
-                '*.css',
+                '**/*.css',
             ],
-            'public/css/all.css'
+            'public/css/all.css',
+            '.resources/angular/'
         );
     mix
         .scripts(
@@ -44,21 +45,10 @@ elixir(mix => {
         )
         .scripts(
             [
-                'angular/common/filters.js',
-                'angular/common/directives/directives.js',
-                'angular/common/services/user-service.js',
-                'angular/common/services/fast-service.js',
-                'angular/common/services/news-service.js',
-                'angular/account/register.js',
-                'angular/soon/coming-soon.js',
-                'angular/about/about.js',
-                'angular/home/welcome.js',
-                'angular/home/new-fast.js',
-                'angular/nav/nav.js',
-                'angular/nav/sidebar.js',
-                'angular/app.js',
+                '**/*.js'
             ],
-            'public/js/all.js'
+            'public/js/all.js',
+            './resources/angular/'
         );
 
     mix.version([
