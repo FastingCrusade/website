@@ -3,6 +3,7 @@ const elixir = require('laravel-elixir');
 require('laravel-elixir-vue-2');
 const gulp = require('gulp');
 const templateCache = require('gulp-angular-templatecache');
+const Task = elixir.Task;
 
 /*
  |--------------------------------------------------------------------------
