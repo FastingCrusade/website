@@ -17,8 +17,8 @@
     <script src="{{ elixir('js/bower.js') }}"></script>
 
     <!-- Custom JS -->
-    <script src="{{ elixir('js/templates.js') }}"></script>
     <script src="{{ elixir('js/all.js') }}"></script>
+    <script src="{{ elixir('js/templates.js') }}"></script>
 
     <!-- Page title and favicon -->
     <title>Fasting Crusade</title>
