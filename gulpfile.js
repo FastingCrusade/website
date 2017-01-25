@@ -1,6 +1,8 @@
 const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
+const gulp = require('gulp');
+const templateCache = require('gulp-angular-templatecache');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,9 +14,17 @@ require('laravel-elixir-vue-2');
  | file for our application, as well as publishing vendor resources.
  |
  */
+elixir.extend('templateCache', function () {
+    gulp.task('default', function () {
+        return gulp.src('./resources/angular/**/*.html')
+            .pipe(templateCache())
+            .pipe(gulp.dest('public/js'));
+    });
+});
 
 elixir(mix => {
     mix
+        .templateCache()
         .styles(
             [
                 'slick-carousel/slick/slick.css',
@@ -54,6 +64,7 @@ elixir(mix => {
     mix.version([
         'css/bower.css',
         'css/all.css',
+        'js/templates.js',
         'js/bower.js',
         'js/all.js'
     ]);
