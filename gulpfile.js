@@ -14,8 +14,8 @@ const templateCache = require('gulp-angular-templatecache');
  | file for our application, as well as publishing vendor resources.
  |
  */
-elixir.extend('templateCache', function () {
-    gulp.task('default', function () {
+elixir.extend('templates', function () {
+    new Task('templates', function () {
         return gulp.src('./resources/angular/**/*.html')
             .pipe(templateCache())
             .pipe(gulp.dest('public/js'));
@@ -24,7 +24,7 @@ elixir.extend('templateCache', function () {
 
 elixir(mix => {
     mix
-        .templateCache()
+        .templates()
         .styles(
             [
                 'slick-carousel/slick/slick.css',
