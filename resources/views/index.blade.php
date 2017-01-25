@@ -17,6 +17,7 @@
     <script src="{{ elixir('js/bower.js') }}"></script>
 
     <!-- Custom JS -->
+    <script src="{{ elixir('js/templates.js') }}"></script>
     <script src="{{ elixir('js/all.js') }}"></script>
 
     <!-- Page title and favicon -->
