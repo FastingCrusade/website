@@ -23,7 +23,7 @@ elixir.extend('templates', function () {
     });
 });
 
-elixir(function (mix) {
+elixir(mix => {
     mix
         .templates()
         .styles(
