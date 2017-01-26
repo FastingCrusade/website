@@ -18,7 +18,7 @@ const Task = elixir.Task;
 elixir.extend('templates', function () {
     new Task('templates', function () {
         return gulp.src('./resources/angular/**/*.html')
-            .pipe(templateCache())
+            .pipe(templateCache('templates.js', {standalone: true, module: 'templates.app'}))
             .pipe(gulp.dest('public/js'));
     });
 });
