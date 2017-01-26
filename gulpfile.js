@@ -1,9 +1,9 @@
 const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
-const gulp = require('gulp');
-const templateCache = require('gulp-angular-templatecache');
-const Task = elixir.Task;
+let gulp = require('gulp');
+let templateCache = require('gulp-angular-templatecache');
+let Task = elixir.Task;
 
 /*
  |--------------------------------------------------------------------------
