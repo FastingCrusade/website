@@ -42,7 +42,7 @@
     "post-install-cmd": [
       "Illuminate\\Foundation\\ComposerScripts::postInstall",
       "php artisan optimize",
-      "php artisan migrate --force",
+      "php artisan migrate --force --seed",
       "npm install",
       "bower install",
       "gulp"
