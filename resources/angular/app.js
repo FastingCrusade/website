@@ -23,32 +23,32 @@ angular.module('fc', [
                         template: '<div ui-view></div>'
                     },
                     'navigation': {
-                        templateUrl: '/nav/nav.tpl.html',
+                        templateUrl: 'nav/nav.tpl.html',
                         controller: 'NavCtrl'
                     },
                     'footer': {
-                        templateUrl: '/nav/footer.tpl.html',
+                        templateUrl: 'nav/footer.tpl.html',
                     }
                 }
             })
             .state('root.soon', {
                 url: '/soon',
-                templateUrl: '/soon/coming-soon.tpl.html',
+                templateUrl: 'soon/coming-soon.tpl.html',
                 controller: 'ComingSoonCtrl'
             })
 
             .state('root.home', {
                 url: '/home',
-                templateUrl: '/sidebar-page.tpl.html'
+                templateUrl: 'sidebar-page.tpl.html'
             })
             .state('root.home.welcome', {
                 views: {
                     'sidebar': {
-                        templateUrl: '/nav/sidebar.tpl.html',
+                        templateUrl: 'nav/sidebar.tpl.html',
                         controller: 'SidebarCtrl'
                     },
                     'content': {
-                        templateUrl: '/home/welcome.tpl.html',
+                        templateUrl: 'home/welcome.tpl.html',
                         controller: 'WelcomeCtrl'
                     }
                 }
@@ -56,11 +56,11 @@ angular.module('fc', [
             .state('root.home.newfast', {
                 views: {
                     'sidebar': {
-                        templateUrl: '/nav/sidebar.tpl.html',
+                        templateUrl: 'nav/sidebar.tpl.html',
                         controller: 'SidebarCtrl'
                     },
                     'content': {
-                        templateUrl: '/home/new-fast.tpl.html',
+                        templateUrl: 'home/new-fast.tpl.html',
                         controller: 'NewFastCtrl'
                     }
                 }
@@ -68,7 +68,7 @@ angular.module('fc', [
 
             .state('root.about', {
                 url: '/about',
-                templateUrl: '/about/about.tpl.html'
+                templateUrl: 'about/about.tpl.html'
             })
 
             .state('root.account', {
@@ -77,7 +77,7 @@ angular.module('fc', [
             })
             .state('root.account.register', {
                 url: '/register',
-                templateUrl: '/account/register.tpl.html',
+                templateUrl: 'account/register.tpl.html',
                 controller: 'RegisterCtrl'
             })
 
@@ -87,11 +87,11 @@ angular.module('fc', [
             })
             .state('root.admin.privacy', {
                 url: 'privacy',
-                templateUrl: '/admin/privacy.tpl.html'
+                templateUrl: 'admin/privacy.tpl.html'
             })
             .state('root.admin.contact', {
                 url: 'contact',
-                templateUrl: '/admin/contact.tpl.html'
+                templateUrl: 'admin/contact.tpl.html'
             });
     })
     .run(['$rootScope', '$state', 'userService', function ($rootScope, $state, userService) {
