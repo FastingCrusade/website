@@ -18,7 +18,7 @@ class CommentModel extends TestCase
     public function testArrayRepresentation()
     {
         /** @var array $array */
-        $array = factory('App\Models\Comment')->make()->toArray();
+        $array = factory('App\Models\Comment')->create()->toArray();
 
         $this->assertTrue(is_int($array['created_at']));
         $this->assertTrue(is_int($array['updated_at']));
