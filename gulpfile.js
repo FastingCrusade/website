@@ -40,7 +40,7 @@ elixir(mix => {
                 '**/*.css',
             ],
             'public/css/all.css',
-            '.resources/angular/'
+            './resources/angular/'
         );
     mix
         .scripts(
