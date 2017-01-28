@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
 class Server
 {
@@ -70,7 +71,14 @@ class Server
     {
         $hash = 'sha1=' . hash_hmac('sha1', $this->payload, $this->github_secret);
 
-        return ($hash === $this->passphrase);
+        if ($hash === $this->passphrase) {
+            $passed = true;
+        } else {
+            $passed = false;
+            Log::info("Deploy attempted with invalid security. Hash {$hash} does not match passphrase {$this->passphrase}.");
+        }
+
+        return $passed;
     }
 
     /**
