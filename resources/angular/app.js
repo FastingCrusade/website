@@ -1,4 +1,5 @@
 angular.module('fc', [
+   'templates.app',
    'ui.router', 
    'fc.common.filters',
    'fc.common.directives',
@@ -22,31 +23,31 @@ angular.module('fc', [
                template: '<div ui-view></div>'
             },
             'navigation': {
-               templateUrl: 'angular/nav/nav.tpl.html',
+               templateUrl: 'nav/nav.tpl.html',
                controller: 'NavCtrl'
             },
             'footer': {
-               templateUrl: 'angular/nav/footer.tpl.html',
+               templateUrl: 'nav/footer.tpl.html',
             }
          }
       })        
       .state('root.soon', {
          url: '/soon',
-         templateUrl: 'angular/soon/coming-soon.tpl.html',
+         templateUrl: 'soon/coming-soon.tpl.html',
          controller: 'ComingSoonCtrl'
       })
       .state('root.about', {
          url: '/about',
-         templateUrl: 'angular/about/about.tpl.html'
+         templateUrl: 'about/about.tpl.html'
       }) 
       
       .state('root.main', {
-         templateUrl: 'angular/sidebar-page.tpl.html'
+         templateUrl: 'sidebar-page.tpl.html'
       })
       .state('root.main.user', {
          views: {
             'sidebar': {
-               templateUrl: 'angular/nav/sidebar.tpl.html',
+               templateUrl: 'nav/sidebar.tpl.html',
                controller: 'SidebarCtrl'
             },
             'content': {
@@ -55,15 +56,15 @@ angular.module('fc', [
          }
       })
       .state('root.main.user.welcome', {
-         templateUrl: 'angular/home/welcome.tpl.html',
+         templateUrl: 'home/welcome.tpl.html',
          controller: 'WelcomeCtrl'
       })
       .state('root.main.user.new-fast', {  
-         templateUrl: 'angular/fasts/new-fast.tpl.html',
+         templateUrl: 'fasts/new-fast.tpl.html',
          controller: 'NewFastCtrl'
       })
       .state('root.main.user.full-fast', {  
-         templateUrl: 'angular/fasts/full-fast.tpl.html',
+         templateUrl: 'fasts/full-fast.tpl.html',
          controller: 'FullFastCtrl',
          params: {
             fast: null
@@ -76,7 +77,7 @@ angular.module('fc', [
       })
       .state('root.account.register', {
          url: '/register',
-         templateUrl: 'angular/account/register.tpl.html',
+         templateUrl: 'account/register.tpl.html',
          controller: 'RegisterCtrl'
       })
 
@@ -86,11 +87,11 @@ angular.module('fc', [
       }) 
       .state('root.admin.privacy', {
          url: 'privacy',
-         templateUrl: 'angular/admin/privacy.tpl.html'
+         templateUrl: 'admin/privacy.tpl.html'
       })
       .state('root.admin.contact', {
          url: 'contact',
-         templateUrl: 'angular/admin/contact.tpl.html'
+         templateUrl: 'admin/contact.tpl.html'
       });
 })
 .run(['$rootScope', '$state', 'userService', function ($rootScope, $state, userService) {

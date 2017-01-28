@@ -19,7 +19,7 @@ angular.module('fc.common.directives', [
 
    return {
       restrict: 'A',
-      templateUrl: 'angular/common/directives/fast-card.tpl.html',
+      templateUrl: 'common/directives/fast-card.tpl.html',
       scope: {
          fast: '='
       },
@@ -53,7 +53,7 @@ angular.module('fc.common.directives', [
 
    return {
       restrict: 'A',
-      templateUrl: 'angular/common/directives/fast-card-small.tpl.html',
+      templateUrl: 'common/directives/fast-card-small.tpl.html',
       scope: {
          fast: '='
       },
@@ -87,7 +87,7 @@ angular.module('fc.common.directives', [
 
    return {
       restrict: 'E',
-      templateUrl: 'angular/common/directives/comment-area.tpl.html',
+      templateUrl: 'common/directives/comment-area.tpl.html',
       scope: {
          comment: '=',
          isReply: '='

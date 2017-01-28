@@ -1,3 +1,4 @@
+dist: trusty
 language: php
 php:
   - '7.0'
@@ -6,6 +7,6 @@ services:
   - postgresql
 before_install:
   - "psql -c 'create database travis_ci_test;' -U postgres"
+  - "if [[ `npm -v` != 4* ]]; then npm i -g npm@4; fi"
 install:
   - "composer install"
-  - "./artisan migrate --seed"
