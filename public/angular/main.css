@@ -2,6 +2,10 @@
    background-color: #e2e2e2;
 }
 
+.content-pane {
+   overflow-y: auto;
+}
+
 .coming-soon {
    text-align: center;
 }
@@ -23,6 +27,13 @@
    background-color: rgba(180, 180, 180, .8);
    border-color: #808080;
    padding: 20px;
+   margin-top: 20px;
+}
+
+.panel-default.text-panel-solid {
+   background-color: rgb(180, 180, 180);
+   border-color: #808080;
+   padding: 10px;
    margin-top: 20px;
 }
 

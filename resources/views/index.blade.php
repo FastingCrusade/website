@@ -11,11 +11,13 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="angular/common/directives/fast-card.css">
+    <link rel="stylesheet" type="text/css" href="angular/common/directives/comment-area.css">
     <link rel="stylesheet" type="text/css" href="angular/account/register.css">
     <link rel="stylesheet" type="text/css" href="angular/about/about.css">
     <link rel="stylesheet" type="text/css" href="angular/admin/privacy.css">
     <link rel="stylesheet" type="text/css" href="angular/home/welcome.css">
-    <link rel="stylesheet" type="text/css" href="angular/home/new-fast.css">
+    <link rel="stylesheet" type="text/css" href="angular/fasts/new-fast.css">
+    <link rel="stylesheet" type="text/css" href="angular/fasts/full-fast.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/nav.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/sidebar.css">
     <link rel="stylesheet" type="text/css" href="angular/nav/footer.css">
@@ -33,6 +35,7 @@
 
     <!-- Custom JS -->
     <script src="angular/common/filters.js"></script>
+    <script src="angular/common/constants.js"></script>
     <script src="angular/common/directives/directives.js"></script>
     <script src="angular/common/services/user-service.js"></script>
     <script src="angular/common/services/fast-service.js"></script>
@@ -41,7 +44,8 @@
     <script src="angular/soon/coming-soon.js"></script>
     <script src="angular/about/about.js"></script>
     <script src="angular/home/welcome.js"></script>
-    <script src="angular/home/new-fast.js"></script>
+    <script src="angular/fasts/new-fast.js"></script>
+    <script src="angular/fasts/full-fast.js"></script>
     <script src="angular/nav/nav.js"></script>
     <script src="angular/nav/sidebar.js"></script>
     <script src="angular/app.js"></script>
@@ -56,7 +60,7 @@
     
 
 </head> 
-<body ng-app="fc" class="fc-main-app" style="background: url(img/coming-soon.jpg) no-repeat center center fixed;">
+<body ng-app="fc" class="fc-main-app" style="background: url(img/shore-town-slate.jpg) no-repeat center center fixed;">
 
 <!-- NAVIGATION -->
 <div ui-view="navigation"></div>
