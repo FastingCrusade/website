@@ -2,6 +2,7 @@
    height: 90.4vh;
    top: -20px;
    padding-right: 0;
+   border-right: solid 1px black;
 }
 
 .sidebar .profile-pic-area {
@@ -19,7 +20,7 @@
 }
 
 .sidebar hr {
-   color: black;
+   border-color: black;
    margin: 10px;
 } 
 

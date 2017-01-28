@@ -1,6 +1,6 @@
 <div class="fast-card-small">
    <h4 class="fast-category">
-      <a class="fast-link">{{ fastCategories[fast.category_id].name }} Fast - <span class="fast-user">{{fast.user}}</span></a>
+      <a class="fast-link" ng-click="openFast(fast)">{{ fastCategories[fast.category_id].name }} Fast - <span class="fast-user">{{fast.user}}</span></a>
    </h4>
    <uib-progressbar animate="false" max="fast.end - fast.start" value="currentTime - fast.start" 
       class="fast-progress" type="success">

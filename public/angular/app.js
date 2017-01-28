@@ -98,8 +98,10 @@ angular.module('fc', [
    var noAuthStates = [
       'root.soon',
       'root.account.register',
-      'root.about'
-   ]   
+      'root.about',
+      'root.admin.privacy',
+      'root.admin.contact'
+   ]; 
 
    $rootScope.$on('$stateChangeStart', function (event, toState) {
       if (!userService.isLoggedIn() && noAuthStates.indexOf(toState.name) === -1) {
