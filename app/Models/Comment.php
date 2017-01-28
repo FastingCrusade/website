@@ -25,6 +25,14 @@ class Comment extends Commentable
     protected $guarded = [
         'id'
     ];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+    protected $hidden =[
+        'deleted_at',
+    ];
 
     /**
      * The object to which the Comment is "posted" to.
@@ -42,5 +50,20 @@ class Comment extends Commentable
     public function user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    /**
+     * Produces an array representation of the model.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $array = parent::toArray();
+
+        $array['created_at'] = $this->created_at->timestamp;
+        $array['updated_at'] = $this->updated_at->timestamp;
+
+        return $array;
     }
 }

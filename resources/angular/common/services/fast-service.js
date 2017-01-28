@@ -1,7 +1,9 @@
 angular.module('fc.services.fastService', [
+   'fc.common.constants',
    'fc.services.userService'
 ])
-.factory('fastService', ['$state', '$http', 'userService', function($state, $http, userService) {
+.factory('fastService', ['$state', '$http', 'constants', 'userService', 
+   function($state, $http, constants, userService) {
 
    var fastService = {};
    fastService.getFasts = getFasts;
@@ -62,7 +64,7 @@ angular.module('fc.services.fastService', [
             'description': newFast.description
          }
       }).then(function(response) {
-         $state.go('root.home.welcome');
+         $state.go(constants.states.welcome);
       }, function(error) {
          console.log('Error adding fast: ' + error.statusText);
       });

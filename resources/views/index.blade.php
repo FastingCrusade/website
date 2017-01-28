@@ -11,10 +11,8 @@
     <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css') }}">
    
     <!-- 3rd Party JS -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-    <script src="https://unpkg.com/angular-ui-router@0.3.2/release/angular-ui-router.min.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script>
     <script src="{{ elixir('js/bower.js') }}"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script>
 
     <!-- Custom JS -->
     <script src="{{ elixir('js/templates.js') }}"></script>
@@ -30,7 +28,7 @@
     
 
 </head> 
-<body ng-app="fc" class="fc-main-app" style="background: url(img/coming-soon.jpg) no-repeat center center fixed;">
+<body ng-app="fc" class="fc-main-app" style="background: url(img/shore-town-slate.jpg) no-repeat center center fixed;">
 
 <!-- NAVIGATION -->
 <div ui-view="navigation"></div>

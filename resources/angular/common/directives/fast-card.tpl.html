@@ -7,4 +7,8 @@
       <span ng-class="{'not-begun' : fast.start > currentTime}">{{ fast.start | timeElapsedFromSeconds:currentTime:fast.end }}</span>
    </uib-progressbar>
    <div>{{ fast.description }}</div>   
+   <div class="card-footer">
+      <button class="btn btn-default pull-left" ng-click="openFast(fast)">See Fast</button>
+      <span class="pull-right">Followers: 1</span>
+   </div>
 </div>

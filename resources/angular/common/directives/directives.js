@@ -1,4 +1,5 @@
 angular.module('fc.common.directives', [
+   'fc.common.constants',
    'fc.services.fastService'
 ])
 .directive('ngEnter', function () {
@@ -18,19 +19,26 @@ angular.module('fc.common.directives', [
 
    return {
       restrict: 'A',
-      templateUrl: 'angular/common/directives/fast-card.tpl.html',
+      templateUrl: 'common/directives/fast-card.tpl.html',
       scope: {
          fast: '='
       },
-      controller: ['$scope', '$interval', 'fastService', function($scope, $interval, fastService) {
+      controller: ['$scope', '$state', '$interval', 'constants', 'fastService', 
+         function($scope, $state, $interval, constants, fastService) {
          
          $scope.$on('destroy', cancelInterval);
          $scope.currentTime = new Date().getTime() / 1000;
          $scope.fastCategories = fastService.fastCategories;
+   
+         $scope.openFast = openFast;
       
          var updateCurrentTime = $interval(function() {
             $scope.currentTime = new Date().getTime() / 1000;
          }, 1000);
+
+         function openFast(fast) {
+            $state.go(constants.states.fullFast, { fast: fast });
+         }
 
          function cancelInterval() {
             if (angular.isDefined(updateCurrentTime)) {
@@ -45,15 +53,18 @@ angular.module('fc.common.directives', [
 
    return {
       restrict: 'A',
-      templateUrl: 'angular/common/directives/fast-card-small.tpl.html',
+      templateUrl: 'common/directives/fast-card-small.tpl.html',
       scope: {
          fast: '='
       },
-      controller: ['$scope', '$interval', 'fastService', function($scope, $interval, fastService) {
+      controller: ['$scope', '$state', '$interval', 'constants', 'fastService', 
+         function($scope, $state, $interval, constants, fastService) {
 
          $scope.$on('destroy', cancelInterval);
          $scope.currentTime = new Date().getTime() / 1000;
          $scope.fastCategories = fastService.fastCategories;
+
+         $scope.openFast = openFast;
 
          var updateCurrentTime = $interval(function() {
             $scope.currentTime = new Date().getTime() / 1000;
@@ -65,6 +76,24 @@ angular.module('fc.common.directives', [
                updateCurrentTime = undefined;
             }
          }
+
+         function openFast(fast) {
+            $state.go(constants.states.fullFast, { fast: fast });
+         }
+      }]
+   };
+})
+.directive('commentArea', function () {
+
+   return {
+      restrict: 'E',
+      templateUrl: 'common/directives/comment-area.tpl.html',
+      scope: {
+         comment: '=',
+         isReply: '='
+      },
+      controller: ['$scope', function($scope) {
+
       }]
    };
 })

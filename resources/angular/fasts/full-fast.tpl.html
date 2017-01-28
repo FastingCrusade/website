@@ -1,0 +1,42 @@
+<div class="full-fast">
+   <div class="row">
+      <div class="col-md-6">
+         <div class="panel panel-default text-panel">
+            <div class="row">
+               <div class="col-md-3 fast-info-profile">
+                  <img class="profile-pic" ng-src="/img/ruins-slate.jpg">
+               </div>
+               <div class="col-md-9">
+                  <h1 class="fast-category">{{ fastCategories[fast.category_id].name }} Fast</h1>
+                  <span class="fast-subtitle">{{ fast.subtype }}</span>
+               </div>
+            </div>
+            <hr class="fast-info-divider"/>
+            <div class="row">
+               <div class="col-md-12">
+                  <uib-progressbar animate="false" max="fast.end - fast.start" value="currentTime - fast.start"
+                     class="fast-progress" type="success">
+                     <span ng-class="{'not-begun' : fast.start > currentTime}">{{ fast.start | timeElapsedFromSeconds:currentTime:fast.end }}</span>
+                  </uib-progressbar>
+                  <div>{{ fast.description }}</div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12 card-footer">
+                  <span class="pull-right">Followers: 1</span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-8">
+         <comment-area isReply="false" comment="longComment"></comment-area>
+         <comment-area isReply="true" comment="shortComment"></comment-area>
+      </div>
+      <div class="col-md-4">
+      </div>
+   </div>
+</div>

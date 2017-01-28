@@ -46,8 +46,10 @@ elixir(mix => {
         .scripts(
             [
                 'jquery/dist/jquery.min.js',
+                'angular/angular.min.js',
+                'angular-ui-router/release/angular-ui-router.min.js',
                 'slick-carousel/slick/slick.min.js',
-                'angular-slick-carousel/dist/angular-slick.min.js',
+                'angular-slick-carousel/dist/angular-slick.js',
                 'moment/min/moment.min.js',
                 'eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
             ],
