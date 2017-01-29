@@ -2,23 +2,43 @@ angular.module('fc.home.fullFast', [
    'ui.bootstrap',
    'fc.common.constants',
    'fc.common.directives',
-   'fc.services.fastService'
+   'fc.services.fastService',
+   'fc.services.commentService'
 ])
-.controller('FullFastCtrl', ['$scope', '$state', '$stateParams', 'constants', 'fastService',
-   function($scope, $state, $stateParams, constants, fastService) {
+.controller('FullFastCtrl', ['$scope', '$state', '$stateParams', '$http', 
+   'constants', 'fastService', 'commentService',
+   function($scope, $state, $stateParams, $http, constants, fastService, commentService) {
    
    $scope.fastCategories = fastService.fastCategories;
-   $scope.fast = $stateParams.fast;
+   $scope.addComment = addComment;
 
-   $scope.longComment = {
-      contents: "This is a comment used for testing the overall look and feel of how things should work.  It is a long comment because I want to see how the thing looks when it has a lot to display.  Eventually we will display a small comment too to make sure the spacing is still good."
-   };
-   $scope.shortComment = {
-      contents: "Not much to say here."
-   };
-  
-   function createFast() {
-      
+   $scope.fast = $stateParams.fast;
+   resetNewComment();
+   $scope.comments = [];
+   $scope.comments.push($scope.newComment);
+
+   $scope.comments = $scope.comments.concat(commentService.getComments($scope.fast.id));   
+/*
+   commentService.getComments($scope.fast.id)
+      .then(function(response) {
+         $scope.comments.push(response.data.data);
+      });
+*/
+
+   function addComment(comment) {
+      commentService.addComment($scope.fast.id, comment)
+         .then(function(response) {
+            console.log('Comment added!');
+         }, function(error) {
+            console.log('Error adding comment: ' + error.statusText);
+         });
+   }
+
+   function resetNewComment() {
+      $scope.newComment = {
+         isNew: true,
+         contents: null
+      };
    }
 
 }]);

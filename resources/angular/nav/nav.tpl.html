@@ -8,8 +8,8 @@
          <li><a ui-sref="{{states.about}}">About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right account-nav" ng-show="!isLoggedIn">
-         <li ng-if="false"><a ui-sref="{{states.register}}">Register</a></li>
-         <li ng-if="false" uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
+         <li><a ui-sref="{{states.register}}">Register</a></li>
+         <li uib-dropdown class="sign-in" ng-click="$event.stopPropagation();">
             <a uib-dropdown-toggle id="sign-in-button">Sign In<strong class="caret"></strong></a>
             <div uib-dropdown-menu aria-labelledby="sign-in-button" class="sign-in-dropdown">
                <form name="loginForm" ng-submit="login()">

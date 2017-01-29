@@ -90,10 +90,26 @@ angular.module('fc.common.directives', [
       templateUrl: 'common/directives/comment-area.tpl.html',
       scope: {
          comment: '=',
-         isReply: '='
+         isReply: '=',
+         submitComment: '&'
       },
       controller: ['$scope', function($scope) {
 
+         $scope.getReplies = getReplies;
+         $scope.hideReplies = hideReplies;   
+
+         $scope.replies = [];
+         $scope.showReplies = false;
+
+         function getReplies() {
+            $scope.replies.push({ contents: 'FIRST!' });
+            $scope.replies.push({ contents: 'Mr. Hammond... Replies are working.' });
+            $scope.showReplies = true;
+         }
+
+         function hideReplies() {
+            $scope.showReplies = false;
+         }
       }]
    };
 })

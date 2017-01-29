@@ -33,8 +33,8 @@
    </div>
    <div class="row">
       <div class="col-md-8">
-         <comment-area isReply="false" comment="longComment"></comment-area>
-         <comment-area isReply="true" comment="shortComment"></comment-area>
+         <comment-area ng-repeat="comment in comments" is-reply="false" comment="comment" 
+            submit-comment="addComment(comment)"></comment-area>
       </div>
       <div class="col-md-4">
       </div>
