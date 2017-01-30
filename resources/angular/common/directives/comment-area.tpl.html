@@ -1,5 +1,4 @@
-<div class="comment-area panel panel-default text-panel-solid" 
-   ng-class="{'reply-comment col-md-offset-1 col-md-11' : isReply}">
+<div class="comment-area panel panel-default text-panel-solid">
    <div class="row">
       <div class="col-md-1 comment-profile-pic">
          <img class="small-pic" ng-src="/img/c-logo-dark.svg">
@@ -7,7 +6,7 @@
       <div class="col-md-11">
          <div class="row comment-header">
             <span class="pull-left comment-user">User Name</span>
-            <a ng-if="!isReply && !comment.isNew" class="pull-right reply-button">Reply</a>
+            <a ng-if="!comment.isNew" class="pull-right reply-button">Reply</a>
             <a ng-if="comment.replyCount > 0" ng-show="!showReplies" ng-click="getReplies()"
                class="reply-button show-hide-replies pull-right">Show Replies</a>
             <a ng-if="comment.replyCount > 0" ng-show="showReplies" ng-click="hideReplies()"
@@ -18,7 +17,8 @@
                <textarea class="comment-input" ng-model="comment.contents"></textarea>        
             </div>
             <div class="col-md-12">
-               <button class="btn btn-default pull-right" ng-click="submitComment(comment)">Submit</button>
+               <button class="btn btn-default pull-right" ng-disabled="!comment.contents"
+                  ng-click="submitComment(comment)">Submit</button>
             </div>
          </div>
          <div class="row">
@@ -29,7 +29,9 @@
       </div> 
    </div>
    <div class="row" ng-if="replies.length > 0" ng-show="showReplies">
-      <comment-area ng-repeat="reply in replies" is-reply="true" comment="reply" 
-         submit-comment="submitComment(reply)"></comment-area>
+      <comment-reply ng-repeat="reply in replies" is-reply="true" comment-id="comment.id" reply="reply" 
+         submit-reply=""></comment-reply>
+      <comment-reply is-reply="true" comment-id="comment.id" reply="newReply"
+         submit-reply="addReply(comment.id, newReply)"></comment-reply>
    </div>
 </div>

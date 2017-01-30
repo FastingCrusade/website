@@ -15,10 +15,10 @@ angular.module('fc.home.fullFast', [
    $scope.fast = $stateParams.fast;
    resetNewComment();
    $scope.comments = [];
-   $scope.comments.push($scope.newComment);
 
    $scope.comments = $scope.comments.concat(commentService.getComments($scope.fast.id));   
 /*
+   // TODO: Find out why this is failing and fix.
    commentService.getComments($scope.fast.id)
       .then(function(response) {
          $scope.comments.push(response.data.data);
@@ -28,7 +28,12 @@ angular.module('fc.home.fullFast', [
    function addComment(comment) {
       commentService.addComment($scope.fast.id, comment)
          .then(function(response) {
-            console.log('Comment added!');
+            
+            // TODO: Make sure comment is actually added to DB.
+      
+            comment.isNew = false;
+            $scope.comments.splice(0, 0, comment);
+            resetNewComment();
          }, function(error) {
             console.log('Error adding comment: ' + error.statusText);
          });

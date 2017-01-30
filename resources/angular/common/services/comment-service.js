@@ -7,6 +7,7 @@ angular.module('fc.services.commentService', [
    var commentService = {};
    commentService.getComments = getComments;
    commentService.addComment = addComment;
+   commentService.addReply = addReply;
 
    return commentService;   
 
@@ -33,6 +34,17 @@ angular.module('fc.services.commentService', [
          url: '/api/fast/' + fastId + '/comments',
          data: { 
             'contents': comment.contents
+         }
+      });
+   }
+
+   function addReply(commentId, reply) {
+
+      return $http({
+         method: 'POST',
+         url: '/api/comment/' + commentId + '/replies',
+         data: {
+            contents: reply.contents
          }
       });
    }

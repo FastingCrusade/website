@@ -1,0 +1,26 @@
+<div class="comment-area panel panel-default text-panel reply-comment col-md-offset-1 col-md-11">
+   <div class="row">
+      <div class="col-md-1 comment-profile-pic">
+         <img class="small-pic" ng-src="/img/c-logo-dark.svg">
+      </div>
+      <div class="col-md-11">
+         <div class="row comment-header">
+            <span class="pull-left comment-user">User Name</span>
+         </div>
+         <div ng-if="reply.isNew" class="row new-comment">
+            <div class="col-md-12 new-comment">
+               <textarea class="comment-input" ng-model="reply.contents"></textarea>        
+            </div>
+            <div class="col-md-12">
+               <button class="btn btn-default pull-right" ng-disabled="!reply.contents"
+                  ng-click="submitReply(commentId, reply)">Submit</button>
+            </div>
+         </div>
+         <div class="row">
+            <div ng-if="!reply.isNew" class="comment-body">
+               <p>{{reply.contents}}</p>
+            </div>
+         </div>
+      </div> 
+   </div>
+</div>

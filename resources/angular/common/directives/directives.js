@@ -90,16 +90,33 @@ angular.module('fc.common.directives', [
       templateUrl: 'common/directives/comment-area.tpl.html',
       scope: {
          comment: '=',
-         isReply: '=',
          submitComment: '&'
       },
-      controller: ['$scope', function($scope) {
+      controller: ['$scope', 'commentService', function($scope, commentService) {
 
+         $scope.addReply = addReply;
          $scope.getReplies = getReplies;
          $scope.hideReplies = hideReplies;   
 
          $scope.replies = [];
          $scope.showReplies = false;
+         resetNewReply();
+
+         function addReply(commentId, reply) {
+            reply.isNew = false;
+            $scope.replies.push(reply);
+            resetNewReply();
+/*
+            commentService.addReply(commentId, reply)
+               .then(function(response) {
+                  comment.isNew = false;
+                  $scope.replies.push(reply);
+                  resetNewReply();
+               },function(error) {
+                  console.log('Error adding reply to comment.');
+               });
+*/
+         }
 
          function getReplies() {
             $scope.replies.push({ contents: 'FIRST!' });
@@ -110,6 +127,27 @@ angular.module('fc.common.directives', [
          function hideReplies() {
             $scope.showReplies = false;
          }
+
+         function resetNewReply() {
+            $scope.newReply = {
+               isNew: true,
+               contents: null
+            }
+         }
+      }]
+   };
+})
+.directive('commentReply', function() {
+   return {
+      restrict: 'E',
+      templateUrl: 'common/directives/comment-reply.tpl.html',
+      scope: {
+         commentId: '=', 
+         reply: '=',
+         submitReply: '&'
+      },
+      controller: ['$scope', function($scope) {
+         
       }]
    };
 })
