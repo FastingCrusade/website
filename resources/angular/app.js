@@ -42,7 +42,8 @@ angular.module('fc', [
       }) 
       
       .state('root.main', {
-         templateUrl: 'sidebar-page.tpl.html'
+         templateUrl: 'sidebar-page.tpl.html',
+         url: '/main'
       })
       .state('root.main.user', {
          views: {

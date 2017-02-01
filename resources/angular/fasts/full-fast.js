@@ -16,14 +16,10 @@ angular.module('fc.home.fullFast', [
    resetNewComment();
    $scope.comments = [];
 
-   $scope.comments = $scope.comments.concat(commentService.getComments($scope.fast.id));   
-/*
-   // TODO: Find out why this is failing and fix.
    commentService.getComments($scope.fast.id)
       .then(function(response) {
-         $scope.comments.push(response.data.data);
+         $scope.comments = $scope.comments.concat(response.data.data);
       });
-*/
 
    function addComment(comment) {
       commentService.addComment($scope.fast.id, comment)

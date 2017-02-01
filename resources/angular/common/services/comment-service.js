@@ -12,19 +12,12 @@ angular.module('fc.services.commentService', [
    return commentService;   
 
    function getComments(fastId) {
-  
-      return [{
-         contents: 'Comment number 1',
-         replyCount: 2
-      },{
-         contents: 'This is the second comment.  It is longer.  But not very good still.'
-      }];    
-/*
+
       return $http({
          method: 'GET',
          url: '/api/fast/' + fastId + '/comments'
       });
-*/
+
    }
 
    function addComment(fastId, comment) {
