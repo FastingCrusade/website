@@ -48,12 +48,21 @@ class FastCommentsController extends TestCase
         $comments = factory('App\Models\Comment', 5)->create([
             'commentable_type' => 'App\Models\Fast',
             'commentable_id'   => $fast->id,
-        ]);
+        ])
+            ->each(function (Comment $comment) {
+                $comment->comments()->create([
+                    'commentable_type' => 'App\Models\Comment',
+                    'commentable_id'   => $comment->id,
+                    'user_id'          => factory('App\Models\User')->create()->id,
+                    'contents'         => 'Test reply.',
+                ]);
+            });
 
         $this->get("/api/fast/{$fast->id}/comments");
         $this->assertResponseOk();
 
         $this->assertEquals($comments->pluck('id'), collect(json_decode($this->response->getContent())->data)->pluck('id'));
+
     }
 
     public function testAddCommentToFast()

@@ -32,7 +32,9 @@ class FastComments extends ApiController
      */
     public function index(Fast $fast)
     {
-        return $this->response($fast->comments);
+        return $this->response($fast->comments->each(function (Comment $comment) {
+            $comment->replies = $comment->comments()->count();
+        }));
     }
 
     /**
