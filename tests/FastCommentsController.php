@@ -62,7 +62,9 @@ class FastCommentsController extends TestCase
         $this->assertResponseOk();
 
         $this->assertEquals($comments->pluck('id'), collect(json_decode($this->response->getContent())->data)->pluck('id'));
-
+        collect(json_decode($this->response->getContent())->data)->each(function ($comment) {
+            $this->assertEquals(1, $comment->replies);
+        });
     }
 
     public function testAddCommentToFast()
