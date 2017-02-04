@@ -95,33 +95,37 @@ angular.module('fc.common.directives', [
       controller: ['$scope', 'commentService', function($scope, commentService) {
 
          $scope.addReply = addReply;
+         $scope.showReplyList = showReplyList;
          $scope.getReplies = getReplies;
          $scope.hideReplies = hideReplies;   
 
-         $scope.replies = [];
          $scope.showReplies = false;
          resetNewReply();
+         $scope.replies = [];
 
          function addReply(commentId, reply) {
-            reply.isNew = false;
-            $scope.replies.push(reply);
-            resetNewReply();
-/*
             commentService.addReply(commentId, reply)
                .then(function(response) {
-                  comment.isNew = false;
+                  reply.isNew = false;
                   $scope.replies.push(reply);
                   resetNewReply();
                },function(error) {
                   console.log('Error adding reply to comment.');
                });
-*/
          }
 
-         function getReplies() {
-            $scope.replies.push({ contents: 'FIRST!' });
-            $scope.replies.push({ contents: 'Mr. Hammond... Replies are working.' });
-            $scope.showReplies = true;
+         function showReplyList() {
+            $scope.showReplies = !$scope.showReplies;
+         }
+
+         function getReplies(commentId) {
+            commentService.getReplies(commentId)
+               .then(function(response) {
+                  $scope.replies = $scope.replies.concat(response.data.data);
+                  $scope.showReplies = true;
+               }, function(error) {
+                  console.log('Error retrieving replies for comment.');
+               });
          }
 
          function hideReplies() {

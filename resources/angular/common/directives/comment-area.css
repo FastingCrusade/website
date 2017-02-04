@@ -24,12 +24,6 @@
    color: #1870bf;
 }
 
-.comment-area .reply-button.show-hide-replies::after {
-   content: "\2022";
-   margin: 0 5px;
-   color: black;
-}
-
 .comment-area .new-comment {
    padding-left: 0;
 }

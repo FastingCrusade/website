@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-12">
                <button class="btn btn-default pull-right" ng-disabled="!reply.contents"
-                  ng-click="submitReply(commentId, reply)">Submit</button>
+                  ng-click="submitReply({commentId: commentId, reply: reply})">Submit</button>
             </div>
          </div>
          <div class="row">

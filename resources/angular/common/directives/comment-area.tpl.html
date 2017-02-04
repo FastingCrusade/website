@@ -6,10 +6,11 @@
       <div class="col-md-11">
          <div class="row comment-header">
             <span class="pull-left comment-user">User Name</span>
-            <a ng-if="!comment.isNew" class="pull-right reply-button">Reply</a>
-            <a ng-if="comment.replyCount > 0" ng-show="!showReplies" ng-click="getReplies()"
+            <a ng-if="!comment.isNew && comment.replies === 0" class="pull-right reply-button" 
+               ng-click="showReplyList()">Reply</a>
+            <a ng-if="comment.replies > 0" ng-show="!showReplies" ng-click="getReplies(comment.id)"
                class="reply-button show-hide-replies pull-right">Show Replies</a>
-            <a ng-if="comment.replyCount > 0" ng-show="showReplies" ng-click="hideReplies()"
+            <a ng-if="comment.replies > 0" ng-show="showReplies" ng-click="hideReplies()"
                class="reply-button show-hide-replies pull-right">Hide Replies</a>
          </div>
          <div ng-if="comment.isNew" class="row new-comment">
@@ -28,10 +29,10 @@
          </div>
       </div> 
    </div>
-   <div class="row" ng-if="replies.length > 0" ng-show="showReplies">
+   <div class="row" ng-show="showReplies">
       <comment-reply ng-repeat="reply in replies" is-reply="true" comment-id="comment.id" reply="reply" 
          submit-reply=""></comment-reply>
       <comment-reply is-reply="true" comment-id="comment.id" reply="newReply"
-         submit-reply="addReply(comment.id, newReply)"></comment-reply>
+         submit-reply="addReply(commentId, reply)"></comment-reply>
    </div>
 </div>
