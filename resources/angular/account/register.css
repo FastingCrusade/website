@@ -23,3 +23,9 @@
 .registration .return-home {
    margin-top: 10px;
 }
+
+.registration .register-image {
+   padding: 10px;
+   background-color: #fff;
+   border-radius: 1em;
+}
