@@ -8,11 +8,8 @@ angular.module('fc.account.register', [
    $scope.submitRegistration = submitRegistration;
    $scope.returnHome = returnHome;
 
-   var squareApplicationId = 'sandbox-sq0idp-ShnGBqDA9ae3V3H6piMkMQa';
-   var squareAccessToken = 'sandbox-sq0atb-0qy9x7jgr3k93EGO3O98kQ';
-
-   $scope.paymentForm = new SqPaymentForm({
-      applicationId: squareApplicationId,
+   $scope.squarePaymentForm = new SqPaymentForm({
+      applicationId: 'sandbox-sq0idp-ShnGBqDA9ae3V3H6piMkMQ',
       inputClass: 'sq-input',
       inputStyles: [{
          fontSize: '15px'
@@ -22,36 +19,29 @@ angular.module('fc.account.register', [
           placeholder: '---- ---- ---- ----'
       },
       cvv: {
-          elementId: 'sq-cvv',
-          placeholder: 'CVV'
-       },
+         elementId: 'sq-cvv',
+         placeholder: 'CVV'
+      },
       expirationDate: {
-          elementId: 'sq-expiration-date',
-          placeholder: 'MM/YY'
-       },
-       postalCode: {
-          elementId: 'sq-postal-code'
-       },
-       callbacks: {
-          cardNonceResponseReceived: function(errors, nonce, cardData) {
-             if (errors) {
-                console.log("Encountered errors:");
-   
-                errors.forEach(function(error) {
-                   console.log('  ' + error.message);
-                });
-
-             } else {
+         elementId: 'sq-expiration-date',
+         placeholder: 'MM/YY'
+      },
+      postalCode: {
+         elementId: 'sq-postal-code'
+      },
+      callbacks: {
+         cardNonceResponseReceived: function(errors, nonce, cardData) {
+            $scope.errors = errors;   
+            if (!errors) {
                // No errors occurred. Extract the card nonce.
-               // document.getElementById('card-nonce').value = nonce;
-               // document.getElementById('nonce-form').submit();   
+               $scope.nonce = nonce;
+               completeRegistration();
             }
+            $scope.$apply(); // Required since this is not an angular function
          },
-
          unsupportedBrowserDetected: function() {
             // Fill in this callback to alert buyers when their browser is not supported.
          },
-   
          inputEventReceived: function(inputEvent) {
             switch (inputEvent.eventType) {
                case 'focusClassAdded':
@@ -73,36 +63,30 @@ angular.module('fc.account.register', [
                   // Handle as desired
                   break;
             }
-         },
-
-         paymentFormLoaded: function() {
-            // Fill in this callback to perform actions after the payment form is
-            // done loading (such as setting the postal code field programmatically).
-            // paymentForm.setPostalCode('94103');
          }
       }
    });
 
-   $scope.paymentForm.build();
+   $scope.squarePaymentForm.build();
 
-   function requestCardNonce(event) {
-      event.preventDefault();
-      $scope.paymentForm.requestCardNonce();
+   function submitRegistration() {
+      $scope.isProcessing = true;
+      $scope.squarePaymentForm.requestCardNonce();
+      return false; 
    }
 
-   function submitRegistration(event) {
-      $scope.isProcessing = true;
-      $scope.paymentForm.requestCardNonce();
-      return false; 
+   function completeRegistration() {
 /*
       userService.register($scope.email, $scope.password, $scope.name)
          .then(function(response) {
             $scope.registrationSuccess = true;
+            $scope.isProcessing = false;
          }, function(error) {
             $scope.registrationError = true;
             console.error('Error during registration! ' + error.statusText);
          });
 */
+      console.log("finished registration");
    }
 
    // TODO: Eventually figure out what the "main" state is, when you first hit the app
