@@ -11,6 +11,7 @@
 |
 */
 
+use App\Models\SquareCreditCard;
 use Carbon\Carbon;
 
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
@@ -90,5 +91,46 @@ $factory->define(App\Models\Gender::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'icon' => $faker->word,
+    ];
+});
+
+$factory->define(App\Models\Subscription::class, function (Faker\Generator $faker) {
+    return [
+        'user_id'             => function () {
+            return factory(App\Models\User::class)->create()->id;
+        },
+        'payment_method_id'   => $faker->numberBetween(1),
+        'payment_method_type' => '',
+        'expires_at'          => $faker->date(),
+        'fee'                 => $faker->numberBetween(0, 25),
+    ];
+});
+
+$factory->state(App\Models\Subscription::class, 'expired', function (Faker\Generator $faker) {
+    return [
+        'expires_at' => Carbon::now()->subMonth(),
+    ];
+});
+
+$factory->state(App\Models\Subscription::class, 'valid', function (Faker\Generator $faker) {
+    return [
+        'expires_at' => Carbon::now()->addMonth(),
+    ];
+});
+
+$factory->state(App\Models\Subscription::class, 'square', function (Faker\Generator $faker) {
+    /** @var SquareCreditCard $payment_method */
+    $payment_method = factory(App\Models\SquareCreditCard::class)->create();
+
+    return [
+        'payment_method_id'   => $payment_method->id,
+        'payment_method_type' => App\Models\SquareCreditCard::class,
+    ];
+});
+
+$factory->define(App\Models\SquareCreditCard::class, function (Faker\Generator $faker) {
+    return [
+        'customer_id' => $faker->password,
+        'card_id'     => $faker->password,
     ];
 });
