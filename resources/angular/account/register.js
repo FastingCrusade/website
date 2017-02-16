@@ -76,8 +76,7 @@ angular.module('fc.account.register', [
    }
 
    function completeRegistration() {
-/*
-      userService.register($scope.email, $scope.password, $scope.name)
+      userService.register($scope.email, $scope.password, $scope.name, $scope.nonce)
          .then(function(response) {
             $scope.registrationSuccess = true;
             $scope.isProcessing = false;
@@ -85,8 +84,6 @@ angular.module('fc.account.register', [
             $scope.registrationError = true;
             console.error('Error during registration! ' + error.statusText);
          });
-*/
-      console.log("finished registration");
    }
 
    // TODO: Eventually figure out what the "main" state is, when you first hit the app
