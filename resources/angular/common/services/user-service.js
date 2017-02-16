@@ -34,7 +34,7 @@ angular.module('fc.services.userService', [
       return !!userService.user;
    }
 
-   function register(email, password, name) {
+   function register(email, password, name, nonce) {
       var token = angular.element(document.querySelector('#csrf_token'))[0].content;
 
       return $http({
@@ -44,6 +44,7 @@ angular.module('fc.services.userService', [
             'email': email, 
             'password': password, 
             'name': name, 
+            'nonce': nonce,
             '_token': token 
          }
       });

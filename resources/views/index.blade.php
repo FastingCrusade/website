@@ -13,6 +13,7 @@
     <!-- 3rd Party JS -->
     <script src="{{ elixir('js/bower.js') }}"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script>
+    <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
 
     <!-- Custom JS -->
     <script src="{{ elixir('js/templates.js') }}"></script>
