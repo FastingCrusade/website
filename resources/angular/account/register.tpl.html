@@ -9,8 +9,8 @@
                <div>Welcome again, and good luck fasting!</div>
             </div>
          </div>
-         <div class="panel panel-default">
-            <div class="register-info-formi panel-default" ng-show="!registrationSuccess && !showPaymentForm">
+         <div class="panel panel-default" ng-show="!registrationSuccess">
+            <div class="register-info-formi panel-default" ng-show="!showPaymentForm">
                <div class="panel-heading">Register</div>
                <div class="panel-body">
                   <form class="form-horizontal" role="form" name="registerForm" ng-submit="showPaymentForm = true">
@@ -53,7 +53,7 @@
                   </form>
                </div>
             </div>
-            <div class="register-payment-form" ng-show="!registrationSuccess && showPaymentForm">
+            <div class="register-payment-form" ng-show="showPaymentForm">
                <div class="panel-heading panel-default">Payment</div>
                <div class="panel-body">
                   <form class="form-horizontal" role="form" name="paymentForm" ng-submit="submitRegistration()">
