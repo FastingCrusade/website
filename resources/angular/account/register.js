@@ -9,7 +9,7 @@ angular.module('fc.account.register', [
    $scope.returnHome = returnHome;
 
    $scope.squarePaymentForm = new SqPaymentForm({
-      applicationId: 'sandbox-sq0idp-ShnGBqDA9ae3V3H6piMkMQ',
+      applicationId: $('meta[name="square_application_id"]').attr('content'),
       inputClass: 'sq-input',
       inputStyles: [{
          fontSize: '15px'

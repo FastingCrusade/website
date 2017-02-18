@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf_token" content="{{ csrf_token() }}">
+    <meta name="square_application_id" content="{{ config('services.square.app_id') }}">
 
     <title>{{ $title or "Fasting Crusade" }}</title>
 
