@@ -13,10 +13,12 @@ use App\Models\Comment;
 use App\Models\Fast;
 use App\Models\Gender;
 use App\Models\Organization;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
@@ -188,5 +190,18 @@ class UserModel extends TestCase
             ],
             'api_token' => $user->api_token,
         ])->toJson(), $user->toJson());
+    }
+
+    public function testSubscription()
+    {
+        /** @var User $user */
+        $user = factory('App\Models\User')->create();
+        /** @var Subscription $subscription */
+        $subscription =factory('App\Models\Subscription')->create([
+            'user_id' => $user->id,
+        ]);
+
+        $this->assertTrue($user->subscription() instanceof HasOne);
+        $this->assertEquals($subscription->id, $user->subscription->id);
     }
 }

@@ -8,6 +8,7 @@ use App\Misc\Size;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -102,6 +103,16 @@ class User extends Authenticatable
     public function gender()
     {
         return $this->belongsTo('App\Models\Gender')->withTrashed();
+    }
+
+    /**
+     * Relationship to the Subscription
+     *
+     * @return HasOne
+     */
+    public function subscription()
+    {
+        return $this->hasOne('App\Models\Subscription');
     }
 
     /**

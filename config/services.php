@@ -39,4 +39,10 @@ return [
         'secret' => env('GITHUB_HOOK_SECRET'),
         'branch' => env('GITHUB_DEPLOYED_BRANCH', 'master'),
     ],
+
+    'square' => [
+        'access_token' => env('SQUARE_ACCESS_TOKEN'),
+        'app_id'       => env('SQUARE_APP_ID'),
+        'location_id'  => env('SQUARE_LOCATION_ID'),
+    ],
 ];
