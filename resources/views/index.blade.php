@@ -25,6 +25,8 @@
 
     <!-- CSRF Token for Authentication -->
     <meta id="csrf_token" content="{{ csrf_token() }}">
+    <!-- Square Application ID -->
+    <meta id="square_app_id" content="{{ config('services.square.app_id') }}">
 <head> 
     
 
