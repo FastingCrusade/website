@@ -85,39 +85,41 @@ class RegisterController extends Controller
         /** @var SquareClient $client */
         $client = App::make('App\Misc\SquareClient');
         /** @var Customer $customer */
-        $customer = $client->createCustomer($user);
+//        $customer = $client->createCustomer($user);
         /** @var Card $card */
-        $card = $client->createCard($request->input('nonce'), $customer);
-        $full_card = SquareCreditCard::create([
-            'customer_id' => $customer->getId(),
-            'card_id'     => $card->getId(),
-        ]);
+//        $card = $client->createCard($request->input('nonce'), $customer);
+//        $full_card = SquareCreditCard::create([
+//            'customer_id' => $customer->getId(),
+//            'card_id'     => $card->getId(),
+//        ]);
 
         if ($request->input('discount_code', false)) {
             // TODO handle with a multiplier.
         }
 
-        $charged = $client->charge($full_card, $request->input('cost', $cost));
+//        $charged = $client->charge($full_card, $request->input('cost', $cost));
 
-        if ($charged) {
-            /** @var Subscription $subscription */
-            $subscription = Subscription::create([
-                'expires_at'          => Carbon::now()->addMonth(),
-                'fee'                 => $cost,
-                'user_id'             => $user->id,
-                'payment_method_id'   => $full_card->id,
-                'payment_method_type' => SquareCreditCard::class,
-            ]);
-            $full_card->subscriptions()->save($subscription);
-            $user->subscription()->save($subscription);
-        }
+//        if ($charged) {
+//            /** @var Subscription $subscription */
+//            $subscription = Subscription::create([
+//                'expires_at'          => Carbon::now()->addMonth(),
+//                'fee'                 => $cost,
+//                'user_id'             => $user->id,
+//                'payment_method_id'   => $full_card->id,
+//                'payment_method_type' => SquareCreditCard::class,
+//            ]);
+//            $full_card->subscriptions()->save($subscription);
+//            $user->subscription()->save($subscription);
+//        }
 
         return response()->json([
-            'success' => $charged ? 'OK' : 'FAILURE',
+//            'success' => $charged ? 'OK' : 'FAILURE',
+            'success' => 'OK',
             'data'    => [
-                'transaction_id' => $charged ?: null,
+//                'transaction_id' => $charged ?: null,
                 'user'           => Auth::user(),
             ],
-        ], $charged ? Response::HTTP_ACCEPTED : Response::HTTP_I_AM_A_TEAPOT);
+//        ], $charged ? Response::HTTP_ACCEPTED : Response::HTTP_I_AM_A_TEAPOT);
+        ], Response::HTTP_ACCEPTED);
     }
 }
