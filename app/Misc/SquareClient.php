@@ -172,7 +172,7 @@ class SquareClient
             ]),
             'amount'          => $amount,
             'payment_method'  => get_class($this),
-            'successful'      => !empty($response->getErrors()),
+            'successful'      => empty($response->getErrors()),
         ]);
 
         if ($response->getErrors()) {
