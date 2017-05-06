@@ -46,7 +46,7 @@ class RegisterController extends TestCase
         $this->assertEquals(Response::HTTP_ACCEPTED, $this->response->getStatusCode(), 'Incorrect status code on response.');
         $this->seeJson([
             'success'        => 'OK',
-            'transaction_id' => 'aTransactionId',
+//            'transaction_id' => 'aTransactionId',
         ]);
     }
 }
