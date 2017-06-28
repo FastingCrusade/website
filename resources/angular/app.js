@@ -36,10 +36,10 @@ angular.module('fc', [
          templateUrl: 'soon/coming-soon.tpl.html',
          controller: 'ComingSoonCtrl'
       })
-      .state('root.about', {
-         url: '/about',
-         templateUrl: 'about/about.tpl.html'
-      }) 
+//      .state('root.about', {
+//         url: '/about',
+//         templateUrl: 'about/about.tpl.html'
+//      }) 
       
       .state('root.main', {
          templateUrl: 'sidebar-page.tpl.html'
