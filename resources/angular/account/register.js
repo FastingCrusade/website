@@ -5,6 +5,7 @@ angular.module('fc.account.register', [
 .controller('RegisterCtrl', ['$scope', '$state', 'constants', 'userService', 
    function($scope, $state, constants, userService) {
    
+   $scope.submitRegistrationNoCharge = submitRegistrationNoCharge;
    $scope.submitRegistration = submitRegistration;
    $scope.returnHome = returnHome;
 
@@ -73,6 +74,11 @@ angular.module('fc.account.register', [
       $scope.isProcessing = true;
       $scope.squarePaymentForm.requestCardNonce();
       return false; 
+   }
+
+   function submitRegistrationNoCharge() {
+      $scope.nonce = 'CBASEP6erWG4YTZsJJPDvaeGbPcgAQ';
+      completeRegistration();
    }
 
    function completeRegistration() {

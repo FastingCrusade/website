@@ -10,10 +10,11 @@
             </div>
          </div>
          <div class="panel panel-default" ng-show="!registrationSuccess">
-            <div class="register-info-formi panel-default" ng-show="!showPaymentForm">
+            <div class="register-info-form panel-default" ng-show="!showPaymentForm">
                <div class="panel-heading">Register</div>
                <div class="panel-body">
-                  <form class="form-horizontal" role="form" name="registerForm" ng-submit="showPaymentForm = true">
+                  <!-- <form class="form-horizontal" role="form" name="registerForm" ng-submit="showPaymentForm = true"> -->
+                  <form class="form-horizontal" role="form" name="registerForm" ng-submit="submitRegistrationNoCharge()">
                      <div class="form-group" ng-class="{ 'has-error' : !registerForm.email.$valid }">
                         <label for="email" class="col-md-4 control-label">E-Mail Address</label>
                         <div class="col-md-6">
@@ -53,7 +54,8 @@
                   </form>
                </div>
             </div>
-            <div class="register-payment-form" ng-show="showPaymentForm">
+            <!-- <div class="register-payment-form" ng-show="showPaymentForm"> -->
+            <div class="register-payment-form" ng-show="false">
                <div class="panel-heading panel-default">Payment</div>
                <div class="panel-body">
                   <form class="form-horizontal" role="form" name="paymentForm" ng-submit="submitRegistration()">
