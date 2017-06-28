@@ -14,9 +14,6 @@ angular.module('fc.nav', [
    $scope.info = {};
 
    function login() {
-      console.log('email: ' + $scope.info.email);
-      console.log('pass: ' + $scope.info.password);
-
       userService.login($scope.info.email, $scope.info.password, $scope.rememberMe)
          .then(function(response) {
             $scope.isLoggedIn = true;
